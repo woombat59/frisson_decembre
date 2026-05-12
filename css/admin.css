@@ -92,6 +92,26 @@ body {
   font-size: 0.92rem;
 }
 
+.field-hint {
+  margin: 4px 0 0;
+  color: rgba(248, 248, 255, 0.55);
+  font-size: 0.82rem;
+}
+
+.logo-input-row {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+.logo-input-row input {
+  flex: 1;
+}
+.logo-upload-label {
+  cursor: pointer;
+  white-space: nowrap;
+  padding: 8px 12px;
+}
+
 .form-group {
   margin-bottom: 14px;
 }

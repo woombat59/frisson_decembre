@@ -23,6 +23,11 @@ const elements = {
   updateMessage: document.querySelector("#update-message"),
   directionMessage: document.querySelector("#direction-message"),
   flashAnnouncement: document.querySelector("#flash-announcement"),
+  activeDayInput: document.querySelector("#active-day-input"),
+  logoUrlInput: document.querySelector("#logo-url-input"),
+  logoFileInput: document.querySelector("#logo-file-input"),
+  logoPreviewWrap: document.querySelector("#logo-preview-wrap"),
+  logoPreview: document.querySelector("#logo-preview"),
   saveMessagesBtn: document.querySelector("#save-messages-btn"),
   rankingModeToggle: document.querySelector("#ranking-mode-toggle"),
   rankingSortMode: document.querySelector("#ranking-sort-mode"),
@@ -1071,10 +1076,39 @@ function initEvents() {
     appData.config.directionMessage = elements.directionMessage.value;
     appData.config.flashAnnouncement = elements.flashAnnouncement.value;
 
+    const dayVal = parseInt(elements.activeDayInput.value, 10);
+    appData.config.activeDay = (dayVal >= 1 && dayVal <= 24) ? dayVal : null;
+
+    const logoVal = elements.logoUrlInput.value.trim();
+    appData.config.logoDataUrl = logoVal || appData.config.logoDataUrl || null;
+
     saveData();
     addAudit("Messages", "Mise a jour du message direction et de l'annonce flash");
     showMessage("✅ Messages enregistres avec succes.", false);
   });
+
+  // Logo file -> base64
+  if (elements.logoFileInput) {
+    elements.logoFileInput.addEventListener("change", (e) => {
+      const file = e.target.files[0];
+      if (!file) return;
+      const reader = new FileReader();
+      reader.onload = (ev) => {
+        const b64 = ev.target.result;
+        elements.logoUrlInput.value = b64;
+        elements.logoPreview.src = b64;
+        elements.logoPreviewWrap.hidden = false;
+      };
+      reader.readAsDataURL(file);
+    });
+  }
+  if (elements.logoUrlInput) {
+    elements.logoUrlInput.addEventListener("input", () => {
+      const v = elements.logoUrlInput.value.trim();
+      if (v) { elements.logoPreview.src = v; elements.logoPreviewWrap.hidden = false; }
+      else { elements.logoPreviewWrap.hidden = true; }
+    });
+  }
 
   elements.rankingModeToggle.addEventListener("change", () => {
     if (guardReadOnlyAction()) {
@@ -1291,6 +1325,12 @@ function init() {
 
   elements.directionMessage.value = appData.config.directionMessage || "";
   elements.flashAnnouncement.value = appData.config.flashAnnouncement || "";
+  if (elements.activeDayInput) elements.activeDayInput.value = appData.config.activeDay || "";
+  if (elements.logoUrlInput && appData.config.logoDataUrl) {
+    elements.logoUrlInput.value = appData.config.logoDataUrl;
+    elements.logoPreview.src = appData.config.logoDataUrl;
+    elements.logoPreviewWrap.hidden = false;
+  }
   elements.rankingPointsFilter.value = elements.rankingPointsFilter.value || "0";
   elements.adminRoleSelect.value = sessionStorage.getItem(ADMIN_ROLE_KEY) || "readonly";
 

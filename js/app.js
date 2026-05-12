@@ -436,6 +436,39 @@ function displayRankingName(entry, mode) {
   return entry.anonymousLabel || entry.name;
 }
 
+function renderPodium(data) {
+  const podiumEl = document.getElementById("podium-section");
+  if (!podiumEl) return;
+  const mode = data.config.rankingMode === "named" ? "named" : "anonymous";
+  const top3 = [...(data.rankings || [])]
+    .sort((a, b) => b.points - a.points || b.sales - a.sales)
+    .slice(0, 3);
+
+  if (top3.length < 1) { podiumEl.hidden = true; return; }
+  podiumEl.hidden = false;
+
+  // order: 2nd, 1st, 3rd for visual podium
+  const order = [top3[1], top3[0], top3[2]];
+  const heights = ["120px", "160px", "90px"];
+  const medals = ["🥈", "🥇", "🥉"];
+  const labels = ["2ème", "1er", "3ème"];
+
+  podiumEl.querySelector(".podium-stage").innerHTML = order.map((entry, i) => {
+    if (!entry) return `<div class="podium-col empty"></div>`;
+    const name = displayRankingName(entry, mode);
+    return `
+      <div class="podium-col rank-${i === 1 ? 1 : i === 0 ? 2 : 3}">
+        <div class="podium-avatar">${entry.icon || "🎄"}</div>
+        <div class="podium-name">${name}</div>
+        <div class="podium-pts">${entry.points} pts</div>
+        <div class="podium-block" style="height:${heights[i]}">
+          <span class="podium-medal">${medals[i]}</span>
+          <span class="podium-label">${labels[i]}</span>
+        </div>
+      </div>`;
+  }).join("");
+}
+
 const RANKING_PAGE_SIZE = 5;
 let rankingCurrentPage = 0;
 let rankingAllEntries = [];
@@ -806,15 +839,28 @@ function stopAmbiance() {
 
 function render() {
   const data = loadData();
-  const activeDay = getTodayInEvent();
+  const cfgDay = data.config && data.config.activeDay;
+  const activeDay = (cfgDay >= 1 && cfgDay <= 24) ? cfgDay : getTodayInEvent();
   const activeDayData = data.days.find((d) => d.day === activeDay) || data.days[0];
 
   ensureUnlockedDate(data, activeDay);
+
+  // Logo
+  const siteLogoEl = document.getElementById("site-logo");
+  if (siteLogoEl) {
+    if (data.config && data.config.logoDataUrl) {
+      siteLogoEl.src = data.config.logoDataUrl;
+      siteLogoEl.hidden = false;
+    } else {
+      siteLogoEl.hidden = true;
+    }
+  }
 
   elements.todayLabel.textContent = `Jour ${activeDay}`;
   renderDailyProgress(activeDayData);
   renderCalendar(data, activeDay);
   renderDashboard(data, activeDay);
+  renderPodium(data);
   updateCountdown();
 
   appState = { data, activeDay };
