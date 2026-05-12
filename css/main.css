@@ -203,7 +203,6 @@ h1 {
   width: max-content;
   max-width: 100%;
   overflow: auto;
-  margin: 0 auto;
 }
 
 .day-card {
@@ -370,9 +369,6 @@ h1 {
 .ranking-list {
   display: grid;
   gap: 10px;
-  max-height: 420px;
-  overflow-y: auto;
-  padding-right: 4px;
 }
 
 .ranking-item {
@@ -438,6 +434,41 @@ h1 {
   margin: 0;
   color: rgba(248, 248, 255, 0.75);
   font-size: 0.9rem;
+}
+
+.ranking-pagination {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  margin-top: 14px;
+}
+
+.rank-page-btn {
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  color: var(--text-primary);
+  border-radius: 8px;
+  padding: 6px 14px;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.rank-page-btn:hover:not(:disabled) {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.rank-page-btn:disabled {
+  opacity: 0.35;
+  cursor: default;
+}
+
+#ranking-page-info {
+  font-size: 0.9rem;
+  color: rgba(248, 248, 255, 0.8);
+  min-width: 90px;
+  text-align: center;
 }
 
 .ranking-bar {

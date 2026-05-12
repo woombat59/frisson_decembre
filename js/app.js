@@ -436,36 +436,67 @@ function displayRankingName(entry, mode) {
   return entry.anonymousLabel || entry.name;
 }
 
+const RANKING_PAGE_SIZE = 5;
+let rankingCurrentPage = 0;
+let rankingAllEntries = [];
+let rankingMode = "anonymous";
+
 function renderRanking(data) {
   if (!elements.rankingList) return;
 
-  const mode = data.config.rankingMode === "named" ? "named" : "anonymous";
-  const ordered = [...(data.rankings || [])]
-    .sort((a, b) => b.points - a.points || b.sales - a.sales)
-    .slice(0, 5);
-  const maxPoints = Math.max(1, ...ordered.map((entry) => Number(entry.points) || 0));
+  rankingMode = data.config.rankingMode === "named" ? "named" : "anonymous";
+  rankingAllEntries = [...(data.rankings || [])]
+    .sort((a, b) => b.points - a.points || b.sales - a.sales);
+  rankingCurrentPage = 0;
 
   if (elements.rankingModeLabel) {
     elements.rankingModeLabel.textContent =
-      mode === "named" ? "Affichage nominatif" : "Affichage anonyme";
+      rankingMode === "named" ? "Affichage nominatif" : "Affichage anonyme";
   }
 
-  if (!ordered.length) {
+  // wire pagination buttons once
+  const prevBtn = document.getElementById("ranking-prev");
+  const nextBtn = document.getElementById("ranking-next");
+  if (prevBtn && !prevBtn._wired) {
+    prevBtn._wired = true;
+    prevBtn.addEventListener("click", () => { rankingCurrentPage--; renderRankingPage(); });
+    nextBtn.addEventListener("click", () => { rankingCurrentPage++; renderRankingPage(); });
+  }
+
+  renderRankingPage();
+}
+
+function renderRankingPage() {
+  const paginationEl = document.getElementById("ranking-pagination");
+  const prevBtn = document.getElementById("ranking-prev");
+  const nextBtn = document.getElementById("ranking-next");
+  const pageInfo = document.getElementById("ranking-page-info");
+
+  if (!rankingAllEntries.length) {
     elements.rankingList.innerHTML = '<p class="ranking-empty">Aucune entree dans le classement.</p>';
+    if (paginationEl) paginationEl.hidden = true;
     return;
   }
 
-  elements.rankingList.innerHTML = ordered
-    .map((entry, index) => {
+  const totalPages = Math.ceil(rankingAllEntries.length / RANKING_PAGE_SIZE);
+  rankingCurrentPage = Math.max(0, Math.min(rankingCurrentPage, totalPages - 1));
+
+  const start = rankingCurrentPage * RANKING_PAGE_SIZE;
+  const pageEntries = rankingAllEntries.slice(start, start + RANKING_PAGE_SIZE);
+  const maxPoints = Math.max(1, ...rankingAllEntries.map((e) => Number(e.points) || 0));
+
+  elements.rankingList.innerHTML = pageEntries
+    .map((entry, i) => {
+      const globalIndex = start + i;
       const width = Math.max(18, Math.round(((Number(entry.points) || 0) / maxPoints) * 100));
-      const medal = index === 0 ? "🥇" : index === 1 ? "🥈" : index === 2 ? "🥉" : `#${index + 1}`;
-      const rankClass = index === 0 ? "first" : index === 1 ? "second" : index === 2 ? "third" : "";
+      const medal = globalIndex === 0 ? "🥇" : globalIndex === 1 ? "🥈" : globalIndex === 2 ? "🥉" : `#${globalIndex + 1}`;
+      const rankClass = globalIndex === 0 ? "first" : globalIndex === 1 ? "second" : globalIndex === 2 ? "third" : "";
       return `
-        <article class="ranking-item rank-${index + 1}">
+        <article class="ranking-item rank-${globalIndex + 1}">
           <div class="ranking-position ${rankClass}">${medal}</div>
           <div class="ranking-icon">${entry.icon || "🎄"}</div>
           <div class="ranking-meta">
-            <h3>${displayRankingName(entry, mode)}</h3>
+            <h3>${displayRankingName(entry, rankingMode)}</h3>
             <p>${entry.points} pts · ${entry.sales} ventes</p>
           </div>
           <div class="ranking-bar"><span style="width:${width}%"></span></div>
@@ -473,6 +504,13 @@ function renderRanking(data) {
       `;
     })
     .join("");
+
+  if (paginationEl) {
+    paginationEl.hidden = totalPages <= 1;
+    if (pageInfo) pageInfo.textContent = `Page ${rankingCurrentPage + 1} / ${totalPages}`;
+    if (prevBtn) prevBtn.disabled = rankingCurrentPage === 0;
+    if (nextBtn) nextBtn.disabled = rankingCurrentPage === totalPages - 1;
+  }
 }
 
 function ensureUnlockedDate(data, activeDay) {
