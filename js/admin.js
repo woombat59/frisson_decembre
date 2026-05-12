@@ -1073,18 +1073,18 @@ function initEvents() {
 
   elements.saveMessagesBtn.addEventListener("click", () => {
     if (guardReadOnlyAction()) return;
-    appData.config.directionMessage = elements.directionMessage.value;
-    appData.config.flashAnnouncement = elements.flashAnnouncement.value;
+    appData.config.directionMessage = elements.directionMessage.value || "";
+    appData.config.flashAnnouncement = elements.flashAnnouncement.value || "";
 
     const dayVal = parseInt(elements.activeDayInput.value, 10);
     appData.config.activeDay = (dayVal >= 1 && dayVal <= 24) ? dayVal : null;
 
-    const logoVal = elements.logoUrlInput.value.trim();
-    appData.config.logoDataUrl = logoVal || appData.config.logoDataUrl || null;
+    const logoVal = (elements.logoUrlInput.value || "").trim();
+    appData.config.logoDataUrl = logoVal || null;
 
     saveData();
-    addAudit("Messages", "Mise a jour du message direction et de l'annonce flash");
-    showMessage("✅ Messages enregistres avec succes.", false);
+    addAudit("Messages", "Mise a jour du message direction, jour actif et logo");
+    showMessage("✅ Messages, jour actif et logo enregistres.", false);
   });
 
   // Logo file -> base64
@@ -1325,11 +1325,18 @@ function init() {
 
   elements.directionMessage.value = appData.config.directionMessage || "";
   elements.flashAnnouncement.value = appData.config.flashAnnouncement || "";
-  if (elements.activeDayInput) elements.activeDayInput.value = appData.config.activeDay || "";
-  if (elements.logoUrlInput && appData.config.logoDataUrl) {
-    elements.logoUrlInput.value = appData.config.logoDataUrl;
-    elements.logoPreview.src = appData.config.logoDataUrl;
-    elements.logoPreviewWrap.hidden = false;
+  if (elements.activeDayInput) {
+    elements.activeDayInput.value = appData.config.activeDay ? String(appData.config.activeDay) : "";
+  }
+  if (elements.logoUrlInput) {
+    const logoUrl = appData.config.logoDataUrl || "";
+    elements.logoUrlInput.value = logoUrl;
+    if (logoUrl && elements.logoPreview) {
+      elements.logoPreview.src = logoUrl;
+      if (elements.logoPreviewWrap) elements.logoPreviewWrap.hidden = false;
+    } else if (elements.logoPreviewWrap) {
+      elements.logoPreviewWrap.hidden = true;
+    }
   }
   elements.rankingPointsFilter.value = elements.rankingPointsFilter.value || "0";
   elements.adminRoleSelect.value = sessionStorage.getItem(ADMIN_ROLE_KEY) || "readonly";
