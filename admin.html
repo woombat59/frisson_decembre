@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Espace Gestionnaire — L'Avent de la Performance</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="css/admin.css" />
+  </head>
+  <body>
+    <div class="admin-shell">
+      <header class="admin-header">
+        <div class="header-content">
+          <h1>⚙️ Espace Gestionnaire</h1>
+          <p>Gestion de l'Avent de la Performance</p>
+        </div>
+        <div class="header-actions">
+          <label class="field-inline compact" for="admin-role-select">
+            <span>Mode</span>
+            <select id="admin-role-select">
+              <option value="admin">Admin complet</option>
+              <option value="readonly">Manager lecture seule</option>
+            </select>
+          </label>
+          <button id="fullscreen-btn" class="btn btn-secondary">⛶ Plein écran</button>
+          <button id="logout-btn" class="btn btn-secondary">Déconnexion</button>
+        </div>
+      </header>
+
+      <main class="admin-main">
+        <div id="readonly-banner" class="readonly-banner" hidden>
+          Mode manager lecture seule actif : les modifications sont désactivées.
+        </div>
+
+        <section class="admin-panel">
+          <h2>📥 Saisie des ventes quotidiennes</h2>
+          <div class="form-group">
+            <label for="date-picker">📅 Journée</label>
+            <input
+              id="date-picker"
+              type="date"
+              min="2026-12-01"
+              max="2026-12-24"
+            />
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="daily-objective">🎯 Objectif du jour (ventes)</label>
+              <input
+                id="daily-objective"
+                type="number"
+                min="0"
+                placeholder="50"
+                readonly
+              />
+            </div>
+            <div class="form-group">
+              <label for="daily-sales">✅ Ventes réalisées</label>
+              <input
+                id="daily-sales"
+                type="number"
+                min="0"
+                placeholder="0"
+              />
+            </div>
+          </div>
+
+          <button id="update-daily-btn" class="btn btn-primary">
+            ✔️ Mettre à jour
+          </button>
+
+          <div id="update-message" class="update-message hidden"></div>
+        </section>
+
+        <section class="admin-panel">
+          <h2>📢 Messages et annonces</h2>
+
+          <div class="form-group">
+            <label for="direction-message">Message de la direction</label>
+            <textarea
+              id="direction-message"
+              placeholder="Entrez le message de la direction..."
+              rows="3"
+            ></textarea>
+          </div>
+
+          <div class="form-group">
+            <label for="flash-announcement">🔥 Annonce flash (optionnel)</label>
+            <input
+              id="flash-announcement"
+              type="text"
+              placeholder="ex: Sprint final ! Plus que 2 jours"
+            />
+          </div>
+
+          <button id="save-messages-btn" class="btn btn-primary">
+            💾 Enregistrer les messages
+          </button>
+        </section>
+
+        <section class="admin-panel full-width">
+          <h2>🏅 Classement individuel</h2>
+          <p class="panel-hint">Le classement collaborateur est trié automatiquement par points. Tu peux l'afficher en mode anonyme ou nominatif.</p>
+
+          <div class="ranking-controls">
+            <div class="ranking-control-group">
+              <label class="switch-row" for="ranking-mode-toggle">
+                <span>Mode anonyme</span>
+                <input id="ranking-mode-toggle" type="checkbox" />
+              </label>
+              <label class="field-inline" for="ranking-sort-mode">
+                <span>Tri</span>
+                <select id="ranking-sort-mode">
+                  <option value="auto">Automatique par points</option>
+                  <option value="manual">Manuel</option>
+                </select>
+              </label>
+            </div>
+
+            <div class="ranking-control-group align-right">
+              <label class="field-inline" for="ranking-jump-select">
+                <span>Voir un collaborateur</span>
+                <select id="ranking-jump-select">
+                  <option value="">Tous les collaborateurs</option>
+                </select>
+              </label>
+              <button id="ranking-export-btn" class="btn btn-secondary">⬇️ Export CSV</button>
+            </div>
+          </div>
+
+          <p id="ranking-preview" class="ranking-preview">Affichage anonyme côté collaborateurs.</p>
+
+          <div class="ranking-actions">
+            <button id="add-ranking-entry-btn" class="btn btn-secondary">+ Ajouter un collaborateur</button>
+            <button id="ranking-import-btn" class="btn btn-secondary">⬆️ Import CSV / Excel</button>
+            <button id="save-ranking-config-btn" class="btn btn-primary">💾 Enregistrer le classement</button>
+            <button id="ranking-export-xls-btn" class="btn btn-secondary">⬇️ Export Excel</button>
+            <input id="ranking-import-file" type="file" accept=".csv,.xls,.xlsx,.txt" hidden />
+          </div>
+
+          <div class="ranking-filters">
+            <label class="field-inline" for="ranking-search-input">
+              <span>Recherche</span>
+              <input id="ranking-search-input" type="text" placeholder="Nom, alias, icône..." />
+            </label>
+            <label class="field-inline" for="ranking-points-filter">
+              <span>Points min</span>
+              <input id="ranking-points-filter" type="number" min="0" value="0" />
+            </label>
+          </div>
+
+          <div class="table-wrapper">
+            <table class="ranking-table">
+              <thead>
+                <tr>
+                  <th>#</th>
+                  <th>Nom</th>
+                  <th>Alias anonyme</th>
+                  <th>Points</th>
+                  <th>Ventes</th>
+                  <th>Icône</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+              <tbody id="ranking-tbody"></tbody>
+            </table>
+          </div>
+
+          <div class="pagination-bar">
+            <label class="field-inline compact" for="ranking-page-size">
+              <span>Par page</span>
+              <select id="ranking-page-size">
+                <option value="10">10</option>
+                <option value="25">25</option>
+                <option value="50">50</option>
+                <option value="100">100</option>
+              </select>
+            </label>
+
+            <div class="pagination-actions">
+              <button id="ranking-prev-page-btn" class="btn btn-secondary">← Précédent</button>
+              <p id="ranking-page-label" class="pagination-label">Page 1 / 1</p>
+              <button id="ranking-next-page-btn" class="btn btn-secondary">Suivant →</button>
+            </div>
+          </div>
+        </section>
+
+        <section class="admin-panel full-width">
+          <h2>🗓️ Aperçu et agencement du calendrier</h2>
+          <p class="panel-hint">Visualise le calendrier tel qu'il sera vu par les collaborateurs et réorganise les cases par glisser-déposer.</p>
+
+          <div class="calendar-layout-actions">
+            <button id="layout-reset-btn" class="btn btn-secondary">↺ Réinitialiser le sapin</button>
+            <button id="layout-save-btn" class="btn btn-primary">💾 Sauvegarder l'agencement</button>
+          </div>
+
+          <div id="admin-calendar-preview" class="admin-calendar-preview" aria-label="Aperçu du calendrier"></div>
+        </section>
+
+        <section class="admin-panel full-width">
+          <h2>📋 Gestion des 24 cases</h2>
+          <div class="table-wrapper">
+            <table class="cases-table">
+              <thead>
+                <tr>
+                  <th>#</th>
+                  <th>Date</th>
+                  <th>Objectif</th>
+                  <th>Ventes</th>
+                  <th>État</th>
+                  <th>Surprise</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+              <tbody id="cases-tbody">
+                <!-- Rempli par JS -->
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <section class="admin-panel">
+          <h2>📊 Statistiques globales</h2>
+          <div class="stats-grid">
+            <div class="stat-box">
+              <h3>Cases ouvertes</h3>
+              <p id="stat-opened" class="stat-value">0 / 24</p>
+            </div>
+            <div class="stat-box">
+              <h3>Objectif global</h3>
+              <p id="stat-objective" class="stat-value">0 ventes</p>
+            </div>
+            <div class="stat-box">
+              <h3>Ventes totales</h3>
+              <p id="stat-sales" class="stat-value">0 ventes</p>
+            </div>
+            <div class="stat-box">
+              <h3>Taux réalisation</h3>
+              <p id="stat-rate" class="stat-value">0%</p>
+            </div>
+          </div>
+          <canvas id="stats-chart" style="max-width: 100%; margin-top: 20px;"></canvas>
+        </section>
+
+        <section class="admin-panel full-width">
+          <h2>🧾 Historique des actions admin</h2>
+          <div class="audit-actions">
+            <button id="clear-audit-btn" class="btn btn-secondary">Vider l'historique</button>
+          </div>
+          <div id="audit-log-list" class="audit-log-list"></div>
+        </section>
+      </main>
+    </div>
+
+    <div id="rank-toast" class="rank-toast" role="status" aria-live="polite"></div>
+
+    <dialog id="edit-case-modal" class="edit-modal">
+      <button class="close-modal" aria-label="Fermer">×</button>
+      <div class="modal-body">
+        <h3 id="edit-case-day">Jour 1</h3>
+
+        <div class="form-group">
+          <label for="edit-objective">Objectif (ventes)</label>
+          <input id="edit-objective" type="number" min="0" />
+        </div>
+
+        <div class="form-group">
+          <label for="edit-sales">Ventes réalisées</label>
+          <input id="edit-sales" type="number" min="0" />
+        </div>
+
+        <div class="form-group">
+          <label for="edit-title">Titre de la surprise</label>
+          <input id="edit-title" type="text" />
+        </div>
+
+        <div class="form-group">
+          <label for="edit-description">Description</label>
+          <textarea id="edit-description" rows="2"></textarea>
+        </div>
+
+        <div class="form-group">
+          <label for="edit-icon">Icône/Emoji</label>
+          <input id="edit-icon" type="text" maxlength="2" />
+        </div>
+
+        <div class="form-group">
+          <label>
+            <input id="edit-force-open" type="checkbox" />
+            Forcer l'ouverture
+          </label>
+        </div>
+
+        <div class="form-group">
+          <label>
+            <input id="edit-force-closed" type="checkbox" />
+            Forcer la fermeture
+          </label>
+        </div>
+
+        <div class="modal-actions">
+          <button id="save-case-btn" class="btn btn-primary">Enregistrer</button>
+          <button id="close-case-modal" class="btn btn-secondary">
+            Annuler
+          </button>
+        </div>
+      </div>
+    </dialog>
+
+    <script src="js/admin.js"></script>
+  </body>
+</html>
