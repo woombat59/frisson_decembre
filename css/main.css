@@ -203,6 +203,7 @@ h1 {
   width: max-content;
   max-width: 100%;
   overflow: auto;
+  margin: 0 auto;
 }
 
 .day-card {
@@ -369,6 +370,9 @@ h1 {
 .ranking-list {
   display: grid;
   gap: 10px;
+  max-height: 420px;
+  overflow-y: auto;
+  padding-right: 4px;
 }
 
 .ranking-item {
