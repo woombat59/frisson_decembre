@@ -130,7 +130,7 @@
     "rankingSortMode": "auto",
     "activeDay": 12,
     "logoDataUrl": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAARMAAAC3CAMAAAAGjUrGAAABEVBMVEX///8zNzgqLzB9fn8nLC3T1NQfJSYejMwaICIZHyEwNDUiJyi4ubkgodvm8vmsra4kT5ne8Pna2tvMzM2qttIeaK4Zb7YefsGMvuIchMUUdryZz+3Q4vEhm9f3/P4Al9ezwNkhWKBfYWIkVJ0eissAgcceYKgAbLgSGRvr6+xFSEkAXqyLjY2YmpoMPZEAdr8ATJxtb3CRk5O/wMBNUFAASplmqNfX4O09QUJjZWbx8fEAa7anqKhfYmIAAAAIEhSy1e11st3H2+2nxeGMtNlIntSnzOdGjcdtoM9mibwALopqtN+GoslPfbZdmc1JodbCzOCBweY2cLB7kr6Oqc5bjsRDaadEe7g6Y6VHkcpxkL6qAmRGAAAKEElEQVR4nO2bDVPiSBOASQgxHwgKAsJpcEFABEQEFFBvEVDxXPc8V9d1//8PeTM9ScjHBBLqvdqtq36qtkqgCczDTE/PTDYSQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQf7/aClC/Vd/jd+K1J+yLH/u/Oqv8VuRkjiO46O/+mv8VqATL+jECzrxgk68oBMv6MQLOvGCTrygEy/oxAs68YJOvPxnnYxi8VYz2mzFU6MVkfVu8qypB8bMwIWTVK9EiDPfF4MXe13389vj3Zvz8/Obu0li+QcnJtPZzXw2HW+vaoyWmBwwuFj1Psc14kNeEgWBFwRRUoZxfy31Vk+UVEFHlYRhEgJtTo4UHSnJfGsaXpSdwrZ39zdMDg9v7zS/D05M79u1drtQaGdrtcJ8sqQxBw/VU0Lf4MTgr51lDly0FJHnFvAi32J/t3pHEhRn4MjhRCZPqz5OSBgn2p0kHosmhpWNXeZ7E3PdRq5gka3lpuy2jL58Ov1kUAa2TE6CO0lzqq2dgKJyni6ucybznkClu76Tu2Jxf3/f5oRo2djzvnXaLuQIBZuVy3vWUNtpNKo6dilrODk7MowoCs/zivngqOkOHPVES4VixpHAlLiek0dixO1k47Aydr1R+9rO5dxOdCkNT1fRnk6rFFZHCeykYzRUkPjraDRaUiSj10iuDdY6z5uR4qDXUyRzvKk9ZS0n51QJSNmwU7lzNjRvCGlnc1/n87meV7LESTbrlpKomkaMfHK6lpOOStsltFJm25MD+PKc6Jhd60YiEcRmDJ4YdTtH1Aq8ENrJ476pZKN4vrt787eeTEwp9gxqKmkfTs3Bsje7vCROXFJ0JRlq5OHgQtO0xPO3fj+8k5ZE+3/L8WycdhX5yvbcgKeRZ3ZPHXmRb0M6GRdNI49mAhnfGlYO87ZU8ZGjUsaOi81qWZBim161DFVy+sX27p3+liUlmJPYZ/o7p1zPj47BgLR4PipAw92RcUlZz4lmKtm0Fxt3hpT8ufXULuSSwod7IpyAlMvc4pm3agacOKsQ7akfzsmxAkoYx1UDyBFDqz1HIG/gKVxi0npO/tnfBCWPzpjtQyPPmn0nQXvJV+/l9mrO0XPQyBAnL54q4ls/jJMk/ZbuXkKAuYSTY8ZDSKOcypBHbYV1ohU3wcnf7qDtCh08Zkc5Byd51vWmlzB8DAdahlDNMAqrh34IJ9BNfKrOFkm+vDH3pKGtR6yaJXKmruHkbp868ZYYd3naUWjbEpW87qTNLubv7R1lSrpJpsEq37VPwZ1AS5Ue+8URZBSVDpYO7xhJTpQ15p1H3cnmfvGOEQaJ1ixSdnUn+dyM/cGTBpHyRh+8gJJXZuDzSWAnkDdF5o9PXiUexDT5cwQJVmaNMZ2kGtqJRpToHYW1ghjnYfDcwIMNXUm+7bc2hPn4Ei5yAd2k6rNc+h7YCQwd1e/VLskoAky9XdIa5dgvUgztZJs6+YcVptGFzwf5OwHdhJFgKTOSURpQzLxWiZIvPoG0owRwUl++7VEXrPHSIn8KLb9IOrLCOJmQdLJZHDPjbsEJpNUxOGGNMGBMnFxCQnnyzSYELagT+h05wQdaow1I5JD8LcX8LnSlhnUy1mfizc0iY7Wnc3NoJVlIJ/lcpZKr2NY6bZ2sxSV0jipMO747DU8BncStJd0SeBIJM7Hoe9NNOvQa8A8YO0X2dLJLnZAkcp4HJwsKjlUgkCFDKwHp5N23rVCjBHBypQZwIpBIKOAE342m8HsFf2wGc3Kbd0vJeaW8mU6qb75tff13nPC+F1rDScB+EtLJT9+vuBPKiSov5U8SSSco334C9b3Q/NecQAJpG1mk5qChc285efBtK+0nByudQD5Rk7HlkMgS1Ls+5Yl5oauFkytmmOGE1EOrx84GOLmBXjLZWwqZbLRA+eR5pRP4jj6/qRNavrF343WagvlyHZzwni06gNZ2EqkCgzqhZeyK7Xwgs6xkM4q2k9X79rQ+CXK7YtKabJkMFt0Imu2zXACz3BGZvoI6gfqk4luf2CAbBZmG324+rU/6vsoWQJoQA3xgivZ6n0vCgKGFjLF+Zq60R7AuUhTyd1AnK+pYGztLk+wBrIy/B7jOos+z6NqyAk2y7DRBy1iBjpczWBkJrMGTpEsA6JdBnUQ+IMf6DZ7Zol8Y6x2fyO9bZb2bBNkqiNl+YC/H8rG1PISNA05kzjwx2EAxdlqMLSZGPh7RbVsR8ldgJzShnDPjIola481KEe/gZM4MPDgh+48nQfKS8fOfMV/TNShyL200iO48MjcLoK18yXgEuYW1XuwI1BZ4DewEBk++zc4T93ph3/hqtPSA7p+wIrUydBP/mdpO3H+riO4iyea6j24cSQx91zRzmoshOkI44doVFjWep4k6sBM6G+crrJ94dkmqtoa5aHrJ+I2epy2yeR9g1gFoSmRIMfZfFz837fmyR8q1YGvqIpATevbl0WhorK0+0+EX3AntKKz5eFaDgy9rtExoRvFKeSLnGeX+N+aHeUnRzVTPmd8V7Ofbd5Fo1uDEkmMlGOPo6plbTEnm/qxydGamn9GVeTwmGWk6uJPIXRucFMbOIG1eg+q+sPjkOZXScFZmFz/g4GurvNyEjThtgcrZZ5+0cQjqON+5opG81LSsxDoyzR6OlNo0l9uCVGrFu/HWUDIXVoKZdUI4idzQ/YL2hy1VaNNCFlY8Nft2wzvdMGg8LEZJ4ku/DCekQUcOoUWbqoh8Jxmr1+upbnNgnNlITVak3tTjZjIev4pyknEMKKcdgUNrbakIoigK1rk7bw3FME4itxW6DGznZ+OLRCKxN523qZFCbWx/o/ZCpVTLL6/PeuTFztPpFj01DlDW27gyj9B5VdJbIInmzRSyZ0BZh+2CKooqb75PcG82dcwzHydqz5rLQzkh5xnm+SjFXBfXXBWu9t6gUqoNODAuGwfpW/1QSvSRogiMBvCydyHEilSkkrdqacnumzdIb7KtDZY72XA5iUwLuVzes12QLXj36X6aUux3F/R/hLpBiTCKioKrDbxcYpbnTVekInLMNWSs57pTRZGO7QMspJPItnW3heWkXZuz1hrPmUbV6WTrlH3AsYJ6k5ME444SReFFcZj2izzTI+EmFT1OlXq+q+r0UNX96YH6Pz2rlJzTfVgnkcjePGe7CUXPJ3O/m9oOXuhtOVTJaflboPKV2YbW9YBXRVXgetH40v/uGGsNjzme53qdpO+OCmHUbZYG+jQ96DU9FwzvRE8Wk9kH7SK5j9lk2RL34vW92iiTfPLj53OAtfAyRvq8s+qmR+P7jYLF+V8ACP+ips87QVqpJS501u4hCIIgCIIgCIIgCIIgCIIgCIIgCIIgCIIgCIIgCIIgCIIgCIIgCIIgCIIgCIIgCIIgCIIgCIIgCIL8t/kfDp1nUxcpDEAAAAAASUVORK5CYII=",
-    "countdownTarget": "2026-05-29T14:00:00.000Z",
+    "countdownTarget": "2026-05-29T10:00:00.000Z",
     "fontTitle": "Mountains of Christmas",
     "fontBody": "Montserrat",
     "showRankingAvatars": false,
@@ -141,9 +141,9 @@
       "night": "#0d1b2a",
       "snow": "#f8f8ff"
     },
-    "showPodium": false,
-    "showRankingSection": false,
-    "musicUrl": ""
+    "showPodium": true,
+    "showRankingSection": true,
+    "musicUrl": "https://www.image2url.com/r2/default/audio/1778694354010-1540dc26-6ae9-4177-9773-48845d9396cd.mp3"
   },
   "days": [
     {
@@ -525,9 +525,141 @@
       "sales": 0,
       "icon": "🎄",
       "avatarUrl": ""
+    },
+    {
+      "id": "r1778694573176",
+      "name": "Collaborateur 3",
+      "anonymousLabel": "Collaborateur 3",
+      "points": 0,
+      "sales": 0,
+      "icon": "🎄",
+      "avatarUrl": ""
+    },
+    {
+      "id": "r1778694573607",
+      "name": "Collaborateur 4",
+      "anonymousLabel": "Collaborateur 4",
+      "points": 0,
+      "sales": 0,
+      "icon": "🎄",
+      "avatarUrl": ""
+    },
+    {
+      "id": "r1778694573791",
+      "name": "Collaborateur 5",
+      "anonymousLabel": "Collaborateur 5",
+      "points": 0,
+      "sales": 0,
+      "icon": "🎄",
+      "avatarUrl": ""
+    },
+    {
+      "id": "r1778694573943",
+      "name": "Collaborateur 6",
+      "anonymousLabel": "Collaborateur 6",
+      "points": 0,
+      "sales": 0,
+      "icon": "🎄",
+      "avatarUrl": ""
     }
   ],
   "auditLog": [
+    {
+      "id": "a1778694583032964",
+      "action": "Messages",
+      "details": "Mise a jour du message direction, jour actif, logo et theme",
+      "at": "2026-05-13T17:49:43.032Z"
+    },
+    {
+      "id": "a1778694580770987",
+      "action": "Ventes",
+      "details": "Mise a jour du jour 13 a 44 ventes",
+      "at": "2026-05-13T17:49:40.770Z"
+    },
+    {
+      "id": "a177869457875243",
+      "action": "Classement",
+      "details": "Sauvegarde globale du classement",
+      "at": "2026-05-13T17:49:38.752Z"
+    },
+    {
+      "id": "a1778694578576471",
+      "action": "Classement",
+      "details": "Sauvegarde globale du classement",
+      "at": "2026-05-13T17:49:38.576Z"
+    },
+    {
+      "id": "a1778694578200622",
+      "action": "Classement",
+      "details": "Sauvegarde globale du classement",
+      "at": "2026-05-13T17:49:38.200Z"
+    },
+    {
+      "id": "a1778694575048407",
+      "action": "Classement",
+      "details": "Sauvegarde globale du classement",
+      "at": "2026-05-13T17:49:35.048Z"
+    },
+    {
+      "id": "a1778694573946756",
+      "action": "Classement",
+      "details": "Ajout d'un collaborateur",
+      "at": "2026-05-13T17:49:33.946Z"
+    },
+    {
+      "id": "a1778694573794327",
+      "action": "Classement",
+      "details": "Ajout d'un collaborateur",
+      "at": "2026-05-13T17:49:33.794Z"
+    },
+    {
+      "id": "a17786945736094",
+      "action": "Classement",
+      "details": "Ajout d'un collaborateur",
+      "at": "2026-05-13T17:49:33.609Z"
+    },
+    {
+      "id": "a1778694573178395",
+      "action": "Classement",
+      "details": "Ajout d'un collaborateur",
+      "at": "2026-05-13T17:49:33.178Z"
+    },
+    {
+      "id": "a1778694425484616",
+      "action": "Messages",
+      "details": "Mise a jour du message direction, jour actif, logo et theme",
+      "at": "2026-05-13T17:47:05.484Z"
+    },
+    {
+      "id": "a1778694425412725",
+      "action": "Messages",
+      "details": "Mise a jour du message direction, jour actif, logo et theme",
+      "at": "2026-05-13T17:47:05.412Z"
+    },
+    {
+      "id": "a1778694424068402",
+      "action": "Messages",
+      "details": "Mise a jour du message direction, jour actif, logo et theme",
+      "at": "2026-05-13T17:47:04.068Z"
+    },
+    {
+      "id": "a1778694424036707",
+      "action": "Messages",
+      "details": "Mise a jour du message direction, jour actif, logo et theme",
+      "at": "2026-05-13T17:47:04.036Z"
+    },
+    {
+      "id": "a1778694248504364",
+      "action": "Ventes",
+      "details": "Mise a jour du jour 13 a 44 ventes",
+      "at": "2026-05-13T17:44:08.504Z"
+    },
+    {
+      "id": "a1778694246208195",
+      "action": "Synchronisation",
+      "details": "Publication pour tous via GitHub API",
+      "at": "2026-05-13T17:44:06.208Z"
+    },
     {
       "id": "a1778694236688694",
       "action": "Classement",
