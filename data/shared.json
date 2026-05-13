@@ -574,6 +574,12 @@
   ],
   "auditLog": [
     {
+      "id": "a1778707047913464",
+      "action": "Synchronisation",
+      "details": "Publication pour tous via GitHub API",
+      "at": "2026-05-13T21:17:27.913Z"
+    },
+    {
       "id": "a1778707022565587",
       "action": "Calendrier",
       "details": "Sauvegarde de l'agencement du calendrier",
@@ -1766,12 +1772,6 @@
       "action": "Classement",
       "details": "Photo upload pour Nicolas Leroy",
       "at": "2026-05-13T17:13:15.943Z"
-    },
-    {
-      "id": "a1778692381017600",
-      "action": "Classement",
-      "details": "Edition du champ points",
-      "at": "2026-05-13T17:13:01.017Z"
     }
   ]
 }
