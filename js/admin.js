@@ -2,7 +2,9 @@ const STORAGE_KEY = "avent-performance-data-v1";
 const READONLY_PASSWORD = "eduneo2026";
 const EDIT_PASSWORD = "mdp";
 const ADMIN_ROLE_KEY = "admin-role-mode";
-const APP_VERSION = "v2026.05.13-1";
+const APP_VERSION = "v2026.05.13-2";
+const GITHUB_REPO = "woombat59/website_edudu";
+const SHARED_JSON_PATH = "data/shared.json";
 const CALENDAR_GRID_ROWS = 10;
 const CALENDAR_GRID_COLS = 9;
 const layoutColumnsByCount = {
@@ -39,6 +41,9 @@ const elements = {
   themeRedInput: document.querySelector("#theme-red-input"),
   themeNightInput: document.querySelector("#theme-night-input"),
   themeSnowInput: document.querySelector("#theme-snow-input"),
+  publishAllBtn: document.querySelector("#publish-all-btn"),
+  githubTokenInput: document.querySelector("#github-token-input"),
+  publishStatus: document.querySelector("#publish-status"),
   exportAllBtn: document.querySelector("#export-all-btn"),
   importAllBtn: document.querySelector("#import-all-btn"),
   importAllFile: document.querySelector("#import-all-file"),
@@ -377,6 +382,83 @@ async function importAllDataFromFile(file) {
   renderAuditLog();
   applyRoleMode();
   updateDailyFields();
+}
+
+function setPublishStatus(msg, isError, isLoading) {
+  const el = elements.publishStatus;
+  if (!el) return;
+  el.hidden = false;
+  el.className = `publish-status ${isError ? "error" : isLoading ? "loading" : "ok"}`;
+  el.textContent = msg;
+}
+
+async function publishToGitHub() {
+  if (guardReadOnlyAction()) return;
+
+  const token = (elements.githubTokenInput?.value || "").trim();
+  if (!token) {
+    setPublishStatus("❌ Renseigne ton token GitHub pour publier.", true, false);
+    elements.githubTokenInput?.focus();
+    return;
+  }
+
+  setPublishStatus("⏳ Publication en cours…", false, true);
+
+  const apiBase = `https://api.github.com/repos/${GITHUB_REPO}/contents/${SHARED_JSON_PATH}`;
+  const headers = {
+    "Authorization": `Bearer ${token}`,
+    "Accept": "application/vnd.github+json",
+    "X-GitHub-Api-Version": "2022-11-28",
+    "Content-Type": "application/json"
+  };
+
+  // 1. Récupère le SHA actuel du fichier (obligatoire pour mettre à jour)
+  let currentSha = "";
+  try {
+    const getResp = await fetch(apiBase, { headers });
+    if (getResp.ok) {
+      const meta = await getResp.json();
+      currentSha = meta.sha || "";
+    } else if (getResp.status !== 404) {
+      const err = await getResp.json().catch(() => ({}));
+      throw new Error(`GitHub API ${getResp.status}: ${err.message || getResp.statusText}`);
+    }
+  } catch (e) {
+    if (e instanceof TypeError) {
+      throw new Error("Impossible de contacter l'API GitHub. Vérifie ta connexion.");
+    }
+    throw e;
+  }
+
+  // 2. Sérialise les données et encode en base64
+  const jsonContent = JSON.stringify(appData, null, 2);
+  const base64Content = btoa(unescape(encodeURIComponent(jsonContent)));
+
+  const body = {
+    message: `Publier pour tous — ${new Date().toLocaleString("fr-FR")}`,
+    content: base64Content,
+    branch: "main"
+  };
+  if (currentSha) body.sha = currentSha;
+
+  // 3. Envoie le PUT
+  const putResp = await fetch(apiBase, {
+    method: "PUT",
+    headers,
+    body: JSON.stringify(body)
+  });
+
+  if (!putResp.ok) {
+    const errBody = await putResp.json().catch(() => ({}));
+    let hint = "";
+    if (putResp.status === 401) hint = " (token invalide ou expiré)";
+    else if (putResp.status === 403) hint = " (permission insuffisante — vérifie Contents: Read and Write)";
+    else if (putResp.status === 422) hint = " (conflit de SHA — réessaie)";
+    throw new Error(`Erreur ${putResp.status}${hint}: ${errBody.message || putResp.statusText}`);
+  }
+
+  addAudit("Synchronisation", "Publication pour tous via GitHub API");
+  setPublishStatus("✅ Publié ! Tous les visiteurs verront la mise à jour dans quelques secondes.", false, false);
 }
 
 function isReadOnlyMode() {
@@ -1268,6 +1350,20 @@ function initEvents() {
     addAudit("Messages", "Mise a jour du message direction, jour actif, logo et theme");
     showMessage("✅ Réglages visuels et messages enregistrés.", false);
   });
+
+  if (elements.publishAllBtn) {
+    elements.publishAllBtn.addEventListener("click", async () => {
+      if (guardReadOnlyAction()) return;
+      elements.publishAllBtn.disabled = true;
+      try {
+        await publishToGitHub();
+      } catch (error) {
+        setPublishStatus(`❌ ${error instanceof Error ? error.message : "Erreur inconnue."}`, true, false);
+      } finally {
+        elements.publishAllBtn.disabled = false;
+      }
+    });
+  }
 
   elements.exportAllBtn.addEventListener("click", () => {
     exportAllData();

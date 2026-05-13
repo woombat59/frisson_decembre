@@ -179,12 +179,29 @@
             💾 Enregistrer les messages
           </button>
 
+          <div class="publish-box">
+            <div class="publish-token-row">
+              <label for="github-token-input">🔑 Token GitHub (nécessaire pour publier)</label>
+              <input
+                id="github-token-input"
+                type="password"
+                placeholder="ghp_xxxxxxxxxxxxxxxxxxxx"
+                autocomplete="off"
+              />
+              <p class="field-hint">Le token n'est jamais sauvegardé. Il est oublié à la fermeture de l'onglet. Crée un <strong>Fine-grained token</strong> avec permission <code>Contents: Read and Write</code> sur ce dépôt.</p>
+            </div>
+            <button id="publish-all-btn" class="btn btn-publish">
+              🚀 Publier pour tous
+            </button>
+            <div id="publish-status" class="publish-status" hidden></div>
+          </div>
+
           <div class="sync-actions">
-            <button id="export-all-btn" class="btn btn-secondary">⬇️ Export configuration complète (JSON)</button>
-            <button id="import-all-btn" class="btn btn-secondary">⬆️ Import configuration complète (JSON)</button>
+            <button id="export-all-btn" class="btn btn-secondary">⬇️ Export JSON (sauvegarde locale)</button>
+            <button id="import-all-btn" class="btn btn-secondary">⬆️ Import JSON</button>
             <input id="import-all-file" type="file" accept=".json,application/json" hidden />
           </div>
-          <p class="field-hint">Utilise export/import pour cloner exactement le même rendu sur un autre navigateur/ordinateur.</p>
+          <p class="field-hint">Utilise export/import pour une sauvegarde locale ou pour copier la config sur un autre navigateur.</p>
         </section>
 
         <section class="admin-panel full-width">
