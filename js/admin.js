@@ -771,6 +771,7 @@ function getStateLabel(dayData) {
 
 function addDay() {
   if (guardReadOnlyAction()) return;
+  if (!confirm("Ajouter une nouvelle case ? La mise en page sera ajustée automatiquement.")) return;
   const nextNum = appData.days.length + 1;
   const newDay = normalizeDay({
     day: nextNum,
@@ -778,7 +779,8 @@ function addDay() {
     surpriseTitle: `Surprise ${nextNum}`
   }, nextNum - 1);
   appData.days.push(newDay);
-  appData.config.calendarLayout = normalizeCalendarLayout([], appData.days.length);
+  // Preserves existing positions and only fills missing ones via defaults
+  appData.config.calendarLayout = normalizeCalendarLayout(appData.config.calendarLayout, appData.days.length);
   saveData();
   renderCasesTable();
   renderCalendarPreview();
@@ -795,7 +797,11 @@ function removeDay(dayNum) {
   if (!confirm(`Supprimer la case ${dayNum} ? Les cases seront renumérotées.`)) return;
   appData.days = appData.days.filter((d) => d.day !== dayNum);
   appData.days = appData.days.map((d, i) => ({ ...d, day: i + 1 }));
-  appData.config.calendarLayout = normalizeCalendarLayout([], appData.days.length);
+  // Rebuild layout: remove deleted day, renumber remaining positions
+  const updatedLayout = appData.config.calendarLayout
+    .filter((item) => item.day !== dayNum)
+    .map((item) => ({ ...item, day: item.day > dayNum ? item.day - 1 : item.day }));
+  appData.config.calendarLayout = normalizeCalendarLayout(updatedLayout, appData.days.length);
   saveData();
   renderCasesTable();
   renderCalendarPreview();
