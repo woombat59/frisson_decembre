@@ -5,127 +5,122 @@
     "calendarLayout": [
       {
         "day": 1,
-        "row": 9,
-        "col": 5
+        "row": 8,
+        "col": 6
       },
       {
         "day": 2,
         "row": 8,
-        "col": 6
+        "col": 4
       },
       {
         "day": 3,
-        "row": 8,
-        "col": 4
+        "row": 7,
+        "col": 6
       },
       {
         "day": 4,
         "row": 7,
-        "col": 6
+        "col": 5
       },
       {
         "day": 5,
         "row": 7,
-        "col": 5
+        "col": 4
       },
       {
         "day": 6,
-        "row": 7,
-        "col": 4
+        "row": 6,
+        "col": 7
       },
       {
         "day": 7,
         "row": 6,
-        "col": 7
+        "col": 6
       },
       {
         "day": 8,
         "row": 6,
-        "col": 6
+        "col": 4
       },
       {
         "day": 9,
         "row": 6,
-        "col": 4
+        "col": 3
       },
       {
         "day": 10,
-        "row": 6,
-        "col": 3
+        "row": 5,
+        "col": 7
       },
       {
         "day": 11,
         "row": 5,
-        "col": 7
+        "col": 6
       },
       {
         "day": 12,
         "row": 5,
-        "col": 6
+        "col": 5
       },
       {
         "day": 13,
         "row": 5,
-        "col": 5
+        "col": 4
       },
       {
         "day": 14,
         "row": 5,
-        "col": 4
-      },
-      {
-        "day": 15,
-        "row": 5,
         "col": 3
       },
       {
-        "day": 16,
+        "day": 15,
         "row": 4,
         "col": 7
       },
       {
-        "day": 17,
+        "day": 16,
         "row": 4,
         "col": 6
+      },
+      {
+        "day": 17,
+        "row": 4,
+        "col": 4
       },
       {
         "day": 18,
         "row": 4,
-        "col": 4
+        "col": 3
       },
       {
         "day": 19,
-        "row": 4,
-        "col": 3
+        "row": 3,
+        "col": 6
       },
       {
         "day": 20,
         "row": 3,
-        "col": 6
+        "col": 5
       },
       {
         "day": 21,
         "row": 3,
-        "col": 5
-      },
-      {
-        "day": 22,
-        "row": 3,
         "col": 4
       },
       {
-        "day": 23,
+        "day": 22,
         "row": 2,
         "col": 6
       },
       {
-        "day": 24,
+        "day": 23,
         "row": 2,
         "col": 4
       },
       {
-        "day": 25,
-        "row": 2,
+        "day": 24,
+        "row": 1,
         "col": 5
       }
     ],
@@ -495,36 +490,6 @@
       "forceOpen": false,
       "surpriseLinkLabel": "",
       "surpriseLinkUrl": ""
-    },
-    {
-      "day": 24,
-      "date": "2026-12-24",
-      "objective": 90,
-      "sales": 0,
-      "surpriseTitle": "Celebration finale",
-      "surpriseDescription": "Moment de celebration collectif de cloture.",
-      "surpriseIcon": "🎄",
-      "congratsMessage": "Bravo equipe, la case 24 est debloquee grace a votre energie.",
-      "unlockedAt": null,
-      "forceClosed": false,
-      "forceOpen": false,
-      "surpriseLinkLabel": "",
-      "surpriseLinkUrl": ""
-    },
-    {
-      "day": 25,
-      "date": "2026-12-25",
-      "surpriseTitle": "Surprise 25",
-      "objective": 0,
-      "sales": 0,
-      "surpriseDescription": "",
-      "surpriseIcon": "🎁",
-      "congratsMessage": "Bravo equipe, la case 25 est debloquee grace a votre energie.",
-      "surpriseLinkLabel": "",
-      "surpriseLinkUrl": "",
-      "unlockedAt": null,
-      "forceClosed": false,
-      "forceOpen": false
     }
   ],
   "rankings": [
@@ -593,6 +558,24 @@
     }
   ],
   "auditLog": [
+    {
+      "id": "a1778699038295725",
+      "action": "Cases",
+      "details": "Case 24 supprimée (total : 23)",
+      "at": "2026-05-13T19:03:58.295Z"
+    },
+    {
+      "id": "a1778699035064362",
+      "action": "Cases",
+      "details": "Case 25 supprimée (total : 24)",
+      "at": "2026-05-13T19:03:55.064Z"
+    },
+    {
+      "id": "a1778699010553732",
+      "action": "Synchronisation",
+      "details": "Publication pour tous via GitHub API",
+      "at": "2026-05-13T19:03:30.553Z"
+    },
     {
       "id": "a177869747823310",
       "action": "Synchronisation",
@@ -1774,24 +1757,6 @@
       "action": "Classement",
       "details": "Ajout d'un collaborateur",
       "at": "2026-05-12T21:10:51.431Z"
-    },
-    {
-      "id": "a177861963824689",
-      "action": "Calendrier",
-      "details": "Sauvegarde de l'agencement du calendrier",
-      "at": "2026-05-12T21:00:38.246Z"
-    },
-    {
-      "id": "a1778619638054216",
-      "action": "Calendrier",
-      "details": "Sauvegarde de l'agencement du calendrier",
-      "at": "2026-05-12T21:00:38.054Z"
-    },
-    {
-      "id": "a1778619637846769",
-      "action": "Calendrier",
-      "details": "Sauvegarde de l'agencement du calendrier",
-      "at": "2026-05-12T21:00:37.846Z"
     }
   ]
 }
