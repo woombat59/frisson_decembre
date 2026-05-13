@@ -590,7 +590,7 @@
       "id": "r1778620255220",
       "name": "Collaborateur 10",
       "anonymousLabel": "Collaborateur 10",
-      "points": 300,
+      "points": 301,
       "sales": 0,
       "icon": "🎄",
       "avatarUrl": ""
@@ -723,6 +723,30 @@
     }
   ],
   "auditLog": [
+    {
+      "id": "a1778693388713137",
+      "action": "Classement",
+      "details": "Sauvegarde globale du classement",
+      "at": "2026-05-13T17:29:48.713Z"
+    },
+    {
+      "id": "a1778693388655919",
+      "action": "Classement",
+      "details": "Sauvegarde globale du classement",
+      "at": "2026-05-13T17:29:48.655Z"
+    },
+    {
+      "id": "a1778693385459297",
+      "action": "Classement",
+      "details": "Edition du champ points",
+      "at": "2026-05-13T17:29:45.459Z"
+    },
+    {
+      "id": "a1778693373116120",
+      "action": "Synchronisation",
+      "details": "Publication pour tous via GitHub API",
+      "at": "2026-05-13T17:29:33.116Z"
+    },
     {
       "id": "a1778693358045367",
       "action": "Classement",
