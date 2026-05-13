@@ -1,7 +1,7 @@
 const STORAGE_KEY = "avent-performance-data-v1";
 const CELEBRATED_KEY = "avent-performance-celebrated";
 const ADMIN_PATH = "admin.html";
-const APP_VERSION = "v2026.05.13-4";
+const APP_VERSION = "v2026.05.13-5";
 const DATA_SOURCE_URL = "data/shared.json";
 const CALENDAR_GRID_ROWS = 10;
 const CALENDAR_GRID_COLS = 9;
@@ -253,7 +253,7 @@ function normalizeData(data) {
 
 async function loadData() {
   try {
-    const response = await fetch(`${DATA_SOURCE_URL}?v=${encodeURIComponent(APP_VERSION)}`, { cache: "no-store" });
+    const response = await fetch(`${DATA_SOURCE_URL}?t=${Date.now()}`, { cache: "no-store" });
     if (!response.ok) {
       throw new Error(`HTTP ${response.status}`);
     }
@@ -1065,7 +1065,7 @@ async function init() {
     console.error("Erreur render initial:", error);
   }
 
-  setInterval(maybeRefresh, 30000);
+  setInterval(maybeRefresh, 10000);
   setInterval(updateCountdown, 1000);
 }
 
