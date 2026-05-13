@@ -574,6 +574,24 @@
   ],
   "auditLog": [
     {
+      "id": "a1778695795093579",
+      "action": "Ventes",
+      "details": "Mise a jour du jour 13 a 44 ventes",
+      "at": "2026-05-13T18:09:55.093Z"
+    },
+    {
+      "id": "a1778695793406356",
+      "action": "Messages",
+      "details": "Mise a jour du message direction, jour actif, logo et theme",
+      "at": "2026-05-13T18:09:53.406Z"
+    },
+    {
+      "id": "a1778695770147953",
+      "action": "Synchronisation",
+      "details": "Publication pour tous via GitHub API",
+      "at": "2026-05-13T18:09:30.147Z"
+    },
+    {
       "id": "a1778695764988830",
       "action": "Messages",
       "details": "Mise a jour du message direction, jour actif, logo et theme",
@@ -1754,24 +1772,6 @@
       "action": "Classement",
       "details": "Mode de tri automatique",
       "at": "2026-05-12T20:57:19.554Z"
-    },
-    {
-      "id": "a177861943827437",
-      "action": "Classement",
-      "details": "Mode de tri manuel",
-      "at": "2026-05-12T20:57:18.274Z"
-    },
-    {
-      "id": "a1778619436546412",
-      "action": "Classement",
-      "details": "Mode d'affichage anonyme",
-      "at": "2026-05-12T20:57:16.546Z"
-    },
-    {
-      "id": "a1778619435842675",
-      "action": "Classement",
-      "details": "Mode d'affichage nominatif",
-      "at": "2026-05-12T20:57:15.842Z"
     }
   ]
 }
