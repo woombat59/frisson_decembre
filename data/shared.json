@@ -5,52 +5,52 @@
     "calendarLayout": [
       {
         "day": 1,
-        "row": 8,
-        "col": 4
+        "row": 9,
+        "col": 5
       },
       {
         "day": 2,
         "row": 8,
-        "col": 5
+        "col": 6
       },
       {
         "day": 3,
         "row": 8,
-        "col": 6
+        "col": 4
       },
       {
         "day": 4,
         "row": 7,
-        "col": 4
+        "col": 6
       },
       {
         "day": 5,
         "row": 7,
-        "col": 6
+        "col": 5
       },
       {
         "day": 6,
-        "row": 6,
+        "row": 7,
         "col": 4
       },
       {
         "day": 7,
         "row": 6,
-        "col": 6
+        "col": 7
       },
       {
         "day": 8,
-        "row": 5,
-        "col": 1
+        "row": 6,
+        "col": 6
       },
       {
         "day": 9,
-        "row": 5,
-        "col": 2
+        "row": 6,
+        "col": 4
       },
       {
         "day": 10,
-        "row": 5,
+        "row": 6,
         "col": 3
       },
       {
@@ -61,27 +61,27 @@
       {
         "day": 12,
         "row": 5,
-        "col": 8
+        "col": 6
       },
       {
         "day": 13,
         "row": 5,
-        "col": 9
+        "col": 5
       },
       {
         "day": 14,
-        "row": 4,
-        "col": 2
+        "row": 5,
+        "col": 4
       },
       {
         "day": 15,
-        "row": 4,
+        "row": 5,
         "col": 3
       },
       {
         "day": 16,
         "row": 4,
-        "col": 4
+        "col": 7
       },
       {
         "day": 17,
@@ -91,26 +91,26 @@
       {
         "day": 18,
         "row": 4,
-        "col": 7
+        "col": 4
       },
       {
         "day": 19,
         "row": 4,
-        "col": 8
+        "col": 3
       },
       {
         "day": 20,
         "row": 3,
-        "col": 3
+        "col": 6
       },
       {
         "day": 21,
         "row": 3,
-        "col": 7
+        "col": 5
       },
       {
         "day": 22,
-        "row": 2,
+        "row": 3,
         "col": 4
       },
       {
@@ -120,6 +120,11 @@
       },
       {
         "day": 24,
+        "row": 2,
+        "col": 4
+      },
+      {
+        "day": 25,
         "row": 1,
         "col": 5
       }
@@ -505,6 +510,21 @@
       "forceOpen": false,
       "surpriseLinkLabel": "",
       "surpriseLinkUrl": ""
+    },
+    {
+      "day": 25,
+      "date": "2026-12-25",
+      "surpriseTitle": "Surprise 25",
+      "objective": 0,
+      "sales": 0,
+      "surpriseDescription": "",
+      "surpriseIcon": "🎁",
+      "congratsMessage": "Bravo equipe, la case 25 est debloquee grace a votre energie.",
+      "surpriseLinkLabel": "",
+      "surpriseLinkUrl": "",
+      "unlockedAt": null,
+      "forceClosed": false,
+      "forceOpen": false
     }
   ],
   "rankings": [
@@ -573,6 +593,24 @@
     }
   ],
   "auditLog": [
+    {
+      "id": "a1778697336165948",
+      "action": "Calendrier",
+      "details": "Sauvegarde de l'agencement du calendrier",
+      "at": "2026-05-13T18:35:36.166Z"
+    },
+    {
+      "id": "a1778697310856913",
+      "action": "Cases",
+      "details": "Case 25 ajoutée (total : 25)",
+      "at": "2026-05-13T18:35:10.856Z"
+    },
+    {
+      "id": "a1778696524745748",
+      "action": "Synchronisation",
+      "details": "Publication pour tous via GitHub API",
+      "at": "2026-05-13T18:22:04.745Z"
+    },
     {
       "id": "a1778696516070228",
       "action": "Messages",
@@ -1754,24 +1792,6 @@
       "action": "Calendrier",
       "details": "Sauvegarde de l'agencement du calendrier",
       "at": "2026-05-12T21:00:36.734Z"
-    },
-    {
-      "id": "a1778619636549586",
-      "action": "Calendrier",
-      "details": "Sauvegarde de l'agencement du calendrier",
-      "at": "2026-05-12T21:00:36.549Z"
-    },
-    {
-      "id": "a1778619636373650",
-      "action": "Calendrier",
-      "details": "Sauvegarde de l'agencement du calendrier",
-      "at": "2026-05-12T21:00:36.373Z"
-    },
-    {
-      "id": "a1778619636205228",
-      "action": "Calendrier",
-      "details": "Sauvegarde de l'agencement du calendrier",
-      "at": "2026-05-12T21:00:36.205Z"
     }
   ]
 }
