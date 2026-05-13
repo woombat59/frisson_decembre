@@ -1382,8 +1382,10 @@ function saveEditedCase() {
   const day = appData.days.find((d) => d.day === editingDayNumber);
   if (!day) return;
 
-  day.objective = parseInt(elements.editObjective.value, 10) || day.objective;
-  day.sales = parseInt(elements.editSales.value, 10) || day.sales;
+  const parsedObjective = parseInt(elements.editObjective.value, 10);
+  const parsedSales = parseInt(elements.editSales.value, 10);
+  day.objective = isNaN(parsedObjective) ? day.objective : parsedObjective;
+  day.sales = isNaN(parsedSales) ? day.sales : parsedSales;
   day.surpriseTitle = elements.editTitle.value || day.surpriseTitle;
   day.surpriseDescription = elements.editDescription.value || day.surpriseDescription;
   day.congratsMessage = elements.editCongrats.value || day.congratsMessage;
