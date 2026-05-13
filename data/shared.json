@@ -125,7 +125,7 @@
       }
     ],
     "rankingMode": "named",
-    "directionMessage": "on continue !!! lache rien les copaing",
+    "directionMessage": "on continue !!! lache rien on lache rien onnnnnnnnnnn lache trout ok ",
     "flashAnnouncement": "courage !!!!!",
     "rankingSortMode": "auto",
     "activeDay": 1,
@@ -573,6 +573,18 @@
     }
   ],
   "auditLog": [
+    {
+      "id": "a1778709229951685",
+      "action": "Messages",
+      "details": "Mise a jour du message direction, jour actif, logo et theme",
+      "at": "2026-05-13T21:53:49.951Z"
+    },
+    {
+      "id": "a1778709149922295",
+      "action": "Synchronisation",
+      "details": "Publication pour tous via GitHub API",
+      "at": "2026-05-13T21:52:29.922Z"
+    },
     {
       "id": "a1778709126896596",
       "action": "Messages",
@@ -1760,18 +1772,6 @@
       "action": "Classement",
       "details": "Edition du champ points",
       "at": "2026-05-13T17:24:29.778Z"
-    },
-    {
-      "id": "a17786930662967",
-      "action": "Classement",
-      "details": "Sauvegarde globale du classement",
-      "at": "2026-05-13T17:24:26.296Z"
-    },
-    {
-      "id": "a1778693019412296",
-      "action": "Synchronisation",
-      "details": "Publication pour tous via GitHub API",
-      "at": "2026-05-13T17:23:39.412Z"
     }
   ]
 }
