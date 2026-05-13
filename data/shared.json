@@ -504,8 +504,42 @@
       "surpriseLinkUrl": ""
     }
   ],
-  "rankings": [],
+  "rankings": [
+    {
+      "id": "r1778693672402",
+      "name": "Collaborateur 1",
+      "anonymousLabel": "Collaborateur 1",
+      "points": 0,
+      "sales": 0,
+      "icon": "🎄",
+      "avatarUrl": ""
+    }
+  ],
   "auditLog": [
+    {
+      "id": "a1778693691795340",
+      "action": "Classement",
+      "details": "Sauvegarde globale du classement",
+      "at": "2026-05-13T17:34:51.795Z"
+    },
+    {
+      "id": "a1778693685066696",
+      "action": "Classement",
+      "details": "Sauvegarde globale du classement",
+      "at": "2026-05-13T17:34:45.066Z"
+    },
+    {
+      "id": "a1778693672404585",
+      "action": "Classement",
+      "details": "Ajout d'un collaborateur",
+      "at": "2026-05-13T17:34:32.404Z"
+    },
+    {
+      "id": "a1778693623657861",
+      "action": "Synchronisation",
+      "details": "Publication pour tous via GitHub API",
+      "at": "2026-05-13T17:33:43.657Z"
+    },
     {
       "id": "a1778693617825960",
       "action": "Ventes",
