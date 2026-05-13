@@ -2,7 +2,7 @@ const STORAGE_KEY = "avent-performance-data-v1";
 const READONLY_PASSWORD = "eduneo2026";
 const EDIT_PASSWORD = "mdp";
 const ADMIN_ROLE_KEY = "admin-role-mode";
-const APP_VERSION = "v2026.05.13-10.2";
+const APP_VERSION = "v2026.05.13-11";
 const GITHUB_REPO = "woombat59/website_edudu";
 const SHARED_JSON_PATH = "data/shared.json";
 const CALENDAR_GRID_ROWS = 20;
@@ -1827,18 +1827,10 @@ function showMessage(msg, isError = false) {
 }
 
 async function fetchAndStoreFromGitHub() {
-  const url = `https://api.github.com/repos/${GITHUB_REPO}/contents/${SHARED_JSON_PATH}`;
-  const resp = await fetch(url, {
-    headers: {
-      "Accept": "application/vnd.github+json",
-      "X-GitHub-Api-Version": "2022-11-28"
-    },
-    cache: "no-store"
-  });
-  if (!resp.ok) throw new Error(`GitHub API ${resp.status}`);
-  const meta = await resp.json();
-  const decoded = decodeURIComponent(escape(atob(meta.content.replace(/\n/g, ""))));
-  const remote = JSON.parse(decoded);
+  const rawUrl = `https://raw.githubusercontent.com/${GITHUB_REPO}/main/${SHARED_JSON_PATH}?_=${Date.now()}`;
+  const resp = await fetch(rawUrl, { cache: "no-store" });
+  if (!resp.ok) throw new Error(`HTTP ${resp.status}`);
+  const remote = await resp.json();
   localStorage.setItem(STORAGE_KEY, JSON.stringify(remote));
 }
 

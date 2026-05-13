@@ -1,8 +1,10 @@
 const STORAGE_KEY = "avent-performance-data-v1";
 const CELEBRATED_KEY = "avent-performance-celebrated";
 const ADMIN_PATH = "admin.html";
-const APP_VERSION = "v2026.05.13-10.2";
-const DATA_SOURCE_URL = "https://api.github.com/repos/woombat59/website_edudu/contents/data/shared.json";
+const APP_VERSION = "v2026.05.13-11";
+const GITHUB_REPO = "woombat59/website_edudu";
+const SHARED_JSON_PATH = "data/shared.json";
+const DATA_SOURCE_URL = `https://raw.githubusercontent.com/${GITHUB_REPO}/main/${SHARED_JSON_PATH}`;
 const CALENDAR_GRID_ROWS = 20;
 const CALENDAR_GRID_COLS = 9;
 
@@ -286,12 +288,13 @@ function normalizeData(data) {
 
 async function loadData() {
   try {
-    const headers = { Accept: "application/vnd.github+json" };
+    const headers = {};
     if (dataETag) headers["If-None-Match"] = dataETag;
-    const response = await fetch(DATA_SOURCE_URL, { cache: "no-store", headers });
+    const url = `${DATA_SOURCE_URL}?_=${Date.now()}`;
+    const response = await fetch(url, { cache: "no-store", headers });
 
     if (response.status === 304) {
-      // Données inchangées — retourne le dernier connu (ne compte pas contre le rate limit)
+      // Données inchangées — retourne le dernier connu
       return lastKnownData;
     }
 
@@ -300,9 +303,7 @@ async function loadData() {
     const newETag = response.headers.get("ETag");
     if (newETag) dataETag = newETag;
 
-    const apiData = await response.json();
-    const decoded = atob(apiData.content.replace(/\n/g, ""));
-    const parsed = JSON.parse(decoded);
+    const parsed = await response.json();
     const normalized = normalizeData(parsed?.data || parsed);
     if (!normalized.days || normalized.days.length < 1) {
       throw new Error("invalid shared data");
