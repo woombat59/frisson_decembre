@@ -2,7 +2,7 @@ const STORAGE_KEY = "avent-performance-data-v1";
 const READONLY_PASSWORD = "eduneo2026";
 const EDIT_PASSWORD = "mdp";
 const ADMIN_ROLE_KEY = "admin-role-mode";
-const APP_VERSION = "v2026.05.13-5";
+const APP_VERSION = "v2026.05.13-6";
 const GITHUB_REPO = "woombat59/website_edudu";
 const SHARED_JSON_PATH = "data/shared.json";
 const CALENDAR_GRID_ROWS = 10;
@@ -44,6 +44,13 @@ const elements = {
   publishAllBtn: document.querySelector("#publish-all-btn"),
   githubTokenInput: document.querySelector("#github-token-input"),
   publishStatus: document.querySelector("#publish-status"),
+  musicUrlInput: document.querySelector("#music-url-input"),
+  musicFileInput: document.querySelector("#music-file-input"),
+  musicClearBtn: document.querySelector("#music-clear-btn"),
+  musicPreview: document.querySelector("#music-preview"),
+  musicPreviewPlayer: document.querySelector("#music-preview-player"),
+  showPodiumToggle: document.querySelector("#show-podium-toggle"),
+  showRankingSectionToggle: document.querySelector("#show-ranking-section-toggle"),
   exportAllBtn: document.querySelector("#export-all-btn"),
   importAllBtn: document.querySelector("#import-all-btn"),
   importAllFile: document.querySelector("#import-all-file"),
@@ -230,6 +237,9 @@ function normalizeData(data) {
   normalized.config.fontTitle = normalized.config.fontTitle || "Mountains of Christmas";
   normalized.config.fontBody = normalized.config.fontBody || "Poppins";
   normalized.config.showRankingAvatars = Boolean(normalized.config.showRankingAvatars);
+  normalized.config.showPodium = normalized.config.showPodium !== false;
+  normalized.config.showRankingSection = normalized.config.showRankingSection !== false;
+  normalized.config.musicUrl = normalized.config.musicUrl || "";
   normalized.config.theme = { ...getDefaultThemeConfig(), ...(normalized.config.theme || {}) };
   normalized.days = Array.isArray(normalized.days) && normalized.days.length === 24 ? normalized.days.map(normalizeDay) : [];
   normalized.auditLog = Array.isArray(normalized.auditLog) ? normalized.auditLog : [];
@@ -324,6 +334,16 @@ function fillConfigFieldsFromData() {
   if (elements.showRankingAvatarsToggle) {
     elements.showRankingAvatarsToggle.checked = Boolean(appData.config.showRankingAvatars);
   }
+  if (elements.showPodiumToggle) {
+    elements.showPodiumToggle.checked = appData.config.showPodium !== false;
+  }
+  if (elements.showRankingSectionToggle) {
+    elements.showRankingSectionToggle.checked = appData.config.showRankingSection !== false;
+  }
+  if (elements.musicUrlInput) {
+    elements.musicUrlInput.value = appData.config.musicUrl || "";
+    updateMusicPreview(appData.config.musicUrl || "");
+  }
   if (elements.themeGoldInput) elements.themeGoldInput.value = appData.config.theme?.gold || "#ffd700";
   if (elements.themeGreenInput) elements.themeGreenInput.value = appData.config.theme?.green || "#1b4d2e";
   if (elements.themeRedInput) elements.themeRedInput.value = appData.config.theme?.red || "#b22222";
@@ -382,6 +402,17 @@ async function importAllDataFromFile(file) {
   renderAuditLog();
   applyRoleMode();
   updateDailyFields();
+}
+
+function updateMusicPreview(url) {
+  if (!elements.musicPreview || !elements.musicPreviewPlayer) return;
+  if (url) {
+    elements.musicPreviewPlayer.src = url;
+    elements.musicPreview.hidden = false;
+  } else {
+    elements.musicPreviewPlayer.src = "";
+    elements.musicPreview.hidden = true;
+  }
 }
 
 function setPublishStatus(msg, isError, isLoading) {
@@ -608,6 +639,11 @@ function applyRoleMode() {
     elements.fontTitleSelect,
     elements.fontBodySelect,
     elements.showRankingAvatarsToggle,
+    elements.showPodiumToggle,
+    elements.showRankingSectionToggle,
+    elements.musicUrlInput,
+    elements.musicFileInput,
+    elements.musicClearBtn,
     elements.themeGoldInput,
     elements.themeGreenInput,
     elements.themeRedInput,
@@ -1346,6 +1382,9 @@ function initEvents() {
     appData.config.fontTitle = elements.fontTitleSelect.value || "Mountains of Christmas";
     appData.config.fontBody = elements.fontBodySelect.value || "Poppins";
     appData.config.showRankingAvatars = Boolean(elements.showRankingAvatarsToggle.checked);
+    appData.config.musicUrl = (elements.musicUrlInput?.value || "").trim();
+    appData.config.showPodium = elements.showPodiumToggle ? Boolean(elements.showPodiumToggle.checked) : true;
+    appData.config.showRankingSection = elements.showRankingSectionToggle ? Boolean(elements.showRankingSectionToggle.checked) : true;
     appData.config.theme = {
       gold: elements.themeGoldInput.value,
       green: elements.themeGreenInput.value,
@@ -1358,6 +1397,48 @@ function initEvents() {
     addAudit("Messages", "Mise a jour du message direction, jour actif, logo et theme");
     showMessage("✅ Réglages visuels et messages enregistrés.", false);
   });
+
+  // Music URL live preview
+  if (elements.musicUrlInput) {
+    elements.musicUrlInput.addEventListener("input", () => {
+      updateMusicPreview(elements.musicUrlInput.value.trim());
+    });
+  }
+
+  // Music file upload → base64
+  if (elements.musicFileInput) {
+    elements.musicFileInput.addEventListener("change", () => {
+      const file = elements.musicFileInput.files?.[0];
+      if (!file) return;
+      if (file.size > 600 * 1024) {
+        showMessage("⚠️ Fichier trop lourd (max 500 Ko). Utilise une URL hébergée.", true);
+        elements.musicFileInput.value = "";
+        return;
+      }
+      const reader = new FileReader();
+      reader.onload = () => {
+        const dataUrl = reader.result;
+        if (elements.musicUrlInput) elements.musicUrlInput.value = dataUrl;
+        appData.config.musicUrl = dataUrl;
+        saveData();
+        updateMusicPreview(dataUrl);
+        showMessage("✅ Fichier audio chargé. N'oublie pas d'enregistrer puis publier.", false);
+      };
+      reader.readAsDataURL(file);
+    });
+  }
+
+  // Music clear
+  if (elements.musicClearBtn) {
+    elements.musicClearBtn.addEventListener("click", () => {
+      if (guardReadOnlyAction()) return;
+      if (elements.musicUrlInput) elements.musicUrlInput.value = "";
+      appData.config.musicUrl = "";
+      saveData();
+      updateMusicPreview("");
+      showMessage("✅ Musique supprimée.", false);
+    });
+  }
 
   if (elements.publishAllBtn) {
     elements.publishAllBtn.addEventListener("click", async () => {

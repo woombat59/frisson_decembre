@@ -10,7 +10,7 @@
       href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="css/admin.css?v=20260513-5" />
+    <link rel="stylesheet" href="css/admin.css?v=20260513-6" />
   </head>
   <body>
     <div class="admin-shell">
@@ -157,6 +157,22 @@
             </div>
           </div>
 
+          <div class="music-config">
+            <p class="music-config-label">🎵 Musique d'ambiance</p>
+            <div class="music-input-row">
+              <input id="music-url-input" type="url" placeholder="URL directe MP3/OGG — ex: https://exemple.com/noel.mp3" />
+              <label class="btn btn-secondary music-upload-label" title="Charger un fichier audio depuis votre ordinateur">
+                📁 Fichier
+                <input id="music-file-input" type="file" accept="audio/*" hidden />
+              </label>
+              <button id="music-clear-btn" class="btn btn-secondary" title="Supprimer la musique">✕</button>
+            </div>
+            <div id="music-preview" class="music-preview" hidden>
+              <audio id="music-preview-player" controls style="width:100%;margin-top:6px"></audio>
+            </div>
+            <p class="field-hint">URL d'un fichier audio direct (.mp3, .ogg) ou télécharge un fichier. Le bouton 🔊 sur la page publique contrôle la lecture. Évite les fichiers &gt; 500 Ko.</p>
+          </div>
+
           <div class="form-group">
             <label for="direction-message">Message de la direction</label>
             <textarea
@@ -207,6 +223,21 @@
         <section class="admin-panel full-width">
           <h2>🏅 Classement individuel</h2>
           <p class="panel-hint">Le classement collaborateur est trié automatiquement par points. Tu peux l'afficher en mode anonyme ou nominatif.</p>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label class="switch-row" for="show-podium-toggle">
+                <span>🏆 Afficher le podium (Top 3)</span>
+                <input id="show-podium-toggle" type="checkbox" checked />
+              </label>
+            </div>
+            <div class="form-group">
+              <label class="switch-row" for="show-ranking-section-toggle">
+                <span>📋 Afficher le classement individuel</span>
+                <input id="show-ranking-section-toggle" type="checkbox" checked />
+              </label>
+            </div>
+          </div>
 
           <div class="ranking-controls">
             <div class="ranking-control-group">
@@ -430,6 +461,6 @@
       </div>
     </dialog>
 
-    <script src="js/admin.js?v=20260513-5"></script>
+    <script src="js/admin.js?v=20260513-6"></script>
   </body>
 </html>

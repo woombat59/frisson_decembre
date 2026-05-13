@@ -1,7 +1,7 @@
 const STORAGE_KEY = "avent-performance-data-v1";
 const CELEBRATED_KEY = "avent-performance-celebrated";
 const ADMIN_PATH = "admin.html";
-const APP_VERSION = "v2026.05.13-5";
+const APP_VERSION = "v2026.05.13-6";
 const DATA_SOURCE_URL = "data/shared.json";
 const CALENDAR_GRID_ROWS = 10;
 const CALENDAR_GRID_COLS = 9;
@@ -54,6 +54,8 @@ const elements = {
 let appState = null;
 let chimeInterval = null;
 let audioCtx = null;
+let bgAudio = null;
+let currentMusicUrl = "";
 let hashSnapshot = "";
 let toastTimer = null;
 let activeParticles = [];
@@ -952,18 +954,25 @@ function playVictoryFanfare() {
 }
 
 function startAmbiance() {
-  if (chimeInterval) return;
-
-  playChime();
-  chimeInterval = setInterval(playChime, 24000);
+  if (currentMusicUrl && bgAudio) {
+    bgAudio.play().catch(() => {});
+  } else {
+    if (chimeInterval) return;
+    playChime();
+    chimeInterval = setInterval(playChime, 24000);
+  }
   elements.musicToggle.setAttribute("aria-pressed", "true");
   elements.musicToggle.textContent = "🔉";
 }
 
 function stopAmbiance() {
-  if (chimeInterval) {
-    clearInterval(chimeInterval);
-    chimeInterval = null;
+  if (currentMusicUrl && bgAudio) {
+    bgAudio.pause();
+  } else {
+    if (chimeInterval) {
+      clearInterval(chimeInterval);
+      chimeInterval = null;
+    }
   }
   elements.musicToggle.setAttribute("aria-pressed", "false");
   elements.musicToggle.textContent = "🔇";
@@ -992,6 +1001,35 @@ function render(data) {
   renderCalendar(data, activeDay);
   renderDashboard(data, activeDay);
   renderPodium(data);
+
+  // Show/hide podium section
+  const podiumEl = document.getElementById("podium-section");
+  if (podiumEl && data.config.showPodium === false) podiumEl.hidden = true;
+
+  // Show/hide ranking section
+  const rankingSection = document.querySelector(".ranking-section");
+  if (rankingSection) rankingSection.hidden = data.config.showRankingSection === false;
+
+  // Background music
+  const newMusicUrl = data.config.musicUrl || "";
+  if (newMusicUrl !== currentMusicUrl) {
+    const wasPlaying = bgAudio && !bgAudio.paused;
+    if (bgAudio) { bgAudio.pause(); bgAudio = null; }
+    currentMusicUrl = newMusicUrl;
+    if (newMusicUrl) {
+      bgAudio = new Audio(newMusicUrl);
+      bgAudio.loop = true;
+      bgAudio.volume = 0.35;
+      if (wasPlaying || elements.musicToggle?.getAttribute("aria-pressed") === "true") {
+        bgAudio.play().catch(() => {});
+      }
+    }
+    // Mettre à jour le tooltip du bouton
+    if (elements.musicToggle) {
+      elements.musicToggle.title = newMusicUrl ? "Musique d'ambiance" : "Effets sonores";
+    }
+  }
+
   updateCountdown();
 }
 
