@@ -415,14 +415,13 @@ function openModal(dayData) {
   elements.modalUnlocked.textContent = `Debloquee le ${formatDate(dayData.unlockedAt || dayData.date)}`;
   elements.modalCongrats.textContent = dayData.congratsMessage;
   if (elements.modalLink) {
+    elements.modalLink.hidden = true;
+    elements.modalLink.removeAttribute("href");
     const link = (dayData.surpriseLinkUrl || "").trim();
     if (isValidHttpUrl(link)) {
       elements.modalLink.href = link;
       elements.modalLink.textContent = dayData.surpriseLinkLabel || "Ouvrir le lien";
       elements.modalLink.hidden = false;
-    } else {
-      elements.modalLink.hidden = true;
-      elements.modalLink.removeAttribute("href");
     }
   }
   elements.modal.showModal();
@@ -604,12 +603,13 @@ const RANKING_PAGE_SIZE = 5;
 let rankingCurrentPage = 0;
 let rankingAllEntries = [];
 let rankingMode = "anonymous";
+let rankingShowAvatars = false;
 
 function renderRanking(data) {
   if (!elements.rankingList) return;
 
   rankingMode = data.config.rankingMode === "named" ? "named" : "anonymous";
-  const showAvatars = Boolean(data.config.showRankingAvatars);
+  rankingShowAvatars = Boolean(data.config.showRankingAvatars);
   rankingAllEntries = [...(data.rankings || [])]
     .sort((a, b) => b.points - a.points || b.sales - a.sales);
   rankingCurrentPage = 0;
@@ -659,7 +659,7 @@ function renderRankingPage() {
       return `
         <article class="ranking-item rank-${globalIndex + 1}">
           <div class="ranking-position ${rankClass}">${medal}</div>
-          ${renderRankingIdentity(entry, showAvatars, "ranking-icon", displayRankingName(entry, rankingMode))}
+          ${renderRankingIdentity(entry, rankingShowAvatars, "ranking-icon", displayRankingName(entry, rankingMode))}
           <div class="ranking-meta">
             <h3>${displayRankingName(entry, rankingMode)}</h3>
             <p>${entry.points} pts · ${entry.sales} ventes</p>
