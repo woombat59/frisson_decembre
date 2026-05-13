@@ -2,10 +2,10 @@ const STORAGE_KEY = "avent-performance-data-v1";
 const READONLY_PASSWORD = "eduneo2026";
 const EDIT_PASSWORD = "mdp";
 const ADMIN_ROLE_KEY = "admin-role-mode";
-const APP_VERSION = "v2026.05.13-9";
+const APP_VERSION = "v2026.05.13-10";
 const GITHUB_REPO = "woombat59/website_edudu";
 const SHARED_JSON_PATH = "data/shared.json";
-const CALENDAR_GRID_ROWS = 10;
+const CALENDAR_GRID_ROWS = 20;
 const CALENDAR_GRID_COLS = 9;
 const layoutColumnsByCount = {
   1: [5],
@@ -152,13 +152,42 @@ function normalizeDay(day, index) {
   };
 }
 
-function buildTreeOrder() {
-  let next = 24;
+function generateTreePattern(count) {
+  if (count === 24) return [1, 2, 3, 4, 5, 4, 3, 2];
+  if (count <= 0) return [];
+  const MAX_W = 5;
+  let remaining = count;
+  const ascending = [];
+  for (let w = 1; w <= MAX_W && remaining > 0; w++) {
+    const rowCount = Math.min(w, remaining);
+    ascending.push(rowCount);
+    remaining -= rowCount;
+  }
+  if (remaining === 0) return ascending;
+  const descend = [];
+  for (let w = ascending[ascending.length - 1] - 1; w >= 1 && remaining > 0; w--) {
+    const rowCount = Math.min(w, remaining);
+    descend.push(rowCount);
+    remaining -= rowCount;
+  }
+  if (remaining === 0) return [...ascending, ...descend];
+  const extra = [];
+  while (remaining > 0) {
+    const rowCount = Math.min(MAX_W, remaining);
+    extra.push(rowCount);
+    remaining -= rowCount;
+  }
+  return [...ascending, ...extra, ...descend];
+}
+
+function buildTreeOrder(count) {
+  const pattern = generateTreePattern(count);
+  let next = count;
   const rows = [];
 
-  [1, 2, 3, 4, 5, 4, 3, 2].forEach((count) => {
+  pattern.forEach((rowCount) => {
     const row = [];
-    for (let index = 0; index < count; index += 1) {
+    for (let index = 0; index < rowCount; index += 1) {
       row.push(next);
       next -= 1;
     }
@@ -168,9 +197,10 @@ function buildTreeOrder() {
   return rows;
 }
 
-function getDefaultCalendarLayout() {
-  return buildTreeOrder().flatMap((rowDays, rowIndex) => {
-    const cols = layoutColumnsByCount[rowDays.length] || [1, 2, 3, 4, 5];
+function getDefaultCalendarLayout(count) {
+  const total = (count !== undefined && count !== null) ? count : 24;
+  return buildTreeOrder(total).flatMap((rowDays, rowIndex) => {
+    const cols = layoutColumnsByCount[rowDays.length] || Array.from({ length: rowDays.length }, (_, i) => i + 1);
     return rowDays.map((day, index) => ({
       day,
       row: rowIndex + 1,
@@ -179,8 +209,9 @@ function getDefaultCalendarLayout() {
   });
 }
 
-function normalizeCalendarLayout(layout) {
-  const defaults = getDefaultCalendarLayout();
+function normalizeCalendarLayout(layout, count) {
+  const dayCount = (count !== undefined && count !== null) ? count : 24;
+  const defaults = getDefaultCalendarLayout(dayCount);
   const validPositions = new Map();
   const usedSlots = new Set();
 
@@ -191,7 +222,7 @@ function normalizeCalendarLayout(layout) {
       const col = Number(item?.col);
       const slotKey = `${row}-${col}`;
 
-      if (!Number.isInteger(day) || day < 1 || day > 24) return;
+      if (!Number.isInteger(day) || day < 1) return;
       if (!Number.isInteger(row) || row < 1 || row > CALENDAR_GRID_ROWS) return;
       if (!Number.isInteger(col) || col < 1 || col > CALENDAR_GRID_COLS) return;
       if (validPositions.has(day) || usedSlots.has(slotKey)) return;
@@ -212,12 +243,13 @@ function normalizeCalendarLayout(layout) {
   return Array.from(validPositions.values()).sort((a, b) => a.day - b.day);
 }
 
-function getTodayInEvent() {
+function getTodayInEvent(maxDay) {
+  const max = maxDay || 24;
   const now = new Date();
   if (now.getFullYear() === 2026 && now.getMonth() === 11) {
-    return Math.min(24, Math.max(1, now.getDate()));
+    return Math.min(max, Math.max(1, now.getDate()));
   }
-  return 13;
+  return Math.min(13, max);
 }
 
 function getCaseState(dayData, activeDay) {
@@ -230,7 +262,6 @@ function getCaseState(dayData, activeDay) {
 function normalizeData(data) {
   const normalized = data || {};
   normalized.config = normalized.config || {};
-  normalized.config.calendarLayout = normalizeCalendarLayout(normalized.config.calendarLayout);
   normalized.config.rankingMode = normalized.config.rankingMode === "named" ? "named" : "anonymous";
   normalized.config.rankingSortMode = normalized.config.rankingSortMode === "manual" ? "manual" : "auto";
   normalized.config.countdownTarget = normalized.config.countdownTarget || "2026-12-24T00:00:00";
@@ -241,7 +272,8 @@ function normalizeData(data) {
   normalized.config.showRankingSection = normalized.config.showRankingSection !== false;
   normalized.config.musicUrl = normalized.config.musicUrl || "";
   normalized.config.theme = { ...getDefaultThemeConfig(), ...(normalized.config.theme || {}) };
-  normalized.days = Array.isArray(normalized.days) && normalized.days.length === 24 ? normalized.days.map(normalizeDay) : [];
+  normalized.days = Array.isArray(normalized.days) && normalized.days.length >= 1 ? normalized.days.map(normalizeDay) : [];
+  normalized.config.calendarLayout = normalized.days.length > 0 ? normalizeCalendarLayout(normalized.config.calendarLayout, normalized.days.length) : [];
   normalized.auditLog = Array.isArray(normalized.auditLog) ? normalized.auditLog : [];
 
   if (!Array.isArray(normalized.rankings) || normalized.rankings.length === 0) {
@@ -289,7 +321,7 @@ function loadData() {
 
   try {
     appData = normalizeData(JSON.parse(raw));
-    if (!appData.days || appData.days.length !== 24) {
+    if (!appData.days || appData.days.length < 1) {
       throw new Error("invalid data");
     }
     saveData();
@@ -385,8 +417,8 @@ async function importAllDataFromFile(file) {
 
   const rawData = parsed?.data || parsed;
   const normalized = normalizeData(rawData);
-  if (!Array.isArray(normalized.days) || normalized.days.length !== 24) {
-    throw new Error("Configuration invalide : 24 cases requises.");
+  if (!Array.isArray(normalized.days) || normalized.days.length < 1) {
+    throw new Error("Configuration invalide : au moins 1 case requise.");
   }
 
   appData = normalized;
@@ -737,6 +769,40 @@ function getStateLabel(dayData) {
   return "🔒 Fermée";
 }
 
+function addDay() {
+  if (guardReadOnlyAction()) return;
+  const nextNum = appData.days.length + 1;
+  const newDay = normalizeDay({
+    day: nextNum,
+    date: `2026-12-${String(nextNum).padStart(2, "0")}`,
+    surpriseTitle: `Surprise ${nextNum}`
+  }, nextNum - 1);
+  appData.days.push(newDay);
+  appData.config.calendarLayout = normalizeCalendarLayout([], appData.days.length);
+  saveData();
+  renderCasesTable();
+  renderCalendarPreview();
+  renderStats();
+  addAudit("Cases", `Case ${nextNum} ajoutée (total : ${appData.days.length})`);
+}
+
+function removeDay(dayNum) {
+  if (guardReadOnlyAction()) return;
+  if (appData.days.length <= 1) {
+    alert("Impossible de supprimer la dernière case.");
+    return;
+  }
+  if (!confirm(`Supprimer la case ${dayNum} ? Les cases seront renumérotées.`)) return;
+  appData.days = appData.days.filter((d) => d.day !== dayNum);
+  appData.days = appData.days.map((d, i) => ({ ...d, day: i + 1 }));
+  appData.config.calendarLayout = normalizeCalendarLayout([], appData.days.length);
+  saveData();
+  renderCasesTable();
+  renderCalendarPreview();
+  renderStats();
+  addAudit("Cases", `Case ${dayNum} supprimée (total : ${appData.days.length})`);
+}
+
 function renderCasesTable() {
   elements.casesTbody.innerHTML = "";
 
@@ -752,12 +818,22 @@ function renderCasesTable() {
       <td>${day.sales}</td>
       <td><span class="state ${state.includes("Ouverte") ? "open" : "locked"}">${state}</span></td>
       <td>${day.surpriseIcon} ${day.surpriseTitle}</td>
-      <td><button class="btn btn-edit" data-day="${day.day}">✏️ Éditer</button></td>
+      <td>
+        <button class="btn btn-edit" data-action="edit" data-day="${day.day}">✏️ Éditer</button>
+        <button class="btn btn-delete" data-action="delete" data-day="${day.day}">🗑️</button>
+      </td>
     `;
 
-    tr.querySelector("button").addEventListener("click", () => openEditModal(day.day));
+    tr.querySelector("[data-action='edit']").addEventListener("click", () => openEditModal(day.day));
+    tr.querySelector("[data-action='delete']").addEventListener("click", () => removeDay(day.day));
     elements.casesTbody.appendChild(tr);
   });
+
+  // Bouton Ajouter une case
+  const addRow = document.createElement("tr");
+  addRow.innerHTML = `<td colspan="7" style="text-align:center;padding:10px"><button class="btn btn-primary" id="add-day-btn">➕ Ajouter une case</button></td>`;
+  addRow.querySelector("#add-day-btn").addEventListener("click", addDay);
+  elements.casesTbody.appendChild(addRow);
 
   applyRoleMode();
 }
@@ -785,11 +861,12 @@ function renderCalendarPreview() {
   if (!elements.adminCalendarPreview) return;
 
   elements.adminCalendarPreview.innerHTML = "";
-  const activeDay = getTodayInEvent();
-  appData.config.calendarLayout = normalizeCalendarLayout(appData.config.calendarLayout);
+  const activeDay = getTodayInEvent(appData.days.length);
+  appData.config.calendarLayout = normalizeCalendarLayout(appData.config.calendarLayout, appData.days.length);
   const slotMap = new Map(appData.config.calendarLayout.map((item) => [`${item.row}-${item.col}`, item.day]));
+  const maxRow = Math.max(...appData.config.calendarLayout.map((item) => item.row), 1);
 
-  for (let row = 1; row <= CALENDAR_GRID_ROWS; row += 1) {
+  for (let row = 1; row <= maxRow; row += 1) {
     for (let col = 1; col <= CALENDAR_GRID_COLS; col += 1) {
       const slot = document.createElement("div");
       slot.className = "layout-slot";
@@ -848,7 +925,7 @@ function renderCalendarPreview() {
           return;
         }
 
-        appData.config.calendarLayout = normalizeCalendarLayout(appData.config.calendarLayout);
+        appData.config.calendarLayout = normalizeCalendarLayout(appData.config.calendarLayout, appData.days.length);
         saveData();
         renderCalendarPreview();
       });
@@ -871,7 +948,7 @@ function updateDailyFields() {
   const dayMatch = dateValue.match(/(\d{2})$/);
   const dayNum = dayMatch ? parseInt(dayMatch[1], 10) : null;
 
-  if (!dayNum || dayNum < 1 || dayNum > 24) {
+  if (!dayNum || dayNum < 1) {
     elements.dailyObjective.value = "";
     elements.dailySales.value = "";
     return;
@@ -896,7 +973,7 @@ function renderStats() {
   const totalSales = appData.days.reduce((sum, d) => sum + d.sales, 0);
   const rate = percent(totalSales, totalObjective);
 
-  elements.statOpened.textContent = `${opened} / 24`;
+  elements.statOpened.textContent = `${opened} / ${appData.days.length}`;
   elements.statObjective.textContent = `${totalObjective} ventes`;
   elements.statSales.textContent = `${totalSales} ventes`;
   elements.statRate.textContent = `${rate}%`;
@@ -1247,7 +1324,7 @@ function renderChart() {
   ctx.fillRect(padding, padding, width, height);
 
   const maxVal = Math.max(...appData.days.map((d) => Math.max(d.objective, d.sales)));
-  const barWidth = width / 24;
+  const barWidth = width / appData.days.length;
 
   appData.days.forEach((day, idx) => {
     const x = padding + idx * barWidth + barWidth * 0.1;

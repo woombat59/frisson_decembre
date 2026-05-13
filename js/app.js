@@ -1,12 +1,11 @@
 const STORAGE_KEY = "avent-performance-data-v1";
 const CELEBRATED_KEY = "avent-performance-celebrated";
 const ADMIN_PATH = "admin.html";
-const APP_VERSION = "v2026.05.13-9";
+const APP_VERSION = "v2026.05.13-10";
 const DATA_SOURCE_URL = "https://api.github.com/repos/woombat59/website_edudu/contents/data/shared.json";
-const CALENDAR_GRID_ROWS = 10;
+const CALENDAR_GRID_ROWS = 20;
 const CALENDAR_GRID_COLS = 9;
 
-const treePattern = [1, 2, 3, 4, 5, 4, 3, 2];
 const layoutColumnsByCount = {
   1: [5],
   2: [4, 6],
@@ -14,6 +13,34 @@ const layoutColumnsByCount = {
   4: [3, 4, 6, 7],
   5: [3, 4, 5, 6, 7]
 };
+
+function generateTreePattern(count) {
+  if (count === 24) return [1, 2, 3, 4, 5, 4, 3, 2];
+  if (count <= 0) return [];
+  const MAX_W = 5;
+  let remaining = count;
+  const ascending = [];
+  for (let w = 1; w <= MAX_W && remaining > 0; w++) {
+    const rowCount = Math.min(w, remaining);
+    ascending.push(rowCount);
+    remaining -= rowCount;
+  }
+  if (remaining === 0) return ascending;
+  const descend = [];
+  for (let w = ascending[ascending.length - 1] - 1; w >= 1 && remaining > 0; w--) {
+    const rowCount = Math.min(w, remaining);
+    descend.push(rowCount);
+    remaining -= rowCount;
+  }
+  if (remaining === 0) return [...ascending, ...descend];
+  const extra = [];
+  while (remaining > 0) {
+    const rowCount = Math.min(MAX_W, remaining);
+    extra.push(rowCount);
+    remaining -= rowCount;
+  }
+  return [...ascending, ...extra, ...descend];
+}
 
 const elements = {
   countdown: document.querySelector("#countdown"),
@@ -176,11 +203,12 @@ function seededData() {
   };
 }
 
-function getDefaultCalendarLayout() {
-  const rows = buildTreeOrder();
+function getDefaultCalendarLayout(count) {
+  const total = (count !== undefined && count !== null) ? count : 24;
+  const rows = buildTreeOrder(total);
 
   return rows.flatMap((rowDays, rowIndex) => {
-    const cols = layoutColumnsByCount[rowDays.length] || [1, 2, 3, 4, 5];
+    const cols = layoutColumnsByCount[rowDays.length] || Array.from({ length: rowDays.length }, (_, i) => i + 1);
     return rowDays.map((day, index) => ({
       day,
       row: rowIndex + 1,
@@ -189,8 +217,9 @@ function getDefaultCalendarLayout() {
   });
 }
 
-function normalizeCalendarLayout(layout) {
-  const defaults = getDefaultCalendarLayout();
+function normalizeCalendarLayout(layout, count) {
+  const dayCount = (count !== undefined && count !== null) ? count : 24;
+  const defaults = getDefaultCalendarLayout(dayCount);
   const validPositions = new Map();
   const usedSlots = new Set();
 
@@ -201,7 +230,7 @@ function normalizeCalendarLayout(layout) {
       const col = Number(item?.col);
       const slotKey = `${row}-${col}`;
 
-      if (!Number.isInteger(day) || day < 1 || day > 24) return;
+      if (!Number.isInteger(day) || day < 1) return;
       if (!Number.isInteger(row) || row < 1 || row > CALENDAR_GRID_ROWS) return;
       if (!Number.isInteger(col) || col < 1 || col > CALENDAR_GRID_COLS) return;
       if (validPositions.has(day) || usedSlots.has(slotKey)) return;
@@ -235,8 +264,8 @@ function normalizeData(data) {
   normalized.config.fontBody = normalized.config.fontBody || "Poppins";
   normalized.config.showRankingAvatars = Boolean(normalized.config.showRankingAvatars);
   normalized.config.theme = { ...getDefaultThemeConfig(), ...(normalized.config.theme || {}) };
-  normalized.config.calendarLayout = normalizeCalendarLayout(normalized.config.calendarLayout);
-  normalized.days = Array.isArray(normalized.days) ? normalized.days.map(normalizeDay) : seededData().days;
+  normalized.days = Array.isArray(normalized.days) && normalized.days.length >= 1 ? normalized.days.map(normalizeDay) : seededData().days;
+  normalized.config.calendarLayout = normalizeCalendarLayout(normalized.config.calendarLayout, normalized.days.length);
 
   if (!Array.isArray(normalized.rankings) || normalized.rankings.length === 0) {
     normalized.rankings = getDefaultRankings();
@@ -275,7 +304,7 @@ async function loadData() {
     const decoded = atob(apiData.content.replace(/\n/g, ""));
     const parsed = JSON.parse(decoded);
     const normalized = normalizeData(parsed?.data || parsed);
-    if (!normalized.days || normalized.days.length !== 24) {
+    if (!normalized.days || normalized.days.length < 1) {
       throw new Error("invalid shared data");
     }
 
@@ -287,16 +316,17 @@ async function loadData() {
   }
 }
 
-function getTodayInEvent() {
+function getTodayInEvent(maxDay) {
+  const max = maxDay || 24;
   const now = new Date();
   const year = 2026;
   const month = 11;
 
   if (now.getFullYear() === year && now.getMonth() === month) {
-    return Math.min(24, Math.max(1, now.getDate()));
+    return Math.min(max, Math.max(1, now.getDate()));
   }
 
-  return 13;
+  return Math.min(13, max);
 }
 
 function getCaseState(dayData, activeDay) {
@@ -387,13 +417,14 @@ function renderDailyProgress(activeDayData) {
   }
 }
 
-function buildTreeOrder() {
-  let next = 24;
+function buildTreeOrder(count) {
+  const pattern = generateTreePattern(count);
+  let next = count;
   const rows = [];
 
-  treePattern.forEach((count) => {
+  pattern.forEach((rowCount) => {
     const row = [];
-    for (let i = 0; i < count; i += 1) {
+    for (let i = 0; i < rowCount; i += 1) {
       row.push(next);
       next -= 1;
     }
@@ -553,7 +584,7 @@ function renderDashboard(data, activeDay) {
     .filter((d) => d.sales > 0 && d.objective > 0)
     .sort((a, b) => b.sales / b.objective - a.sales / a.objective)[0];
 
-  elements.openedCount.textContent = `${opened} / 24 🎁`;
+  elements.openedCount.textContent = `${opened} / ${data.days.length} 🎁`;
   elements.monthProgressFill.style.width = `${monthPct}%`;
   elements.monthProgressText.textContent = `${monthPct}% - ${totalSales} / ${totalObjective} ventes`;
   elements.bestDay.textContent = best
@@ -571,7 +602,7 @@ function renderDashboard(data, activeDay) {
     elements.flashAnnouncement.classList.add("hidden");
   }
 
-  elements.globalState.textContent = opened >= 24 ? "Calendrier complete" : `${opened} cases ouvertes`;
+  elements.globalState.textContent = opened >= data.days.length ? "Calendrier complete" : `${opened} cases ouvertes`;
 
   renderRanking(data);
 }
@@ -995,7 +1026,8 @@ function stopAmbiance() {
 function render(data) {
   applyThemeConfig(data.config);
   const cfgDay = data.config && data.config.activeDay;
-  const activeDay = (cfgDay >= 1 && cfgDay <= 24) ? cfgDay : getTodayInEvent();
+  const maxDay = data.days.length;
+  const activeDay = (cfgDay >= 1 && cfgDay <= maxDay) ? cfgDay : getTodayInEvent(maxDay);
   const activeDayData = data.days.find((d) => d.day === activeDay) || data.days[0];
 
   // Logo

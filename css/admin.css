@@ -820,6 +820,19 @@ body {
   background: rgba(255, 215, 0, 0.28);
 }
 
+.cases-table .btn-delete {
+  padding: 6px 10px;
+  font-size: 0.85rem;
+  background: rgba(180, 40, 40, 0.18);
+  color: #ff6b6b;
+  border: 1px solid rgba(180, 40, 40, 0.35);
+  margin-left: 4px;
+}
+
+.cases-table .btn-delete:hover {
+  background: rgba(180, 40, 40, 0.32);
+}
+
 .stats-grid {
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
