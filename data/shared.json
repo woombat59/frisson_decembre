@@ -150,7 +150,7 @@
       "day": 1,
       "date": "2026-12-01",
       "objective": 50,
-      "sales": 53,
+      "sales": 13,
       "surpriseTitle": "Pause cafe offerte",
       "surpriseDescription": "https://www.google.com/?hl=fr",
       "surpriseIcon": "☕",
@@ -165,7 +165,7 @@
       "day": 2,
       "date": "2026-12-02",
       "objective": 50,
-      "sales": 250,
+      "sales": 0,
       "surpriseTitle": "Playlist boost",
       "surpriseDescription": "La playlist de noel lo-fi de la team est diffusee 2 heures.",
       "surpriseIcon": "🎵",
@@ -180,7 +180,7 @@
       "day": 3,
       "date": "2026-12-03",
       "objective": 55,
-      "sales": 59,
+      "sales": 0,
       "surpriseTitle": "Petit-dejeuner maison",
       "surpriseDescription": "Viennoiseries et boissons chaudes pour tout le plateau.",
       "surpriseIcon": "🥐",
@@ -195,7 +195,7 @@
       "day": 4,
       "date": "2026-12-04",
       "objective": 56,
-      "sales": 62,
+      "sales": 0,
       "surpriseTitle": "Dress code festif",
       "surpriseDescription": "Journee pull de noel et photo d'equipe.",
       "surpriseIcon": "🧣",
@@ -210,7 +210,7 @@
       "day": 5,
       "date": "2026-12-05",
       "objective": 58,
-      "sales": 63,
+      "sales": 0,
       "surpriseTitle": "Bonus points",
       "surpriseDescription": "Double points sur la performance interne du jour.",
       "surpriseIcon": "✨",
@@ -225,7 +225,7 @@
       "day": 6,
       "date": "2026-12-06",
       "objective": 60,
-      "sales": 58,
+      "sales": 0,
       "surpriseTitle": "Lunch equipe",
       "surpriseDescription": "Dejeuner convivial pris en charge.",
       "surpriseIcon": "🍽️",
@@ -240,7 +240,7 @@
       "day": 7,
       "date": "2026-12-07",
       "objective": 60,
-      "sales": 64,
+      "sales": 0,
       "surpriseTitle": "Roue de la chance",
       "surpriseDescription": "Chaque collaborateur tire une surprise express.",
       "surpriseIcon": "🎡",
@@ -255,7 +255,7 @@
       "day": 8,
       "date": "2026-12-08",
       "objective": 62,
-      "sales": 88,
+      "sales": 0,
       "surpriseTitle": "Pause chocolat chaud",
       "surpriseDescription": "Service special chocolat chaud en salle commune.",
       "surpriseIcon": "🍫",
@@ -270,7 +270,7 @@
       "day": 9,
       "date": "2026-12-09",
       "objective": 63,
-      "sales": 61,
+      "sales": 0,
       "surpriseTitle": "Happy hour sans alcool",
       "surpriseDescription": "Moment convivial de fin de journee.",
       "surpriseIcon": "🥂",
@@ -285,7 +285,7 @@
       "day": 10,
       "date": "2026-12-10",
       "objective": 64,
-      "sales": 66,
+      "sales": 0,
       "surpriseTitle": "Mur des victoires",
       "surpriseDescription": "Mise en avant des plus belles performances de la semaine.",
       "surpriseIcon": "🏆",
@@ -300,7 +300,7 @@
       "day": 11,
       "date": "2026-12-11",
       "objective": 66,
-      "sales": 71,
+      "sales": 0,
       "surpriseTitle": "Atelier express",
       "surpriseDescription": "Mini atelier motivation et techniques de closing.",
       "surpriseIcon": "🚀",
@@ -315,7 +315,7 @@
       "day": 12,
       "date": "2026-12-12",
       "objective": 66,
-      "sales": 74,
+      "sales": 0,
       "surpriseTitle": "Team challenge",
       "surpriseDescription": "Defi cooperatif avec recompense collective.",
       "surpriseIcon": "🤝",
@@ -330,7 +330,7 @@
       "day": 13,
       "date": "2026-12-13",
       "objective": 68,
-      "sales": 44,
+      "sales": 0,
       "surpriseTitle": "Carte cadeau",
       "surpriseDescription": "Tirage d'une carte cadeau parmi les participants.",
       "surpriseIcon": "🎁",
@@ -573,6 +573,198 @@
     }
   ],
   "auditLog": [
+    {
+      "id": "a1778706006868196",
+      "action": "Case",
+      "details": "Edition de la case 13",
+      "at": "2026-05-13T21:00:06.868Z"
+    },
+    {
+      "id": "a1778705999300346",
+      "action": "Case",
+      "details": "Edition de la case 12",
+      "at": "2026-05-13T20:59:59.300Z"
+    },
+    {
+      "id": "a1778705992312935",
+      "action": "Case",
+      "details": "Edition de la case 11",
+      "at": "2026-05-13T20:59:52.312Z"
+    },
+    {
+      "id": "a1778705983220262",
+      "action": "Case",
+      "details": "Edition de la case 10",
+      "at": "2026-05-13T20:59:43.220Z"
+    },
+    {
+      "id": "a1778705979271673",
+      "action": "Case",
+      "details": "Edition de la case 9",
+      "at": "2026-05-13T20:59:39.271Z"
+    },
+    {
+      "id": "a1778705975783251",
+      "action": "Case",
+      "details": "Edition de la case 8",
+      "at": "2026-05-13T20:59:35.783Z"
+    },
+    {
+      "id": "a1778705971479819",
+      "action": "Case",
+      "details": "Edition de la case 7",
+      "at": "2026-05-13T20:59:31.479Z"
+    },
+    {
+      "id": "a1778705967655293",
+      "action": "Case",
+      "details": "Edition de la case 6",
+      "at": "2026-05-13T20:59:27.655Z"
+    },
+    {
+      "id": "a1778705963463964",
+      "action": "Case",
+      "details": "Edition de la case 5",
+      "at": "2026-05-13T20:59:23.463Z"
+    },
+    {
+      "id": "a1778705958151511",
+      "action": "Case",
+      "details": "Edition de la case 4",
+      "at": "2026-05-13T20:59:18.151Z"
+    },
+    {
+      "id": "a17787059510945",
+      "action": "Case",
+      "details": "Edition de la case 3",
+      "at": "2026-05-13T20:59:11.094Z"
+    },
+    {
+      "id": "a1778705946582403",
+      "action": "Case",
+      "details": "Edition de la case 2",
+      "at": "2026-05-13T20:59:06.582Z"
+    },
+    {
+      "id": "a1778705940935856",
+      "action": "Case",
+      "details": "Edition de la case 2",
+      "at": "2026-05-13T20:59:00.935Z"
+    },
+    {
+      "id": "a1778705890245409",
+      "action": "Case",
+      "details": "Edition de la case 2",
+      "at": "2026-05-13T20:58:10.245Z"
+    },
+    {
+      "id": "a1778705549109172",
+      "action": "Case",
+      "details": "Edition de la case 1",
+      "at": "2026-05-13T20:52:29.109Z"
+    },
+    {
+      "id": "a1778705538052952",
+      "action": "Case",
+      "details": "Edition de la case 1",
+      "at": "2026-05-13T20:52:18.052Z"
+    },
+    {
+      "id": "a1778705515524934",
+      "action": "Case",
+      "details": "Edition de la case 1",
+      "at": "2026-05-13T20:51:55.524Z"
+    },
+    {
+      "id": "a17787055029356",
+      "action": "Case",
+      "details": "Edition de la case 10",
+      "at": "2026-05-13T20:51:42.935Z"
+    },
+    {
+      "id": "a1778705492887620",
+      "action": "Case",
+      "details": "Edition de la case 11",
+      "at": "2026-05-13T20:51:32.887Z"
+    },
+    {
+      "id": "a1778705483382990",
+      "action": "Case",
+      "details": "Edition de la case 11",
+      "at": "2026-05-13T20:51:23.382Z"
+    },
+    {
+      "id": "a1778705469430534",
+      "action": "Case",
+      "details": "Edition de la case 12",
+      "at": "2026-05-13T20:51:09.430Z"
+    },
+    {
+      "id": "a1778705464486772",
+      "action": "Case",
+      "details": "Edition de la case 12",
+      "at": "2026-05-13T20:51:04.486Z"
+    },
+    {
+      "id": "a1778705454918697",
+      "action": "Case",
+      "details": "Edition de la case 12",
+      "at": "2026-05-13T20:50:54.918Z"
+    },
+    {
+      "id": "a1778705447797996",
+      "action": "Case",
+      "details": "Edition de la case 12",
+      "at": "2026-05-13T20:50:47.797Z"
+    },
+    {
+      "id": "a1778705435413670",
+      "action": "Case",
+      "details": "Edition de la case 12",
+      "at": "2026-05-13T20:50:35.413Z"
+    },
+    {
+      "id": "a1778705426948401",
+      "action": "Case",
+      "details": "Edition de la case 12",
+      "at": "2026-05-13T20:50:26.948Z"
+    },
+    {
+      "id": "a1778705414020205",
+      "action": "Case",
+      "details": "Edition de la case 5",
+      "at": "2026-05-13T20:50:14.020Z"
+    },
+    {
+      "id": "a1778705404306812",
+      "action": "Calendrier",
+      "details": "Sauvegarde de l'agencement du calendrier",
+      "at": "2026-05-13T20:50:04.306Z"
+    },
+    {
+      "id": "a1778705397992269",
+      "action": "Case",
+      "details": "Edition de la case 12",
+      "at": "2026-05-13T20:49:57.992Z"
+    },
+    {
+      "id": "a1778705380631907",
+      "action": "Case",
+      "details": "Edition de la case 12",
+      "at": "2026-05-13T20:49:40.631Z"
+    },
+    {
+      "id": "a1778705375943588",
+      "action": "Case",
+      "details": "Edition de la case 12",
+      "at": "2026-05-13T20:49:35.943Z"
+    },
+    {
+      "id": "a1778705326212513",
+      "action": "Synchronisation",
+      "details": "Publication pour tous via GitHub API",
+      "at": "2026-05-13T20:48:46.212Z"
+    },
     {
       "id": "a1778705317011643",
       "action": "Calendrier",
@@ -1580,198 +1772,6 @@
       "action": "Classement",
       "details": "Sauvegarde globale du classement",
       "at": "2026-05-13T17:00:31.242Z"
-    },
-    {
-      "id": "a1778691625861263",
-      "action": "Classement",
-      "details": "Edition du champ icon",
-      "at": "2026-05-13T17:00:25.861Z"
-    },
-    {
-      "id": "a1778691586481292",
-      "action": "Classement",
-      "details": "Sauvegarde globale du classement",
-      "at": "2026-05-13T16:59:46.481Z"
-    },
-    {
-      "id": "a1778691586396625",
-      "action": "Classement",
-      "details": "Edition du champ icon",
-      "at": "2026-05-13T16:59:46.396Z"
-    },
-    {
-      "id": "a1778691523984344",
-      "action": "Calendrier",
-      "details": "Sauvegarde de l'agencement du calendrier",
-      "at": "2026-05-13T16:58:43.984Z"
-    },
-    {
-      "id": "a177869152231272",
-      "action": "Calendrier",
-      "details": "Sauvegarde de l'agencement du calendrier",
-      "at": "2026-05-13T16:58:42.312Z"
-    },
-    {
-      "id": "a1778691484561999",
-      "action": "Synchronisation",
-      "details": "Publication pour tous via GitHub API",
-      "at": "2026-05-13T16:58:04.561Z"
-    },
-    {
-      "id": "a1778689567585316",
-      "action": "Messages",
-      "details": "Mise a jour du message direction, jour actif, logo et theme",
-      "at": "2026-05-13T16:26:07.585Z"
-    },
-    {
-      "id": "a1778689234641376",
-      "action": "Classement",
-      "details": "Sauvegarde globale du classement",
-      "at": "2026-05-13T16:20:34.641Z"
-    },
-    {
-      "id": "a1778689231581216",
-      "action": "Classement",
-      "details": "Mode de tri automatique",
-      "at": "2026-05-13T16:20:31.581Z"
-    },
-    {
-      "id": "a1778689230236751",
-      "action": "Classement",
-      "details": "Mode de tri manuel",
-      "at": "2026-05-13T16:20:30.236Z"
-    },
-    {
-      "id": "a1778689228716610",
-      "action": "Classement",
-      "details": "Mode d'affichage nominatif",
-      "at": "2026-05-13T16:20:28.716Z"
-    },
-    {
-      "id": "a177868911995812",
-      "action": "Messages",
-      "details": "Mise a jour du message direction, jour actif, logo et theme",
-      "at": "2026-05-13T16:18:39.958Z"
-    },
-    {
-      "id": "a1778689107294143",
-      "action": "Messages",
-      "details": "Mise a jour du message direction, jour actif, logo et theme",
-      "at": "2026-05-13T16:18:27.294Z"
-    },
-    {
-      "id": "a1778689056647197",
-      "action": "Case",
-      "details": "Edition de la case 1",
-      "at": "2026-05-13T16:17:36.647Z"
-    },
-    {
-      "id": "a1778689050135415",
-      "action": "Case",
-      "details": "Edition de la case 2",
-      "at": "2026-05-13T16:17:30.135Z"
-    },
-    {
-      "id": "a1778689040004129",
-      "action": "Classement",
-      "details": "Sauvegarde globale du classement",
-      "at": "2026-05-13T16:17:20.004Z"
-    },
-    {
-      "id": "a1778689037797738",
-      "action": "Classement",
-      "details": "Sauvegarde globale du classement",
-      "at": "2026-05-13T16:17:17.797Z"
-    },
-    {
-      "id": "a177868900607094",
-      "action": "Case",
-      "details": "Edition de la case 1",
-      "at": "2026-05-13T16:16:46.070Z"
-    },
-    {
-      "id": "a1778688985630538",
-      "action": "Classement",
-      "details": "Edition du champ avatarUrl",
-      "at": "2026-05-13T16:16:25.630Z"
-    },
-    {
-      "id": "a17786873896233",
-      "action": "Case",
-      "details": "Edition de la case 1",
-      "at": "2026-05-13T15:49:49.623Z"
-    },
-    {
-      "id": "a1778621875419462",
-      "action": "Messages",
-      "details": "Mise a jour du message direction, jour actif et logo",
-      "at": "2026-05-12T21:37:55.419Z"
-    },
-    {
-      "id": "a1778621852994335",
-      "action": "Messages",
-      "details": "Mise a jour du message direction, jour actif et logo",
-      "at": "2026-05-12T21:37:32.994Z"
-    },
-    {
-      "id": "a1778621571179938",
-      "action": "Messages",
-      "details": "Mise a jour du message direction et de l'annonce flash",
-      "at": "2026-05-12T21:32:51.179Z"
-    },
-    {
-      "id": "a177862156281155",
-      "action": "Ventes",
-      "details": "Mise a jour du jour 12 a 74 ventes",
-      "at": "2026-05-12T21:32:42.811Z"
-    },
-    {
-      "id": "a1778621562723465",
-      "action": "Ventes",
-      "details": "Mise a jour du jour 12 a 74 ventes",
-      "at": "2026-05-12T21:32:42.723Z"
-    },
-    {
-      "id": "a1778621559003947",
-      "action": "Messages",
-      "details": "Mise a jour du message direction et de l'annonce flash",
-      "at": "2026-05-12T21:32:39.003Z"
-    },
-    {
-      "id": "a1778621515066639",
-      "action": "Messages",
-      "details": "Mise a jour du message direction et de l'annonce flash",
-      "at": "2026-05-12T21:31:55.066Z"
-    },
-    {
-      "id": "a1778621492677386",
-      "action": "Mode",
-      "details": "Retour en mode admin",
-      "at": "2026-05-12T21:31:32.677Z"
-    },
-    {
-      "id": "a1778621399639103",
-      "action": "Ventes",
-      "details": "Mise a jour du jour 12 a 74 ventes",
-      "at": "2026-05-12T21:29:59.639Z"
-    },
-    {
-      "id": "a177862139956770",
-      "action": "Ventes",
-      "details": "Mise a jour du jour 12 a 74 ventes",
-      "at": "2026-05-12T21:29:59.567Z"
-    },
-    {
-      "id": "a1778620992666331",
-      "action": "Case",
-      "details": "Edition de la case 2",
-      "at": "2026-05-12T21:23:12.666Z"
-    },
-    {
-      "id": "a1778620265990831",
-      "action": "Classement",
-      "details": "Ajout d'un collaborateur",
-      "at": "2026-05-12T21:11:05.990Z"
     }
   ]
 }
