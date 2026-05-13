@@ -7,7 +7,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Mountains+of+Christmas:wght@700&family=Poppins:wght@300;400;500;600;700&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:wght@300;400;500;600;700&family=Mountains+of+Christmas:wght@700&family=Nunito:wght@300;400;600;700;800&family=Playfair+Display:wght@500;700;800&family=Poppins:wght@300;400;500;600;700&display=swap"
       rel="stylesheet"
     />
     <link rel="stylesheet" href="css/main.css" />
@@ -45,8 +45,9 @@
       <section class="progress-section card" aria-live="polite">
         <h2>Progression du jour</h2>
         <p id="daily-goal-line" class="goal-line">Objectif du jour : -- ventes</p>
-        <div class="progress-track" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
+          <div id="daily-progress-track" class="progress-track is-daily" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
           <div id="daily-progress-fill" class="progress-fill"></div>
+            <div id="daily-progress-spark" class="progress-spark" aria-hidden="true">🎁</div>
         </div>
         <p id="daily-progress-text" class="progress-text">0%</p>
         <p id="daily-progress-message" class="progress-message">L'equipe se rechauffe... 🧤</p>
@@ -136,6 +137,7 @@
         <p id="modal-description"></p>
         <p id="modal-unlocked" class="modal-unlocked">Debloquee le --</p>
         <p id="modal-congrats" class="modal-congrats"></p>
+        <a id="modal-link" class="modal-link-btn" href="#" target="_blank" rel="noopener" hidden>Ouvrir le lien</a>
       </div>
     </dialog>
 

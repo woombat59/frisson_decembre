@@ -5,6 +5,8 @@
   --snow: #f8f8ff;
   --night: #0d1b2a;
   --ink: #112235;
+  --font-display: "Mountains of Christmas", serif;
+  --font-body: "Poppins", sans-serif;
   --glass: rgba(248, 248, 255, 0.08);
   --glass-strong: rgba(248, 248, 255, 0.14);
   --shadow-soft: 0 18px 40px rgba(0, 0, 0, 0.35);
@@ -20,11 +22,11 @@ body {
   margin: 0;
   min-height: 100%;
   color: var(--snow);
-  font-family: "Poppins", sans-serif;
+  font-family: var(--font-body);
   background:
-    radial-gradient(circle at 15% 20%, rgba(178, 34, 34, 0.3), transparent 42%),
-    radial-gradient(circle at 86% 14%, rgba(255, 215, 0, 0.2), transparent 36%),
-    linear-gradient(150deg, #08101f 0%, #0d1b2a 52%, #16354e 100%);
+    radial-gradient(circle at 15% 20%, color-mix(in srgb, var(--red) 45%, transparent), transparent 42%),
+    radial-gradient(circle at 86% 14%, color-mix(in srgb, var(--gold) 30%, transparent), transparent 36%),
+    linear-gradient(150deg, color-mix(in srgb, var(--night) 72%, #08101f), var(--night) 52%, color-mix(in srgb, var(--green) 35%, #16354e));
 }
 
 body {
@@ -89,7 +91,7 @@ h3 {
 
 h1,
 .section-head h2 {
-  font-family: "Mountains of Christmas", serif;
+  font-family: var(--font-display);
   letter-spacing: 0.02em;
 }
 
@@ -130,7 +132,7 @@ h1 {
   font-weight: 500;
   margin-bottom: 4px;
   color: rgba(248, 248, 255, 0.85);
-  font-family: "Poppins", sans-serif;
+  font-family: var(--font-body);
 }
 
 .metric p {
@@ -150,12 +152,14 @@ h1 {
 }
 
 .progress-track {
+  --progress-pct: 0%;
   width: 100%;
   height: 18px;
   border-radius: 999px;
-  overflow: hidden;
+  overflow: visible;
   background: rgba(255, 255, 255, 0.12);
   border: 1px solid rgba(255, 255, 255, 0.2);
+  position: relative;
 }
 
 .progress-track.small {
@@ -165,9 +169,34 @@ h1 {
 .progress-fill {
   height: 100%;
   width: 0;
-  background: linear-gradient(90deg, #26743f 0%, #5ea75f 50%, #ffd700 100%);
+  background: linear-gradient(90deg, color-mix(in srgb, var(--green) 88%, #26743f) 0%, color-mix(in srgb, var(--green) 45%, #5ea75f) 50%, var(--gold) 100%);
   transition: width 0.8s ease;
-  box-shadow: 0 0 14px rgba(255, 215, 0, 0.35);
+  box-shadow: 0 0 14px color-mix(in srgb, var(--gold) 35%, transparent);
+  border-radius: 999px;
+}
+
+.progress-spark {
+  position: absolute;
+  top: 50%;
+  left: var(--progress-pct);
+  transform: translate(-50%, -52%);
+  font-size: 1.35rem;
+  line-height: 1;
+  filter: drop-shadow(0 0 8px color-mix(in srgb, var(--gold) 50%, transparent));
+  transition: left 0.8s ease;
+}
+
+.progress-spark::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  right: calc(100% - 4px);
+  width: 26px;
+  height: 10px;
+  transform: translateY(-50%);
+  background: linear-gradient(90deg, color-mix(in srgb, var(--red) 78%, transparent), color-mix(in srgb, var(--gold) 74%, transparent), transparent);
+  filter: blur(2px);
+  opacity: 0.9;
 }
 
 .progress-message {
@@ -210,11 +239,11 @@ h1 {
   min-width: 0;
   min-height: 84px;
   height: 100%;
-  border-radius: 16px;
-  border: 1px solid rgba(255, 255, 255, 0.16);
+  border-radius: 18px;
+  border: 1px solid color-mix(in srgb, var(--snow) 18%, transparent);
   background:
-    linear-gradient(145deg, rgba(90, 38, 15, 0.85), rgba(58, 24, 9, 0.85)),
-    repeating-linear-gradient(0deg, rgba(255, 255, 255, 0.03), rgba(255, 255, 255, 0.03) 2px, transparent 2px, transparent 6px);
+    linear-gradient(145deg, rgba(120, 46, 20, 0.92), rgba(74, 28, 11, 0.92)),
+    linear-gradient(90deg, color-mix(in srgb, var(--red) 92%, transparent) 0 18%, transparent 18% 42%, color-mix(in srgb, var(--red) 92%, transparent) 42% 58%, transparent 58% 82%, color-mix(in srgb, var(--red) 92%, transparent) 82% 100%);
   color: #fff5d1;
   display: grid;
   align-content: center;
@@ -230,27 +259,23 @@ h1 {
 .day-card::before {
   content: "";
   position: absolute;
-  top: 0;
-  left: 50%;
-  width: 18px;
-  height: 100%;
-  transform: translateX(-50%);
-  background: linear-gradient(180deg, rgba(178, 34, 34, 0.9), rgba(150, 24, 24, 0.9));
-  border-radius: 8px;
-  opacity: 0.8;
+  top: -6px;
+  left: 8px;
+  right: 8px;
+  height: 16px;
+  border-radius: 14px 14px 8px 8px;
+  background: linear-gradient(180deg, color-mix(in srgb, var(--red) 88%, #8b0000), color-mix(in srgb, var(--red) 74%, #6d1515));
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
 }
 
 .day-card::after {
-  content: "";
+  content: "🎀";
   position: absolute;
-  top: 7px;
+  top: -14px;
   left: 50%;
-  width: 22px;
-  height: 14px;
   transform: translateX(-50%);
-  background: radial-gradient(circle, #ffd700 10%, #c79f08 70%);
-  border-radius: 50%;
-  box-shadow: 0 0 12px rgba(255, 215, 0, 0.35);
+  font-size: 1.05rem;
+  text-shadow: 0 0 10px color-mix(in srgb, var(--gold) 45%, transparent);
 }
 
 .day-card:hover {
@@ -302,16 +327,16 @@ h1 {
 }
 
 .day-card.in-progress {
-  border-color: rgba(255, 215, 0, 0.86);
-  box-shadow: 0 0 0 1px rgba(255, 215, 0, 0.45), 0 0 24px rgba(255, 215, 0, 0.25);
+  border-color: color-mix(in srgb, var(--gold) 86%, transparent);
+  box-shadow: 0 0 0 1px color-mix(in srgb, var(--gold) 45%, transparent), 0 0 24px color-mix(in srgb, var(--gold) 25%, transparent);
   animation: pulse 1.7s ease-in-out infinite;
 }
 
 .day-card.open {
   background:
-    linear-gradient(145deg, rgba(27, 77, 46, 0.86), rgba(20, 52, 31, 0.9)),
-    linear-gradient(145deg, rgba(255, 215, 0, 0.16), transparent);
-  border-color: rgba(255, 215, 0, 0.58);
+    linear-gradient(145deg, color-mix(in srgb, var(--green) 88%, #204523), color-mix(in srgb, var(--green) 65%, #14341f)),
+    linear-gradient(145deg, color-mix(in srgb, var(--gold) 16%, transparent), transparent);
+  border-color: color-mix(in srgb, var(--gold) 58%, transparent);
 }
 
 .day-card.open .day-number {
@@ -334,7 +359,7 @@ h1 {
 .dash-box h3 {
   font-size: 0.92rem;
   margin-bottom: 7px;
-  font-family: "Poppins", sans-serif;
+  font-family: var(--font-body);
 }
 
 .dash-value {
@@ -359,7 +384,7 @@ h1 {
 .direction-message h3 {
   font-size: 1rem;
   margin-bottom: 6px;
-  font-family: "Poppins", sans-serif;
+  font-family: var(--font-body);
 }
 
 .direction-message p {
@@ -401,8 +426,19 @@ h1 {
   min-width: 100px;
 }
 .podium-avatar {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  object-fit: cover;
+  display: grid;
+  place-items: center;
   font-size: 2.2rem;
+  background: rgba(255, 255, 255, 0.08);
   filter: drop-shadow(0 2px 6px rgba(0,0,0,0.4));
+}
+
+.podium-avatar.emoji {
+  border-radius: 16px;
 }
 .podium-name {
   font-size: 0.85rem;
@@ -504,7 +540,18 @@ h1 {
 }
 
 .ranking-icon {
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  object-fit: cover;
+  display: grid;
+  place-items: center;
   font-size: 1.4rem;
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.ranking-icon.emoji {
+  border-radius: 14px;
 }
 
 .ranking-meta h3 {
@@ -604,7 +651,7 @@ h1 {
   border: 0;
   border-radius: 18px;
   width: min(92vw, 520px);
-  background: linear-gradient(150deg, #10223a, #182f4a);
+  background: linear-gradient(150deg, color-mix(in srgb, var(--night) 90%, #10223a), color-mix(in srgb, var(--green) 20%, #182f4a));
   color: var(--snow);
   box-shadow: 0 24px 44px rgba(0, 0, 0, 0.45);
 }
@@ -646,7 +693,21 @@ h1 {
 .modal-congrats {
   margin-top: 12px;
   font-weight: 600;
-  color: #ffe8a8;
+  color: color-mix(in srgb, var(--gold) 70%, white);
+}
+
+.modal-link-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 14px;
+  padding: 10px 16px;
+  border-radius: 999px;
+  background: linear-gradient(120deg, var(--gold), color-mix(in srgb, var(--gold) 72%, #c59d00));
+  color: #101b2f;
+  text-decoration: none;
+  font-weight: 700;
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.2);
 }
 
 .flash-announcement {

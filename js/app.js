@@ -18,7 +18,9 @@ const elements = {
   todayLabel: document.querySelector("#today-label"),
   globalState: document.querySelector("#global-state"),
   dailyGoalLine: document.querySelector("#daily-goal-line"),
+  dailyProgressTrack: document.querySelector("#daily-progress-track"),
   dailyProgressFill: document.querySelector("#daily-progress-fill"),
+  dailyProgressSpark: document.querySelector("#daily-progress-spark"),
   dailyProgressText: document.querySelector("#daily-progress-text"),
   dailyProgressMessage: document.querySelector("#daily-progress-message"),
   calendarTree: document.querySelector("#calendar-tree"),
@@ -39,6 +41,7 @@ const elements = {
   modalDescription: document.querySelector("#modal-description"),
   modalUnlocked: document.querySelector("#modal-unlocked"),
   modalCongrats: document.querySelector("#modal-congrats"),
+  modalLink: document.querySelector("#modal-link"),
   statusToast: document.querySelector("#status-toast"),
   musicToggle: document.querySelector("#music-toggle"),
   adminLink: document.querySelector("#admin-link"),
@@ -51,6 +54,36 @@ let audioCtx = null;
 let hashSnapshot = "";
 let toastTimer = null;
 let activeParticles = [];
+
+function getDefaultThemeConfig() {
+  return {
+    gold: "#ffd700",
+    green: "#1b4d2e",
+    red: "#b22222",
+    night: "#0d1b2a",
+    snow: "#f8f8ff"
+  };
+}
+
+function normalizeDay(day, index) {
+  const nextDay = index + 1;
+  return {
+    ...day,
+    day: Number(day?.day) || nextDay,
+    date: day?.date || `2026-12-${String(nextDay).padStart(2, "0")}`,
+    objective: Number(day?.objective) || 0,
+    sales: Number(day?.sales) || 0,
+    surpriseTitle: day?.surpriseTitle || `Surprise ${nextDay}`,
+    surpriseDescription: day?.surpriseDescription || "",
+    surpriseIcon: day?.surpriseIcon || "🎁",
+    congratsMessage: day?.congratsMessage || `Bravo equipe, la case ${nextDay} est debloquee grace a votre energie.`,
+    surpriseLinkLabel: day?.surpriseLinkLabel || "",
+    surpriseLinkUrl: day?.surpriseLinkUrl || "",
+    unlockedAt: day?.unlockedAt || null,
+    forceClosed: Boolean(day?.forceClosed),
+    forceOpen: Boolean(day?.forceOpen)
+  };
+}
 
 function seededData() {
   const surprises = [
@@ -99,6 +132,8 @@ function seededData() {
       surpriseDescription: description,
       surpriseIcon: icon,
       congratsMessage: `Bravo equipe, la case ${day} est debloquee grace a votre energie.`,
+      surpriseLinkLabel: "",
+      surpriseLinkUrl: "",
       unlockedAt: unlocked ? `2026-12-${String(day).padStart(2, "0")}` : null,
       forceClosed: false,
       forceOpen: false
@@ -106,12 +141,12 @@ function seededData() {
   });
 
   const rankings = [
-    { id: "r1", name: "Camille Martin", anonymousLabel: "Collaborateur 1", points: 128, sales: 56, icon: "🌟" },
-    { id: "r2", name: "Nicolas Leroy", anonymousLabel: "Collaborateur 2", points: 121, sales: 52, icon: "🏅" },
-    { id: "r3", name: "Sarah Dubois", anonymousLabel: "Collaborateur 3", points: 117, sales: 49, icon: "🎁" },
-    { id: "r4", name: "Antoine Petit", anonymousLabel: "Collaborateur 4", points: 111, sales: 45, icon: "🚀" },
-    { id: "r5", name: "Lea Bernard", anonymousLabel: "Collaborateur 5", points: 107, sales: 44, icon: "✨" },
-    { id: "r6", name: "Julien Moreau", anonymousLabel: "Collaborateur 6", points: 98, sales: 39, icon: "🎄" }
+    { id: "r1", name: "Camille Martin", anonymousLabel: "Collaborateur 1", points: 128, sales: 56, icon: "🌟", avatarUrl: "" },
+    { id: "r2", name: "Nicolas Leroy", anonymousLabel: "Collaborateur 2", points: 121, sales: 52, icon: "🏅", avatarUrl: "" },
+    { id: "r3", name: "Sarah Dubois", anonymousLabel: "Collaborateur 3", points: 117, sales: 49, icon: "🎁", avatarUrl: "" },
+    { id: "r4", name: "Antoine Petit", anonymousLabel: "Collaborateur 4", points: 111, sales: 45, icon: "🚀", avatarUrl: "" },
+    { id: "r5", name: "Lea Bernard", anonymousLabel: "Collaborateur 5", points: 107, sales: 44, icon: "✨", avatarUrl: "" },
+    { id: "r6", name: "Julien Moreau", anonymousLabel: "Collaborateur 6", points: 98, sales: 39, icon: "🎄", avatarUrl: "" }
   ];
 
   return {
@@ -120,6 +155,11 @@ function seededData() {
       subtitle: "Eduneo - Decembre 2026",
       calendarLayout: getDefaultCalendarLayout(),
       rankingMode: "anonymous",
+      countdownTarget: "2026-12-24T00:00:00",
+      fontTitle: "Mountains of Christmas",
+      fontBody: "Poppins",
+      showRankingAvatars: false,
+      theme: getDefaultThemeConfig(),
       directionMessage:
         "Votre engagement quotidien est remarquable. Restons unis, ambitieux et bienveillants jusqu'au 24 decembre.",
       flashAnnouncement: "🔥 Sprint final de la semaine ! On vise 120% aujourd'hui."
@@ -183,8 +223,13 @@ function normalizeData(data) {
   const normalized = data || {};
   normalized.config = normalized.config || {};
   normalized.config.rankingMode = normalized.config.rankingMode === "named" ? "named" : "anonymous";
+  normalized.config.countdownTarget = normalized.config.countdownTarget || "2026-12-24T00:00:00";
+  normalized.config.fontTitle = normalized.config.fontTitle || "Mountains of Christmas";
+  normalized.config.fontBody = normalized.config.fontBody || "Poppins";
+  normalized.config.showRankingAvatars = Boolean(normalized.config.showRankingAvatars);
+  normalized.config.theme = { ...getDefaultThemeConfig(), ...(normalized.config.theme || {}) };
   normalized.config.calendarLayout = normalizeCalendarLayout(normalized.config.calendarLayout);
-  normalized.days = Array.isArray(normalized.days) ? normalized.days : seededData().days;
+  normalized.days = Array.isArray(normalized.days) ? normalized.days.map(normalizeDay) : seededData().days;
 
   if (!Array.isArray(normalized.rankings) || normalized.rankings.length === 0) {
     normalized.rankings = getDefaultRankings();
@@ -195,7 +240,8 @@ function normalizeData(data) {
       anonymousLabel: entry.anonymousLabel || `Collaborateur ${index + 1}`,
       points: Number(entry.points) || 0,
       sales: Number(entry.sales) || 0,
-      icon: entry.icon || "🎄"
+      icon: entry.icon || "🎄",
+      avatarUrl: entry.avatarUrl || ""
     }));
   }
 
@@ -262,9 +308,36 @@ function formatDate(iso) {
   return d.toLocaleDateString("fr-FR", { day: "numeric", month: "short" });
 }
 
+function applyThemeConfig(config) {
+  const root = document.documentElement;
+  const theme = { ...getDefaultThemeConfig(), ...(config.theme || {}) };
+  root.style.setProperty("--gold", theme.gold);
+  root.style.setProperty("--green", theme.green);
+  root.style.setProperty("--red", theme.red);
+  root.style.setProperty("--night", theme.night);
+  root.style.setProperty("--snow", theme.snow);
+  root.style.setProperty("--font-display", `'${config.fontTitle || "Mountains of Christmas"}', serif`);
+  root.style.setProperty("--font-body", `'${config.fontBody || "Poppins"}', sans-serif`);
+}
+
+function getCountdownTarget(config) {
+  const target = new Date(config?.countdownTarget || "2026-12-24T00:00:00");
+  if (Number.isNaN(target.getTime())) {
+    return new Date("2026-12-24T00:00:00");
+  }
+  return target;
+}
+
+function renderRankingIdentity(entry, showAvatar, className, label) {
+  if (showAvatar && entry.avatarUrl) {
+    return `<img class="${className}" src="${entry.avatarUrl}" alt="${label}" />`;
+  }
+  return `<div class="${className} emoji">${entry.icon || "🎄"}</div>`;
+}
+
 function updateCountdown() {
   const now = new Date();
-  const target = new Date("2026-12-24T00:00:00");
+  const target = getCountdownTarget(appState?.data?.config || loadData().config);
   const delta = target.getTime() - now.getTime();
   const days = Math.max(0, Math.ceil(delta / (1000 * 60 * 60 * 24)));
 
@@ -276,9 +349,12 @@ function renderDailyProgress(activeDayData) {
   const pct = percent(activeDayData.sales, activeDayData.objective);
   elements.dailyGoalLine.textContent = `🎯 Objectif du jour : ${activeDayData.objective} ventes`;
   elements.dailyProgressFill.style.width = `${pct}%`;
+  if (elements.dailyProgressTrack) {
+    elements.dailyProgressTrack.style.setProperty("--progress-pct", `${pct}%`);
+    elements.dailyProgressTrack.setAttribute("aria-valuenow", String(pct));
+  }
   elements.dailyProgressText.textContent = `${pct}% - ${activeDayData.sales} ventes sur ${activeDayData.objective}`;
   elements.dailyProgressMessage.textContent = progressMessage(pct);
-  document.querySelector(".progress-track").setAttribute("aria-valuenow", String(pct));
 
   if (pct >= 100) {
     triggerCelebration(activeDayData.day);
@@ -323,9 +399,45 @@ function openModal(dayData) {
   elements.modalDescription.textContent = dayData.surpriseDescription;
   elements.modalUnlocked.textContent = `Debloquee le ${formatDate(dayData.unlockedAt || dayData.date)}`;
   elements.modalCongrats.textContent = dayData.congratsMessage;
+  if (elements.modalLink) {
+    if (dayData.surpriseLinkUrl) {
+      elements.modalLink.href = dayData.surpriseLinkUrl;
+      elements.modalLink.textContent = dayData.surpriseLinkLabel || "Ouvrir le lien";
+      elements.modalLink.hidden = false;
+    } else {
+      elements.modalLink.hidden = true;
+      elements.modalLink.removeAttribute("href");
+    }
+  }
   elements.modal.showModal();
   modalSideConfettiBurst();
   playVictoryFanfare();
+}
+
+function launchCardFireworks(card) {
+  if (!card) return;
+  const canvas = elements.snowCanvas;
+  const rect = card.getBoundingClientRect();
+  const origin = {
+    x: rect.left + rect.width / 2,
+    y: rect.top + rect.height / 2
+  };
+
+  for (let i = 0; i < 65; i += 1) {
+    const angle = (Math.PI * 2 * i) / 65;
+    const speed = 1.5 + Math.random() * 4;
+    activeParticles.push({
+      x: origin.x,
+      y: origin.y,
+      vx: Math.cos(angle) * speed,
+      vy: Math.sin(angle) * speed - 1.4,
+      g: 0.05 + Math.random() * 0.05,
+      size: 2 + Math.random() * 4,
+      life: 42 + Math.random() * 20,
+      maxLife: 42 + Math.random() * 20,
+      color: ["#FFD700", "#F8F8FF", "#B22222", "#1B4D2E"][Math.floor(Math.random() * 4)]
+    });
+  }
 }
 
 function showStatusMessage(message) {
@@ -374,6 +486,7 @@ function renderCalendar(data, activeDay) {
 
     card.addEventListener("click", () => {
       if (state === "open") {
+        launchCardFireworks(card);
         openModal(dayData);
         return;
       }
@@ -381,6 +494,7 @@ function renderCalendar(data, activeDay) {
       if (state === "in-progress") {
         const pct = percent(dayData.sales, dayData.objective);
         if (pct >= 100) {
+          launchCardFireworks(card);
           openModal(dayData);
           return;
         }
@@ -440,6 +554,7 @@ function renderPodium(data) {
   const podiumEl = document.getElementById("podium-section");
   if (!podiumEl) return;
   const mode = data.config.rankingMode === "named" ? "named" : "anonymous";
+  const showAvatars = Boolean(data.config.showRankingAvatars);
   const top3 = [...(data.rankings || [])]
     .sort((a, b) => b.points - a.points || b.sales - a.sales)
     .slice(0, 3);
@@ -458,7 +573,7 @@ function renderPodium(data) {
     const name = displayRankingName(entry, mode);
     return `
       <div class="podium-col rank-${i === 1 ? 1 : i === 0 ? 2 : 3}">
-        <div class="podium-avatar">${entry.icon || "🎄"}</div>
+        ${renderRankingIdentity(entry, showAvatars, "podium-avatar", name)}
         <div class="podium-name">${name}</div>
         <div class="podium-pts">${entry.points} pts</div>
         <div class="podium-block" style="height:${heights[i]}">
@@ -478,6 +593,7 @@ function renderRanking(data) {
   if (!elements.rankingList) return;
 
   rankingMode = data.config.rankingMode === "named" ? "named" : "anonymous";
+  const showAvatars = Boolean(data.config.showRankingAvatars);
   rankingAllEntries = [...(data.rankings || [])]
     .sort((a, b) => b.points - a.points || b.sales - a.sales);
   rankingCurrentPage = 0;
@@ -527,7 +643,7 @@ function renderRankingPage() {
       return `
         <article class="ranking-item rank-${globalIndex + 1}">
           <div class="ranking-position ${rankClass}">${medal}</div>
-          <div class="ranking-icon">${entry.icon || "🎄"}</div>
+          ${renderRankingIdentity(entry, showAvatars, "ranking-icon", displayRankingName(entry, rankingMode))}
           <div class="ranking-meta">
             <h3>${displayRankingName(entry, rankingMode)}</h3>
             <p>${entry.points} pts · ${entry.sales} ventes</p>
@@ -839,6 +955,7 @@ function stopAmbiance() {
 
 function render() {
   const data = loadData();
+  applyThemeConfig(data.config);
   const cfgDay = data.config && data.config.activeDay;
   const activeDay = (cfgDay >= 1 && cfgDay <= 24) ? cfgDay : getTodayInEvent();
   const activeDayData = data.days.find((d) => d.day === activeDay) || data.days[0];
@@ -899,7 +1016,7 @@ function initEvents() {
   });
 
   elements.adminLink.addEventListener("click", () => {
-    window.location.href = ADMIN_PATH;
+    window.open(ADMIN_PATH, "_blank", "noopener");
   });
 }
 

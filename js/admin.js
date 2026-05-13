@@ -28,6 +28,15 @@ const elements = {
   logoFileInput: document.querySelector("#logo-file-input"),
   logoPreviewWrap: document.querySelector("#logo-preview-wrap"),
   logoPreview: document.querySelector("#logo-preview"),
+  countdownTargetInput: document.querySelector("#countdown-target-input"),
+  fontTitleSelect: document.querySelector("#font-title-select"),
+  fontBodySelect: document.querySelector("#font-body-select"),
+  showRankingAvatarsToggle: document.querySelector("#show-ranking-avatars-toggle"),
+  themeGoldInput: document.querySelector("#theme-gold-input"),
+  themeGreenInput: document.querySelector("#theme-green-input"),
+  themeRedInput: document.querySelector("#theme-red-input"),
+  themeNightInput: document.querySelector("#theme-night-input"),
+  themeSnowInput: document.querySelector("#theme-snow-input"),
   saveMessagesBtn: document.querySelector("#save-messages-btn"),
   rankingModeToggle: document.querySelector("#ranking-mode-toggle"),
   rankingSortMode: document.querySelector("#ranking-sort-mode"),
@@ -67,7 +76,10 @@ const elements = {
   editSales: document.querySelector("#edit-sales"),
   editTitle: document.querySelector("#edit-title"),
   editDescription: document.querySelector("#edit-description"),
+  editCongrats: document.querySelector("#edit-congrats"),
   editIcon: document.querySelector("#edit-icon"),
+  editLinkLabel: document.querySelector("#edit-link-label"),
+  editLinkUrl: document.querySelector("#edit-link-url"),
   editForceOpen: document.querySelector("#edit-force-open"),
   editForceClosed: document.querySelector("#edit-force-closed"),
   saveCaseBtn: document.querySelector("#save-case-btn"),
@@ -84,13 +96,43 @@ let draggedLayoutDay = null;
 
 function getDefaultRankings() {
   return [
-    { id: "r1", name: "Camille Martin", anonymousLabel: "Collaborateur 1", points: 128, sales: 56, icon: "🌟" },
-    { id: "r2", name: "Nicolas Leroy", anonymousLabel: "Collaborateur 2", points: 121, sales: 52, icon: "🏅" },
-    { id: "r3", name: "Sarah Dubois", anonymousLabel: "Collaborateur 3", points: 117, sales: 49, icon: "🎁" },
-    { id: "r4", name: "Antoine Petit", anonymousLabel: "Collaborateur 4", points: 111, sales: 45, icon: "🚀" },
-    { id: "r5", name: "Lea Bernard", anonymousLabel: "Collaborateur 5", points: 107, sales: 44, icon: "✨" },
-    { id: "r6", name: "Julien Moreau", anonymousLabel: "Collaborateur 6", points: 98, sales: 39, icon: "🎄" }
+    { id: "r1", name: "Camille Martin", anonymousLabel: "Collaborateur 1", points: 128, sales: 56, icon: "🌟", avatarUrl: "" },
+    { id: "r2", name: "Nicolas Leroy", anonymousLabel: "Collaborateur 2", points: 121, sales: 52, icon: "🏅", avatarUrl: "" },
+    { id: "r3", name: "Sarah Dubois", anonymousLabel: "Collaborateur 3", points: 117, sales: 49, icon: "🎁", avatarUrl: "" },
+    { id: "r4", name: "Antoine Petit", anonymousLabel: "Collaborateur 4", points: 111, sales: 45, icon: "🚀", avatarUrl: "" },
+    { id: "r5", name: "Lea Bernard", anonymousLabel: "Collaborateur 5", points: 107, sales: 44, icon: "✨", avatarUrl: "" },
+    { id: "r6", name: "Julien Moreau", anonymousLabel: "Collaborateur 6", points: 98, sales: 39, icon: "🎄", avatarUrl: "" }
   ];
+}
+
+function getDefaultThemeConfig() {
+  return {
+    gold: "#ffd700",
+    green: "#1b4d2e",
+    red: "#b22222",
+    night: "#0d1b2a",
+    snow: "#f8f8ff"
+  };
+}
+
+function normalizeDay(day, index) {
+  const nextDay = index + 1;
+  return {
+    ...day,
+    day: Number(day?.day) || nextDay,
+    date: day?.date || `2026-12-${String(nextDay).padStart(2, "0")}`,
+    objective: Number(day?.objective) || 0,
+    sales: Number(day?.sales) || 0,
+    surpriseTitle: day?.surpriseTitle || `Surprise ${nextDay}`,
+    surpriseDescription: day?.surpriseDescription || "",
+    surpriseIcon: day?.surpriseIcon || "🎁",
+    congratsMessage: day?.congratsMessage || `Bravo equipe, la case ${nextDay} est debloquee grace a votre energie.`,
+    surpriseLinkLabel: day?.surpriseLinkLabel || "",
+    surpriseLinkUrl: day?.surpriseLinkUrl || "",
+    unlockedAt: day?.unlockedAt || null,
+    forceClosed: Boolean(day?.forceClosed),
+    forceOpen: Boolean(day?.forceOpen)
+  };
 }
 
 function buildTreeOrder() {
@@ -174,7 +216,12 @@ function normalizeData(data) {
   normalized.config.calendarLayout = normalizeCalendarLayout(normalized.config.calendarLayout);
   normalized.config.rankingMode = normalized.config.rankingMode === "named" ? "named" : "anonymous";
   normalized.config.rankingSortMode = normalized.config.rankingSortMode === "manual" ? "manual" : "auto";
-  normalized.days = Array.isArray(normalized.days) && normalized.days.length === 24 ? normalized.days : [];
+  normalized.config.countdownTarget = normalized.config.countdownTarget || "2026-12-24T00:00:00";
+  normalized.config.fontTitle = normalized.config.fontTitle || "Mountains of Christmas";
+  normalized.config.fontBody = normalized.config.fontBody || "Poppins";
+  normalized.config.showRankingAvatars = Boolean(normalized.config.showRankingAvatars);
+  normalized.config.theme = { ...getDefaultThemeConfig(), ...(normalized.config.theme || {}) };
+  normalized.days = Array.isArray(normalized.days) && normalized.days.length === 24 ? normalized.days.map(normalizeDay) : [];
   normalized.auditLog = Array.isArray(normalized.auditLog) ? normalized.auditLog : [];
 
   if (!Array.isArray(normalized.rankings) || normalized.rankings.length === 0) {
@@ -186,7 +233,8 @@ function normalizeData(data) {
       anonymousLabel: entry.anonymousLabel || `Collaborateur ${index + 1}`,
       points: Number(entry.points) || 0,
       sales: Number(entry.sales) || 0,
-      icon: entry.icon || "🎄"
+      icon: entry.icon || "🎄",
+      avatarUrl: entry.avatarUrl || ""
     }));
   }
 
@@ -317,6 +365,7 @@ function buildRankingFromRows(rows) {
   const pointsIndex = headerIndex(["point"], 3);
   const salesIndex = headerIndex(["vente"], 4);
   const iconIndex = headerIndex(["icone", "icône", "emoji"], 5);
+  const avatarIndex = headerIndex(["avatar", "photo", "image"], 6);
 
   return dataRows
     .filter((row) => row.some((cell) => cell && cell.trim()))
@@ -326,7 +375,8 @@ function buildRankingFromRows(rows) {
       anonymousLabel: row[aliasIndex] || `Collaborateur ${index + 1}`,
       points: Math.max(0, parseInt(row[pointsIndex] || "0", 10) || 0),
       sales: Math.max(0, parseInt(row[salesIndex] || "0", 10) || 0),
-      icon: (row[iconIndex] || "🎄").slice(0, 2)
+      icon: (row[iconIndex] || "🎄").slice(0, 2),
+      avatarUrl: row[avatarIndex] || ""
     }));
 }
 
@@ -375,6 +425,18 @@ function applyRoleMode() {
     elements.updateDailyBtn,
     elements.directionMessage,
     elements.flashAnnouncement,
+    elements.activeDayInput,
+    elements.logoUrlInput,
+    elements.logoFileInput,
+    elements.countdownTargetInput,
+    elements.fontTitleSelect,
+    elements.fontBodySelect,
+    elements.showRankingAvatarsToggle,
+    elements.themeGoldInput,
+    elements.themeGreenInput,
+    elements.themeRedInput,
+    elements.themeNightInput,
+    elements.themeSnowInput,
     elements.saveMessagesBtn,
     elements.rankingModeToggle,
     elements.rankingSortMode,
@@ -389,7 +451,10 @@ function applyRoleMode() {
     elements.editSales,
     elements.editTitle,
     elements.editDescription,
+    elements.editCongrats,
     elements.editIcon,
+    elements.editLinkLabel,
+    elements.editLinkUrl,
     elements.editForceOpen,
     elements.editForceClosed
   ];
@@ -672,6 +737,7 @@ function renderRankingPanel() {
           <td><input class="points-field" data-field="points" type="number" min="0" value="${entry.points}" /></td>
           <td><input class="sales-field" data-field="sales" type="number" min="0" value="${entry.sales}" /></td>
           <td><input class="icon-field" data-field="icon" type="text" maxlength="2" value="${escapeHtml(entry.icon)}" /></td>
+          <td><input class="avatar-field" data-field="avatarUrl" type="text" value="${escapeHtml(entry.avatarUrl || "")}" placeholder="https://..." /></td>
           <td>
             <button class="btn btn-mini btn-move" data-action="up">↑</button>
             <button class="btn btn-mini btn-move" data-action="down">↓</button>
@@ -681,7 +747,7 @@ function renderRankingPanel() {
         </tr>
       `;
     }).join("")
-    : '<tr><td colspan="7">Aucun collaborateur ne correspond aux filtres actuels.</td></tr>';
+    : '<tr><td colspan="8">Aucun collaborateur ne correspond aux filtres actuels.</td></tr>';
 
   renderRankingJumpOptions(rankings);
   notifyRankChanges(rankings);
@@ -785,7 +851,8 @@ function addRankingEntry() {
     anonymousLabel: `Collaborateur ${nextIndex}`,
     points: 0,
     sales: 0,
-    icon: "🎄"
+    icon: "🎄",
+    avatarUrl: ""
   });
 
   saveData();
@@ -817,14 +884,15 @@ function moveRankingEntry(entryId, direction) {
 
 function exportRankingCsv() {
   const rows = [
-    ["Rang", "Nom", "Alias anonyme", "Points", "Ventes", "Icône"],
+    ["Rang", "Nom", "Alias anonyme", "Points", "Ventes", "Icône", "Avatar"],
     ...getRankingEntries().map((entry, index) => [
       String(index + 1),
       entry.name,
       entry.anonymousLabel,
       String(entry.points),
       String(entry.sales),
-      entry.icon
+      entry.icon,
+      entry.avatarUrl || ""
     ])
   ];
 
@@ -845,7 +913,7 @@ function exportRankingCsv() {
 }
 
 function exportRankingXls() {
-  const headers = ["Rang", "Nom", "Alias anonyme", "Points", "Ventes", "Icône"];
+  const headers = ["Rang", "Nom", "Alias anonyme", "Points", "Ventes", "Icône", "Avatar"];
   const rows = getRankingEntries().map((entry, index) => `
     <tr>
       <td>${index + 1}</td>
@@ -854,6 +922,7 @@ function exportRankingXls() {
       <td>${entry.points}</td>
       <td>${entry.sales}</td>
       <td>${escapeHtml(entry.icon)}</td>
+      <td>${escapeHtml(entry.avatarUrl || "")}</td>
     </tr>
   `);
 
@@ -993,7 +1062,10 @@ function openEditModal(dayNum) {
   elements.editSales.value = day.sales;
   elements.editTitle.value = day.surpriseTitle;
   elements.editDescription.value = day.surpriseDescription;
+  elements.editCongrats.value = day.congratsMessage || "";
   elements.editIcon.value = day.surpriseIcon;
+  elements.editLinkLabel.value = day.surpriseLinkLabel || "";
+  elements.editLinkUrl.value = day.surpriseLinkUrl || "";
   elements.editForceOpen.checked = day.forceOpen;
   elements.editForceClosed.checked = day.forceClosed;
 
@@ -1011,7 +1083,10 @@ function saveEditedCase() {
   day.sales = parseInt(elements.editSales.value, 10) || day.sales;
   day.surpriseTitle = elements.editTitle.value || day.surpriseTitle;
   day.surpriseDescription = elements.editDescription.value || day.surpriseDescription;
+  day.congratsMessage = elements.editCongrats.value || day.congratsMessage;
   day.surpriseIcon = elements.editIcon.value || day.surpriseIcon;
+  day.surpriseLinkLabel = elements.editLinkLabel.value || "";
+  day.surpriseLinkUrl = elements.editLinkUrl.value || "";
   day.forceOpen = elements.editForceOpen.checked;
   day.forceClosed = elements.editForceClosed.checked;
 
@@ -1081,10 +1156,23 @@ function initEvents() {
 
     const logoVal = (elements.logoUrlInput.value || "").trim();
     appData.config.logoDataUrl = logoVal || null;
+    appData.config.countdownTarget = elements.countdownTargetInput.value
+      ? new Date(elements.countdownTargetInput.value).toISOString()
+      : "2026-12-24T00:00:00";
+    appData.config.fontTitle = elements.fontTitleSelect.value || "Mountains of Christmas";
+    appData.config.fontBody = elements.fontBodySelect.value || "Poppins";
+    appData.config.showRankingAvatars = Boolean(elements.showRankingAvatarsToggle.checked);
+    appData.config.theme = {
+      gold: elements.themeGoldInput.value,
+      green: elements.themeGreenInput.value,
+      red: elements.themeRedInput.value,
+      night: elements.themeNightInput.value,
+      snow: elements.themeSnowInput.value
+    };
 
     saveData();
-    addAudit("Messages", "Mise a jour du message direction, jour actif et logo");
-    showMessage("✅ Messages, jour actif et logo enregistres.", false);
+    addAudit("Messages", "Mise a jour du message direction, jour actif, logo et theme");
+    showMessage("✅ Réglages visuels et messages enregistrés.", false);
   });
 
   // Logo file -> base64
@@ -1338,6 +1426,24 @@ function init() {
       elements.logoPreviewWrap.hidden = true;
     }
   }
+  if (elements.countdownTargetInput) {
+    const target = appData.config.countdownTarget || "2026-12-24T00:00:00";
+    elements.countdownTargetInput.value = target.slice(0, 16);
+  }
+  if (elements.fontTitleSelect) {
+    elements.fontTitleSelect.value = appData.config.fontTitle || "Mountains of Christmas";
+  }
+  if (elements.fontBodySelect) {
+    elements.fontBodySelect.value = appData.config.fontBody || "Poppins";
+  }
+  if (elements.showRankingAvatarsToggle) {
+    elements.showRankingAvatarsToggle.checked = Boolean(appData.config.showRankingAvatars);
+  }
+  if (elements.themeGoldInput) elements.themeGoldInput.value = appData.config.theme?.gold || "#ffd700";
+  if (elements.themeGreenInput) elements.themeGreenInput.value = appData.config.theme?.green || "#1b4d2e";
+  if (elements.themeRedInput) elements.themeRedInput.value = appData.config.theme?.red || "#b22222";
+  if (elements.themeNightInput) elements.themeNightInput.value = appData.config.theme?.night || "#0d1b2a";
+  if (elements.themeSnowInput) elements.themeSnowInput.value = appData.config.theme?.snow || "#f8f8ff";
   elements.rankingPointsFilter.value = elements.rankingPointsFilter.value || "0";
   elements.adminRoleSelect.value = sessionStorage.getItem(ADMIN_ROLE_KEY) || "readonly";
 

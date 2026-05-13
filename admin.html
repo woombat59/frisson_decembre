@@ -80,6 +80,7 @@
 
         <section class="admin-panel">
           <h2>📢 Messages et annonces</h2>
+          <p class="panel-hint">Les réglages enregistrés ici sont stockés dans ce navigateur. Sans synchronisation externe, une autre machine ne récupère pas automatiquement le logo, le thème ou les autres personnalisations.</p>
 
           <div class="form-row">
             <div class="form-group">
@@ -97,6 +98,61 @@
                 </label>
               </div>
               <div id="logo-preview-wrap" hidden><img id="logo-preview" alt="Logo" style="max-height:60px;margin-top:6px;border-radius:8px;" /></div>
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="countdown-target-input">⏳ Date du compte à rebours</label>
+              <input id="countdown-target-input" type="datetime-local" />
+            </div>
+            <div class="form-group">
+              <label class="switch-row" for="show-ranking-avatars-toggle">
+                <span>Afficher les photos/avatars dans le classement</span>
+                <input id="show-ranking-avatars-toggle" type="checkbox" />
+              </label>
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="font-title-select">🅰️ Police des titres</label>
+              <select id="font-title-select">
+                <option value="Mountains of Christmas">Mountains of Christmas</option>
+                <option value="Playfair Display">Playfair Display</option>
+                <option value="Bebas Neue">Bebas Neue</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="font-body-select">📝 Police du texte</label>
+              <select id="font-body-select">
+                <option value="Poppins">Poppins</option>
+                <option value="Nunito">Nunito</option>
+                <option value="Montserrat">Montserrat</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="theme-grid">
+            <div class="form-group">
+              <label for="theme-gold-input">Couleur or</label>
+              <input id="theme-gold-input" type="color" value="#ffd700" />
+            </div>
+            <div class="form-group">
+              <label for="theme-green-input">Couleur verte</label>
+              <input id="theme-green-input" type="color" value="#1b4d2e" />
+            </div>
+            <div class="form-group">
+              <label for="theme-red-input">Couleur rouge</label>
+              <input id="theme-red-input" type="color" value="#b22222" />
+            </div>
+            <div class="form-group">
+              <label for="theme-night-input">Fond nuit</label>
+              <input id="theme-night-input" type="color" value="#0d1b2a" />
+            </div>
+            <div class="form-group">
+              <label for="theme-snow-input">Texte clair</label>
+              <input id="theme-snow-input" type="color" value="#f8f8ff" />
             </div>
           </div>
 
@@ -184,6 +240,7 @@
                   <th>Points</th>
                   <th>Ventes</th>
                   <th>Icône</th>
+                  <th>Photo / Avatar</th>
                   <th>Actions</th>
                 </tr>
               </thead>
@@ -305,8 +362,24 @@
         </div>
 
         <div class="form-group">
+          <label for="edit-congrats">Phrase affichée à l'ouverture</label>
+          <textarea id="edit-congrats" rows="2"></textarea>
+        </div>
+
+        <div class="form-group">
           <label for="edit-icon">Icône/Emoji</label>
           <input id="edit-icon" type="text" maxlength="2" />
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="edit-link-label">Texte du lien</label>
+            <input id="edit-link-label" type="text" placeholder="Ex: Ouvrir le document" />
+          </div>
+          <div class="form-group">
+            <label for="edit-link-url">URL du lien</label>
+            <input id="edit-link-url" type="url" placeholder="https://..." />
+          </div>
         </div>
 
         <div class="form-group">

@@ -112,6 +112,12 @@ body {
   padding: 8px 12px;
 }
 
+.theme-grid {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 12px;
+}
+
 .form-group {
   margin-bottom: 14px;
 }
@@ -124,7 +130,8 @@ body {
 }
 
 .form-group input,
-.form-group textarea {
+.form-group textarea,
+.form-group select {
   width: 100%;
   padding: 8px 12px;
   border: 1px solid rgba(255, 255, 255, 0.18);
@@ -137,7 +144,8 @@ body {
 }
 
 .form-group input:focus,
-.form-group textarea:focus {
+.form-group textarea:focus,
+.form-group select:focus {
   outline: none;
   border-color: var(--gold);
   box-shadow: 0 0 8px rgba(255, 215, 0, 0.2);
@@ -452,6 +460,10 @@ body {
 
 .ranking-table .icon-field {
   max-width: 60px;
+}
+
+.ranking-table .avatar-field {
+  min-width: 150px;
 }
 
 .ranking-table .btn-mini {
