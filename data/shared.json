@@ -565,6 +565,12 @@
   ],
   "auditLog": [
     {
+      "id": "a1778694691409112",
+      "action": "Synchronisation",
+      "details": "Publication pour tous via GitHub API",
+      "at": "2026-05-13T17:51:31.409Z"
+    },
+    {
       "id": "a1778694687699189",
       "action": "Messages",
       "details": "Mise a jour du message direction, jour actif, logo et theme",
