@@ -148,7 +148,7 @@
     },
     "showPodium": false,
     "showRankingSection": false,
-    "musicUrl": "https://www.image2url.com/r2/default/audio/1778694354010-1540dc26-6ae9-4177-9773-48845d9396cd.mp3"
+    "musicUrl": "https://www.image2url.com/r2/default/audio/1778696735802-6befb3f9-6fe1-433d-81e2-45bd269e0d36.mp3"
   },
   "days": [
     {
@@ -593,6 +593,18 @@
     }
   ],
   "auditLog": [
+    {
+      "id": "a177869747322192",
+      "action": "Messages",
+      "details": "Mise a jour du message direction, jour actif, logo et theme",
+      "at": "2026-05-13T18:37:53.221Z"
+    },
+    {
+      "id": "a1778697411312888",
+      "action": "Synchronisation",
+      "details": "Publication pour tous via GitHub API",
+      "at": "2026-05-13T18:36:51.312Z"
+    },
     {
       "id": "a1778697408740330",
       "action": "Messages",
@@ -1780,18 +1792,6 @@
       "action": "Calendrier",
       "details": "Sauvegarde de l'agencement du calendrier",
       "at": "2026-05-12T21:00:37.670Z"
-    },
-    {
-      "id": "a1778619637486250",
-      "action": "Calendrier",
-      "details": "Sauvegarde de l'agencement du calendrier",
-      "at": "2026-05-12T21:00:37.486Z"
-    },
-    {
-      "id": "a1778619637278307",
-      "action": "Calendrier",
-      "details": "Sauvegarde de l'agencement du calendrier",
-      "at": "2026-05-12T21:00:37.278Z"
     }
   ]
 }
