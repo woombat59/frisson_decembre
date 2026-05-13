@@ -574,6 +574,18 @@
   ],
   "auditLog": [
     {
+      "id": "a1778706886965519",
+      "action": "Calendrier",
+      "details": "Sauvegarde de l'agencement du calendrier",
+      "at": "2026-05-13T21:14:46.965Z"
+    },
+    {
+      "id": "a177870608144348",
+      "action": "Synchronisation",
+      "details": "Publication pour tous via GitHub API",
+      "at": "2026-05-13T21:01:21.443Z"
+    },
+    {
       "id": "a1778706076597873",
       "action": "Calendrier",
       "details": "Sauvegarde de l'agencement du calendrier",
@@ -1760,18 +1772,6 @@
       "action": "Classement",
       "details": "Sauvegarde globale du classement",
       "at": "2026-05-13T17:01:32.899Z"
-    },
-    {
-      "id": "a1778691681009449",
-      "action": "Classement",
-      "details": "Edition du champ points",
-      "at": "2026-05-13T17:01:21.009Z"
-    },
-    {
-      "id": "a1778691668899436",
-      "action": "Classement",
-      "details": "Sauvegarde globale du classement",
-      "at": "2026-05-13T17:01:08.899Z"
     }
   ]
 }
