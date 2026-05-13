@@ -1,7 +1,7 @@
 const STORAGE_KEY = "avent-performance-data-v1";
 const CELEBRATED_KEY = "avent-performance-celebrated";
 const ADMIN_PATH = "admin.html";
-const APP_VERSION = "v2026.05.13-3";
+const APP_VERSION = "v2026.05.13-4";
 const DATA_SOURCE_URL = "data/shared.json";
 const CALENDAR_GRID_ROWS = 10;
 const CALENDAR_GRID_COLS = 9;
@@ -329,8 +329,8 @@ function getCountdownTarget(config) {
 }
 
 function renderRankingIdentity(entry, showAvatar, className, label) {
-  if (showAvatar && entry.avatarUrl) {
-    return `<img class="${className}" src="${entry.avatarUrl}" alt="${label}" />`;
+  if (entry.avatarUrl) {
+    return `<img class="${className}" src="${entry.avatarUrl}" alt="${label}" onerror="this.style.display='none'" />`;
   }
   return `<div class="${className} emoji">${entry.icon || "🎄"}</div>`;
 }
