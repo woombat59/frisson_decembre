@@ -335,6 +335,16 @@ function renderRankingIdentity(entry, showAvatar, className, label) {
   return `<div class="${className} emoji">${entry.icon || "🎄"}</div>`;
 }
 
+function isValidHttpUrl(value) {
+  if (!value || typeof value !== "string") return false;
+  try {
+    const parsed = new URL(value.trim());
+    return parsed.protocol === "http:" || parsed.protocol === "https:";
+  } catch {
+    return false;
+  }
+}
+
 function updateCountdown() {
   const now = new Date();
   const target = getCountdownTarget(appState?.data?.config || loadData().config);
@@ -393,6 +403,11 @@ function cardInnerHTML(dayData, state) {
 }
 
 function openModal(dayData) {
+  if (!elements.modal || typeof elements.modal.showModal !== "function") return;
+  if (!elements.modalDay || !elements.modalTitle || !elements.modalIcon || !elements.modalDescription || !elements.modalUnlocked || !elements.modalCongrats) {
+    return;
+  }
+
   elements.modalDay.textContent = `Jour ${dayData.day}`;
   elements.modalTitle.textContent = dayData.surpriseTitle;
   elements.modalIcon.textContent = dayData.surpriseIcon || "🎁";
@@ -400,8 +415,9 @@ function openModal(dayData) {
   elements.modalUnlocked.textContent = `Debloquee le ${formatDate(dayData.unlockedAt || dayData.date)}`;
   elements.modalCongrats.textContent = dayData.congratsMessage;
   if (elements.modalLink) {
-    if (dayData.surpriseLinkUrl) {
-      elements.modalLink.href = dayData.surpriseLinkUrl;
+    const link = (dayData.surpriseLinkUrl || "").trim();
+    if (isValidHttpUrl(link)) {
+      elements.modalLink.href = link;
       elements.modalLink.textContent = dayData.surpriseLinkLabel || "Ouvrir le lien";
       elements.modalLink.hidden = false;
     } else {
@@ -984,48 +1000,69 @@ function render() {
 }
 
 function maybeRefresh() {
-  const latest = localStorage.getItem(STORAGE_KEY) || "";
-  if (latest !== hashSnapshot) {
-    hashSnapshot = latest;
-    render();
-    return;
-  }
+  try {
+    const latest = localStorage.getItem(STORAGE_KEY) || "";
+    if (latest !== hashSnapshot) {
+      hashSnapshot = latest;
+      render();
+      return;
+    }
 
-  updateCountdown();
+    updateCountdown();
+  } catch (error) {
+    console.error("Erreur maybeRefresh:", error);
+  }
 }
 
 function initEvents() {
-  elements.closeModal.addEventListener("click", () => elements.modal.close());
-  elements.modal.addEventListener("click", (event) => {
-    const rect = elements.modal.getBoundingClientRect();
-    const inDialog =
-      event.clientX >= rect.left &&
-      event.clientX <= rect.right &&
-      event.clientY >= rect.top &&
-      event.clientY <= rect.bottom;
-    if (!inDialog) elements.modal.close();
-  });
+  if (elements.closeModal && elements.modal) {
+    elements.closeModal.addEventListener("click", () => elements.modal.close());
+  }
 
-  elements.musicToggle.addEventListener("click", () => {
-    const active = elements.musicToggle.getAttribute("aria-pressed") === "true";
-    if (active) {
-      stopAmbiance();
-    } else {
-      startAmbiance();
-    }
-  });
+  if (elements.modal) {
+    elements.modal.addEventListener("click", (event) => {
+      const rect = elements.modal.getBoundingClientRect();
+      const inDialog =
+        event.clientX >= rect.left &&
+        event.clientX <= rect.right &&
+        event.clientY >= rect.top &&
+        event.clientY <= rect.bottom;
+      if (!inDialog) elements.modal.close();
+    });
+  }
 
-  elements.adminLink.addEventListener("click", () => {
-    window.open(ADMIN_PATH, "_blank", "noopener");
-  });
+  if (elements.musicToggle) {
+    elements.musicToggle.addEventListener("click", () => {
+      const active = elements.musicToggle.getAttribute("aria-pressed") === "true";
+      if (active) {
+        stopAmbiance();
+      } else {
+        startAmbiance();
+      }
+    });
+  }
+
+  if (elements.adminLink) {
+    elements.adminLink.addEventListener("click", () => {
+      const popup = window.open(ADMIN_PATH, "_blank", "noopener");
+      if (!popup) {
+        window.location.href = ADMIN_PATH;
+      }
+    });
+  }
 }
 
 function init() {
   const seeded = loadData();
   hashSnapshot = JSON.stringify(seeded);
-  render();
   initEvents();
   startBackgroundFX();
+
+  try {
+    render();
+  } catch (error) {
+    console.error("Erreur render initial:", error);
+  }
 
   setInterval(maybeRefresh, 30000);
   setInterval(updateCountdown, 1000);
