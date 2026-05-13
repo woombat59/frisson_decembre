@@ -490,6 +490,21 @@
       "forceOpen": false,
       "surpriseLinkLabel": "",
       "surpriseLinkUrl": ""
+    },
+    {
+      "day": 24,
+      "date": "2026-12-24",
+      "surpriseTitle": "Surprise 24",
+      "objective": 0,
+      "sales": 0,
+      "surpriseDescription": "",
+      "surpriseIcon": "🎁",
+      "congratsMessage": "Bravo equipe, la case 24 est debloquee grace a votre energie.",
+      "surpriseLinkLabel": "",
+      "surpriseLinkUrl": "",
+      "unlockedAt": null,
+      "forceClosed": false,
+      "forceOpen": false
     }
   ],
   "rankings": [
@@ -558,6 +573,18 @@
     }
   ],
   "auditLog": [
+    {
+      "id": "a1778704977676141",
+      "action": "Cases",
+      "details": "Case 24 ajoutée (total : 24)",
+      "at": "2026-05-13T20:42:57.676Z"
+    },
+    {
+      "id": "a1778704941574106",
+      "action": "Synchronisation",
+      "details": "Publication pour tous via GitHub API",
+      "at": "2026-05-13T20:42:21.574Z"
+    },
     {
       "id": "a1778704919349439",
       "action": "Messages",
@@ -1745,18 +1772,6 @@
       "action": "Classement",
       "details": "Ajout d'un collaborateur",
       "at": "2026-05-12T21:10:55.334Z"
-    },
-    {
-      "id": "a177862025522231",
-      "action": "Classement",
-      "details": "Ajout d'un collaborateur",
-      "at": "2026-05-12T21:10:55.222Z"
-    },
-    {
-      "id": "a1778620255166415",
-      "action": "Classement",
-      "details": "Ajout d'un collaborateur",
-      "at": "2026-05-12T21:10:55.166Z"
     }
   ]
 }
