@@ -565,6 +565,18 @@
   ],
   "auditLog": [
     {
+      "id": "a1778694928280643",
+      "action": "Classement",
+      "details": "Sauvegarde globale du classement",
+      "at": "2026-05-13T17:55:28.280Z"
+    },
+    {
+      "id": "a1778694807869375",
+      "action": "Synchronisation",
+      "details": "Publication pour tous via GitHub API",
+      "at": "2026-05-13T17:53:27.869Z"
+    },
+    {
       "id": "a1778694802397228",
       "action": "Messages",
       "details": "Mise a jour du message direction, jour actif, logo et theme",
