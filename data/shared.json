@@ -561,9 +561,36 @@
       "sales": 0,
       "icon": "🎄",
       "avatarUrl": ""
+    },
+    {
+      "id": "r1778695357930",
+      "name": "Collaborateur 7",
+      "anonymousLabel": "Collaborateur 7",
+      "points": 0,
+      "sales": 0,
+      "icon": "🎄",
+      "avatarUrl": ""
     }
   ],
   "auditLog": [
+    {
+      "id": "a1778695362914214",
+      "action": "Classement",
+      "details": "Sauvegarde globale du classement",
+      "at": "2026-05-13T18:02:42.914Z"
+    },
+    {
+      "id": "a177869535793531",
+      "action": "Classement",
+      "details": "Ajout d'un collaborateur",
+      "at": "2026-05-13T18:02:37.935Z"
+    },
+    {
+      "id": "a1778694938686114",
+      "action": "Synchronisation",
+      "details": "Publication pour tous via GitHub API",
+      "at": "2026-05-13T17:55:38.686Z"
+    },
     {
       "id": "a1778694928280643",
       "action": "Classement",
