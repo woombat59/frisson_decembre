@@ -1,8 +1,8 @@
 const STORAGE_KEY = "avent-performance-data-v1";
 const CELEBRATED_KEY = "avent-performance-celebrated";
 const ADMIN_PATH = "admin.html";
-const APP_VERSION = "v2026.05.13-8";
-const DATA_SOURCE_URL = "https://cdn.jsdelivr.net/gh/woombat59/website_edudu@main/data/shared.json";
+const APP_VERSION = "v2026.05.13-9";
+const DATA_SOURCE_URL = "https://api.github.com/repos/woombat59/website_edudu/contents/data/shared.json";
 const CALENDAR_GRID_ROWS = 10;
 const CALENDAR_GRID_COLS = 9;
 
@@ -57,6 +57,8 @@ let audioCtx = null;
 let bgAudio = null;
 let currentMusicUrl = "";
 let hashSnapshot = "";
+let dataETag = null;
+let lastKnownData = null;
 let toastTimer = null;
 let activeParticles = [];
 
@@ -255,21 +257,33 @@ function normalizeData(data) {
 
 async function loadData() {
   try {
-    const response = await fetch(`${DATA_SOURCE_URL}?t=${Date.now()}`, { cache: "no-store" });
-    if (!response.ok) {
-      throw new Error(`HTTP ${response.status}`);
+    const headers = { Accept: "application/vnd.github+json" };
+    if (dataETag) headers["If-None-Match"] = dataETag;
+    const response = await fetch(DATA_SOURCE_URL, { cache: "no-store", headers });
+
+    if (response.status === 304) {
+      // Données inchangées — retourne le dernier connu (ne compte pas contre le rate limit)
+      return lastKnownData;
     }
 
-    const parsed = await response.json();
+    if (!response.ok) throw new Error(`HTTP ${response.status}`);
+
+    const newETag = response.headers.get("ETag");
+    if (newETag) dataETag = newETag;
+
+    const apiData = await response.json();
+    const decoded = atob(apiData.content.replace(/\n/g, ""));
+    const parsed = JSON.parse(decoded);
     const normalized = normalizeData(parsed?.data || parsed);
     if (!normalized.days || normalized.days.length !== 24) {
       throw new Error("invalid shared data");
     }
 
+    lastKnownData = normalized;
     return normalized;
   } catch {
-    // Fallback de secours si le fichier partagé est indisponible.
-    return normalizeData(seededData());
+    // Fallback si l’API est indisponible
+    return lastKnownData || normalizeData(seededData());
   }
 }
 
