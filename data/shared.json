@@ -582,7 +582,7 @@
       "name": "Collaborateur 9",
       "anonymousLabel": "Collaborateur 9",
       "points": 0,
-      "sales": 0,
+      "sales": 4,
       "icon": "🎄",
       "avatarUrl": ""
     },
@@ -590,7 +590,7 @@
       "id": "r1778620255220",
       "name": "Collaborateur 10",
       "anonymousLabel": "Collaborateur 10",
-      "points": 0,
+      "points": 300,
       "sales": 0,
       "icon": "🎄",
       "avatarUrl": ""
@@ -723,6 +723,42 @@
     }
   ],
   "auditLog": [
+    {
+      "id": "a1778693358045367",
+      "action": "Classement",
+      "details": "Sauvegarde globale du classement",
+      "at": "2026-05-13T17:29:18.045Z"
+    },
+    {
+      "id": "a1778693357983198",
+      "action": "Classement",
+      "details": "Sauvegarde globale du classement",
+      "at": "2026-05-13T17:29:17.983Z"
+    },
+    {
+      "id": "a1778693355359669",
+      "action": "Classement",
+      "details": "Edition du champ sales",
+      "at": "2026-05-13T17:29:15.359Z"
+    },
+    {
+      "id": "a1778693350802837",
+      "action": "Classement",
+      "details": "Edition du champ points",
+      "at": "2026-05-13T17:29:10.802Z"
+    },
+    {
+      "id": "a1778693166987749",
+      "action": "Classement",
+      "details": "Sauvegarde globale du classement",
+      "at": "2026-05-13T17:26:06.987Z"
+    },
+    {
+      "id": "a1778693151758945",
+      "action": "Synchronisation",
+      "details": "Publication pour tous via GitHub API",
+      "at": "2026-05-13T17:25:51.758Z"
+    },
     {
       "id": "a177869313163453",
       "action": "Classement",
