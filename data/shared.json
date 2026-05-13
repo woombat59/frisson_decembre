@@ -110,18 +110,28 @@
       },
       {
         "day": 22,
-        "row": 2,
-        "col": 6
+        "row": 1,
+        "col": 7
       },
       {
         "day": 23,
         "row": 2,
-        "col": 4
+        "col": 2
       },
       {
         "day": 24,
-        "row": 1,
-        "col": 5
+        "row": 2,
+        "col": 8
+      },
+      {
+        "day": 25,
+        "row": 4,
+        "col": 9
+      },
+      {
+        "day": 26,
+        "row": 8,
+        "col": 9
       }
     ],
     "rankingMode": "named",
@@ -505,6 +515,36 @@
       "unlockedAt": null,
       "forceClosed": false,
       "forceOpen": false
+    },
+    {
+      "day": 25,
+      "date": "2026-12-25",
+      "surpriseTitle": "Surprise 25",
+      "objective": 0,
+      "sales": 0,
+      "surpriseDescription": "",
+      "surpriseIcon": "🎁",
+      "congratsMessage": "Bravo equipe, la case 25 est debloquee grace a votre energie.",
+      "surpriseLinkLabel": "",
+      "surpriseLinkUrl": "",
+      "unlockedAt": null,
+      "forceClosed": false,
+      "forceOpen": false
+    },
+    {
+      "day": 26,
+      "date": "2026-12-26",
+      "surpriseTitle": "Surprise 26",
+      "objective": 0,
+      "sales": 0,
+      "surpriseDescription": "",
+      "surpriseIcon": "🎁",
+      "congratsMessage": "Bravo equipe, la case 26 est debloquee grace a votre energie.",
+      "surpriseLinkLabel": "",
+      "surpriseLinkUrl": "",
+      "unlockedAt": null,
+      "forceClosed": false,
+      "forceOpen": false
     }
   ],
   "rankings": [
@@ -573,6 +613,54 @@
     }
   ],
   "auditLog": [
+    {
+      "id": "a1778705105300463",
+      "action": "Calendrier",
+      "details": "Sauvegarde de l'agencement du calendrier",
+      "at": "2026-05-13T20:45:05.300Z"
+    },
+    {
+      "id": "a1778705091459591",
+      "action": "Calendrier",
+      "details": "Reinitialisation de l'agencement du calendrier",
+      "at": "2026-05-13T20:44:51.459Z"
+    },
+    {
+      "id": "a17787050912514",
+      "action": "Calendrier",
+      "details": "Reinitialisation de l'agencement du calendrier",
+      "at": "2026-05-13T20:44:51.251Z"
+    },
+    {
+      "id": "a1778705090420122",
+      "action": "Calendrier",
+      "details": "Reinitialisation de l'agencement du calendrier",
+      "at": "2026-05-13T20:44:50.420Z"
+    },
+    {
+      "id": "a1778705088787454",
+      "action": "Calendrier",
+      "details": "Reinitialisation de l'agencement du calendrier",
+      "at": "2026-05-13T20:44:48.787Z"
+    },
+    {
+      "id": "a1778705080969138",
+      "action": "Cases",
+      "details": "Case 26 ajoutée (total : 26)",
+      "at": "2026-05-13T20:44:40.969Z"
+    },
+    {
+      "id": "a1778705055741619",
+      "action": "Cases",
+      "details": "Case 25 ajoutée (total : 25)",
+      "at": "2026-05-13T20:44:15.741Z"
+    },
+    {
+      "id": "a1778704994133868",
+      "action": "Synchronisation",
+      "details": "Publication pour tous via GitHub API",
+      "at": "2026-05-13T20:43:14.133Z"
+    },
     {
       "id": "a1778704977676141",
       "action": "Cases",
@@ -1724,54 +1812,6 @@
       "action": "Classement",
       "details": "Ajout d'un collaborateur",
       "at": "2026-05-12T21:10:56.222Z"
-    },
-    {
-      "id": "a177862025616643",
-      "action": "Classement",
-      "details": "Ajout d'un collaborateur",
-      "at": "2026-05-12T21:10:56.166Z"
-    },
-    {
-      "id": "a1778620256094980",
-      "action": "Classement",
-      "details": "Ajout d'un collaborateur",
-      "at": "2026-05-12T21:10:56.094Z"
-    },
-    {
-      "id": "a1778620255910618",
-      "action": "Classement",
-      "details": "Ajout d'un collaborateur",
-      "at": "2026-05-12T21:10:55.910Z"
-    },
-    {
-      "id": "a1778620255742521",
-      "action": "Classement",
-      "details": "Ajout d'un collaborateur",
-      "at": "2026-05-12T21:10:55.742Z"
-    },
-    {
-      "id": "a1778620255670596",
-      "action": "Classement",
-      "details": "Ajout d'un collaborateur",
-      "at": "2026-05-12T21:10:55.670Z"
-    },
-    {
-      "id": "a1778620255558319",
-      "action": "Classement",
-      "details": "Ajout d'un collaborateur",
-      "at": "2026-05-12T21:10:55.558Z"
-    },
-    {
-      "id": "a1778620255398628",
-      "action": "Classement",
-      "details": "Ajout d'un collaborateur",
-      "at": "2026-05-12T21:10:55.398Z"
-    },
-    {
-      "id": "a1778620255334783",
-      "action": "Classement",
-      "details": "Ajout d'un collaborateur",
-      "at": "2026-05-12T21:10:55.334Z"
     }
   ]
 }
