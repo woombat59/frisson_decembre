@@ -39,6 +39,9 @@ const elements = {
   themeRedInput: document.querySelector("#theme-red-input"),
   themeNightInput: document.querySelector("#theme-night-input"),
   themeSnowInput: document.querySelector("#theme-snow-input"),
+  exportAllBtn: document.querySelector("#export-all-btn"),
+  importAllBtn: document.querySelector("#import-all-btn"),
+  importAllFile: document.querySelector("#import-all-file"),
   saveMessagesBtn: document.querySelector("#save-messages-btn"),
   rankingModeToggle: document.querySelector("#ranking-mode-toggle"),
   rankingSortMode: document.querySelector("#ranking-sort-mode"),
@@ -285,6 +288,95 @@ function loadData() {
 
 function saveData() {
   localStorage.setItem(STORAGE_KEY, JSON.stringify(appData));
+}
+
+function fillConfigFieldsFromData() {
+  elements.directionMessage.value = appData.config.directionMessage || "";
+  elements.flashAnnouncement.value = appData.config.flashAnnouncement || "";
+  if (elements.activeDayInput) {
+    elements.activeDayInput.value = appData.config.activeDay ? String(appData.config.activeDay) : "";
+  }
+  if (elements.logoUrlInput) {
+    const logoUrl = appData.config.logoDataUrl || "";
+    elements.logoUrlInput.value = logoUrl;
+    if (logoUrl && elements.logoPreview) {
+      elements.logoPreview.src = logoUrl;
+      if (elements.logoPreviewWrap) elements.logoPreviewWrap.hidden = false;
+    } else if (elements.logoPreviewWrap) {
+      elements.logoPreviewWrap.hidden = true;
+    }
+  }
+  if (elements.countdownTargetInput) {
+    const target = appData.config.countdownTarget || "2026-12-24T00:00:00";
+    elements.countdownTargetInput.value = target.slice(0, 16);
+  }
+  if (elements.fontTitleSelect) {
+    elements.fontTitleSelect.value = appData.config.fontTitle || "Mountains of Christmas";
+  }
+  if (elements.fontBodySelect) {
+    elements.fontBodySelect.value = appData.config.fontBody || "Poppins";
+  }
+  if (elements.showRankingAvatarsToggle) {
+    elements.showRankingAvatarsToggle.checked = Boolean(appData.config.showRankingAvatars);
+  }
+  if (elements.themeGoldInput) elements.themeGoldInput.value = appData.config.theme?.gold || "#ffd700";
+  if (elements.themeGreenInput) elements.themeGreenInput.value = appData.config.theme?.green || "#1b4d2e";
+  if (elements.themeRedInput) elements.themeRedInput.value = appData.config.theme?.red || "#b22222";
+  if (elements.themeNightInput) elements.themeNightInput.value = appData.config.theme?.night || "#0d1b2a";
+  if (elements.themeSnowInput) elements.themeSnowInput.value = appData.config.theme?.snow || "#f8f8ff";
+}
+
+function exportAllData() {
+  const payload = {
+    meta: {
+      appVersion: APP_VERSION,
+      exportedAt: new Date().toISOString(),
+      format: "avent-performance-full-config-v1"
+    },
+    data: appData
+  };
+
+  const json = JSON.stringify(payload, null, 2);
+  const blob = new Blob([json], { type: "application/json;charset=utf-8" });
+  const url = URL.createObjectURL(blob);
+  const link = document.createElement("a");
+  link.href = url;
+  link.download = `avent-performance-config-${new Date().toISOString().slice(0, 10)}.json`;
+  document.body.appendChild(link);
+  link.click();
+  link.remove();
+  URL.revokeObjectURL(url);
+}
+
+async function importAllDataFromFile(file) {
+  const text = await file.text();
+  let parsed;
+
+  try {
+    parsed = JSON.parse(text);
+  } catch {
+    throw new Error("Fichier JSON invalide.");
+  }
+
+  const rawData = parsed?.data || parsed;
+  const normalized = normalizeData(rawData);
+  if (!Array.isArray(normalized.days) || normalized.days.length !== 24) {
+    throw new Error("Configuration invalide : 24 cases requises.");
+  }
+
+  appData = normalized;
+  currentRankingPage = 1;
+  selectedRankingId = "";
+  previousRanks = new Map();
+  saveData();
+  fillConfigFieldsFromData();
+  renderCasesTable();
+  renderCalendarPreview();
+  renderRankingPanel();
+  renderStats();
+  renderAuditLog();
+  applyRoleMode();
+  updateDailyFields();
 }
 
 function isReadOnlyMode() {
@@ -1177,6 +1269,32 @@ function initEvents() {
     showMessage("✅ Réglages visuels et messages enregistrés.", false);
   });
 
+  elements.exportAllBtn.addEventListener("click", () => {
+    exportAllData();
+    addAudit("Synchronisation", "Export de la configuration complete (JSON)");
+    showMessage("✅ Export JSON genere.", false);
+  });
+
+  elements.importAllBtn.addEventListener("click", () => {
+    if (guardReadOnlyAction()) return;
+    elements.importAllFile.click();
+  });
+
+  elements.importAllFile.addEventListener("change", async () => {
+    const [file] = elements.importAllFile.files || [];
+    if (!file) return;
+
+    try {
+      await importAllDataFromFile(file);
+      addAudit("Synchronisation", `Import de la configuration complete depuis ${file.name}`);
+      showMessage("✅ Configuration complete importee avec succes.", false);
+    } catch (error) {
+      showMessage(error instanceof Error ? error.message : "Import complet impossible.", true);
+    } finally {
+      elements.importAllFile.value = "";
+    }
+  });
+
   // Logo file -> base64
   if (elements.logoFileInput) {
     elements.logoFileInput.addEventListener("change", (e) => {
@@ -1416,40 +1534,7 @@ function init() {
 
   const today = new Date().toISOString().slice(0, 10);
   elements.datePicker.value = today;
-
-  elements.directionMessage.value = appData.config.directionMessage || "";
-  elements.flashAnnouncement.value = appData.config.flashAnnouncement || "";
-  if (elements.activeDayInput) {
-    elements.activeDayInput.value = appData.config.activeDay ? String(appData.config.activeDay) : "";
-  }
-  if (elements.logoUrlInput) {
-    const logoUrl = appData.config.logoDataUrl || "";
-    elements.logoUrlInput.value = logoUrl;
-    if (logoUrl && elements.logoPreview) {
-      elements.logoPreview.src = logoUrl;
-      if (elements.logoPreviewWrap) elements.logoPreviewWrap.hidden = false;
-    } else if (elements.logoPreviewWrap) {
-      elements.logoPreviewWrap.hidden = true;
-    }
-  }
-  if (elements.countdownTargetInput) {
-    const target = appData.config.countdownTarget || "2026-12-24T00:00:00";
-    elements.countdownTargetInput.value = target.slice(0, 16);
-  }
-  if (elements.fontTitleSelect) {
-    elements.fontTitleSelect.value = appData.config.fontTitle || "Mountains of Christmas";
-  }
-  if (elements.fontBodySelect) {
-    elements.fontBodySelect.value = appData.config.fontBody || "Poppins";
-  }
-  if (elements.showRankingAvatarsToggle) {
-    elements.showRankingAvatarsToggle.checked = Boolean(appData.config.showRankingAvatars);
-  }
-  if (elements.themeGoldInput) elements.themeGoldInput.value = appData.config.theme?.gold || "#ffd700";
-  if (elements.themeGreenInput) elements.themeGreenInput.value = appData.config.theme?.green || "#1b4d2e";
-  if (elements.themeRedInput) elements.themeRedInput.value = appData.config.theme?.red || "#b22222";
-  if (elements.themeNightInput) elements.themeNightInput.value = appData.config.theme?.night || "#0d1b2a";
-  if (elements.themeSnowInput) elements.themeSnowInput.value = appData.config.theme?.snow || "#f8f8ff";
+  fillConfigFieldsFromData();
   elements.rankingPointsFilter.value = elements.rankingPointsFilter.value || "0";
   elements.adminRoleSelect.value = sessionStorage.getItem(ADMIN_ROLE_KEY) || "readonly";
 

@@ -178,6 +178,13 @@
           <button id="save-messages-btn" class="btn btn-primary">
             💾 Enregistrer les messages
           </button>
+
+          <div class="sync-actions">
+            <button id="export-all-btn" class="btn btn-secondary">⬇️ Export configuration complète (JSON)</button>
+            <button id="import-all-btn" class="btn btn-secondary">⬆️ Import configuration complète (JSON)</button>
+            <input id="import-all-file" type="file" accept=".json,application/json" hidden />
+          </div>
+          <p class="field-hint">Utilise export/import pour cloner exactement le même rendu sur un autre navigateur/ordinateur.</p>
         </section>
 
         <section class="admin-panel full-width">

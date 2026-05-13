@@ -123,6 +123,13 @@ body {
   padding: 8px 12px;
 }
 
+.sync-actions {
+  margin-top: 12px;
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
 .theme-grid {
   display: grid;
   grid-template-columns: repeat(5, minmax(0, 1fr));
