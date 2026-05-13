@@ -2,7 +2,7 @@ const STORAGE_KEY = "avent-performance-data-v1";
 const READONLY_PASSWORD = "eduneo2026";
 const EDIT_PASSWORD = "mdp";
 const ADMIN_ROLE_KEY = "admin-role-mode";
-const APP_VERSION = "v2026.05.13-10.1";
+const APP_VERSION = "v2026.05.13-10.2";
 const GITHUB_REPO = "woombat59/website_edudu";
 const SHARED_JSON_PATH = "data/shared.json";
 const CALENDAR_GRID_ROWS = 20;
@@ -54,6 +54,7 @@ const elements = {
   exportAllBtn: document.querySelector("#export-all-btn"),
   importAllBtn: document.querySelector("#import-all-btn"),
   importAllFile: document.querySelector("#import-all-file"),
+  importFromGithubBtn: document.querySelector("#import-from-github-btn"),
   saveMessagesBtn: document.querySelector("#save-messages-btn"),
   rankingModeToggle: document.querySelector("#ranking-mode-toggle"),
   rankingSortMode: document.querySelector("#ranking-sort-mode"),
@@ -1550,6 +1551,10 @@ function initEvents() {
     elements.importAllFile.click();
   });
 
+  if (elements.importFromGithubBtn) {
+    elements.importFromGithubBtn.addEventListener("click", () => importFromGitHub());
+  }
+
   elements.importAllFile.addEventListener("change", async () => {
     const [file] = elements.importAllFile.files || [];
     if (!file) return;
@@ -1821,23 +1826,55 @@ function showMessage(msg, isError = false) {
   }, 3200);
 }
 
-async function syncFromGitHub() {
+async function fetchAndStoreFromGitHub() {
+  const url = `https://api.github.com/repos/${GITHUB_REPO}/contents/${SHARED_JSON_PATH}`;
+  const resp = await fetch(url, {
+    headers: {
+      "Accept": "application/vnd.github+json",
+      "X-GitHub-Api-Version": "2022-11-28"
+    },
+    cache: "no-store"
+  });
+  if (!resp.ok) throw new Error(`GitHub API ${resp.status}`);
+  const meta = await resp.json();
+  const decoded = decodeURIComponent(escape(atob(meta.content.replace(/\n/g, ""))));
+  const remote = JSON.parse(decoded);
+  localStorage.setItem(STORAGE_KEY, JSON.stringify(remote));
+}
+
+// Appelé au démarrage : synchronise UNIQUEMENT si le localStorage est vide
+async function syncFromGitHubIfEmpty() {
+  if (localStorage.getItem(STORAGE_KEY)) return; // localStorage a des données → on les respecte
   try {
-    const url = `https://api.github.com/repos/${GITHUB_REPO}/contents/${SHARED_JSON_PATH}`;
-    const resp = await fetch(url, {
-      headers: {
-        "Accept": "application/vnd.github+json",
-        "X-GitHub-Api-Version": "2022-11-28"
-      },
-      cache: "no-store"
-    });
-    if (!resp.ok) return;
-    const meta = await resp.json();
-    const decoded = decodeURIComponent(escape(atob(meta.content.replace(/\n/g, ""))));
-    const remote = JSON.parse(decoded);
-    localStorage.setItem(STORAGE_KEY, JSON.stringify(remote));
+    await fetchAndStoreFromGitHub();
   } catch {
-    // Ignore — on utilisera le localStorage existant en cas d'erreur
+    // Ignore — loadData() affichera un message d'erreur si localStorage est toujours vide
+  }
+}
+
+// Appelé manuellement : force la réimportation depuis GitHub (écrase le localStorage)
+async function importFromGitHub() {
+  if (guardReadOnlyAction()) return;
+  const btn = elements.importFromGithubBtn;
+  const originalText = btn ? btn.textContent : "";
+  if (btn) { btn.disabled = true; btn.textContent = "⏳ Import en cours…"; }
+  try {
+    await fetchAndStoreFromGitHub();
+    appData = normalizeData(JSON.parse(localStorage.getItem(STORAGE_KEY)));
+    saveData();
+    fillConfigFieldsFromData();
+    renderCasesTable();
+    renderCalendarPreview();
+    renderRankingPanel();
+    renderStats();
+    renderAuditLog();
+    updateDailyFields();
+    addAudit("Synchronisation", "Réimportation forcée depuis GitHub");
+    showMessage("✅ Données réimportées depuis le serveur.", false);
+  } catch (e) {
+    showMessage(`❌ Impossible d'importer depuis GitHub : ${e.message}`, true);
+  } finally {
+    if (btn) { btn.disabled = false; btn.textContent = originalText; }
   }
 }
 
@@ -1848,7 +1885,7 @@ async function init() {
     elements.adminAppVersion.textContent = `Version ${APP_VERSION}`;
   }
 
-  await syncFromGitHub();
+  await syncFromGitHubIfEmpty();
 
   if (!loadData()) return;
 

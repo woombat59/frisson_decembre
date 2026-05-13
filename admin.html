@@ -10,7 +10,7 @@
       href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="css/admin.css?v=20260513-10.1" />
+    <link rel="stylesheet" href="css/admin.css?v=20260513-10.2" />
   </head>
   <body>
     <div class="admin-shell">
@@ -215,9 +215,10 @@
           <div class="sync-actions">
             <button id="export-all-btn" class="btn btn-secondary">⬇️ Export JSON (sauvegarde locale)</button>
             <button id="import-all-btn" class="btn btn-secondary">⬆️ Import JSON</button>
+            <button id="import-from-github-btn" class="btn btn-secondary">🔄 Réimporter depuis GitHub</button>
             <input id="import-all-file" type="file" accept=".json,application/json" hidden />
           </div>
-          <p class="field-hint">Utilise export/import pour une sauvegarde locale ou pour copier la config sur un autre navigateur.</p>
+          <p class="field-hint">Utilise export/import pour une sauvegarde locale ou pour copier la config sur un autre navigateur. &laquo;&nbsp;Réimporter depuis GitHub&nbsp;&raquo; écrase le contenu local par la dernière version publiée.</p>
         </section>
 
         <section class="admin-panel full-width">
@@ -461,6 +462,6 @@
       </div>
     </dialog>
 
-    <script src="js/admin.js?v=20260513-10.1"></script>
+    <script src="js/admin.js?v=20260513-10.2"></script>
   </body>
 </html>
