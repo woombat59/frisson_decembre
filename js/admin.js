@@ -2,6 +2,7 @@ const STORAGE_KEY = "avent-performance-data-v1";
 const READONLY_PASSWORD = "eduneo2026";
 const EDIT_PASSWORD = "mdp";
 const ADMIN_ROLE_KEY = "admin-role-mode";
+const APP_VERSION = "v2026.05.13-1";
 const CALENDAR_GRID_ROWS = 10;
 const CALENDAR_GRID_COLS = 9;
 const layoutColumnsByCount = {
@@ -14,6 +15,7 @@ const layoutColumnsByCount = {
 
 const elements = {
   adminShell: document.querySelector(".admin-shell"),
+  adminAppVersion: document.querySelector("#admin-app-version"),
   adminRoleSelect: document.querySelector("#admin-role-select"),
   readonlyBanner: document.querySelector("#readonly-banner"),
   datePicker: document.querySelector("#date-picker"),
@@ -1405,6 +1407,10 @@ function showMessage(msg, isError = false) {
 
 function init() {
   if (!checkAuth()) return;
+
+  if (elements.adminAppVersion) {
+    elements.adminAppVersion.textContent = `Version ${APP_VERSION}`;
+  }
 
   if (!loadData()) return;
 

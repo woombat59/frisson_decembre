@@ -1,6 +1,7 @@
 const STORAGE_KEY = "avent-performance-data-v1";
 const CELEBRATED_KEY = "avent-performance-celebrated";
 const ADMIN_PATH = "admin.html";
+const APP_VERSION = "v2026.05.13-1";
 const CALENDAR_GRID_ROWS = 10;
 const CALENDAR_GRID_COLS = 9;
 
@@ -43,6 +44,7 @@ const elements = {
   modalCongrats: document.querySelector("#modal-congrats"),
   modalLink: document.querySelector("#modal-link"),
   statusToast: document.querySelector("#status-toast"),
+  appVersion: document.querySelector("#app-version"),
   musicToggle: document.querySelector("#music-toggle"),
   adminLink: document.querySelector("#admin-link"),
   snowCanvas: document.querySelector("#snow-canvas")
@@ -1053,6 +1055,10 @@ function initEvents() {
 }
 
 function init() {
+  if (elements.appVersion) {
+    elements.appVersion.textContent = `Version ${APP_VERSION}`;
+  }
+
   const seeded = loadData();
   hashSnapshot = JSON.stringify(seeded);
   initEvents();

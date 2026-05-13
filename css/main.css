@@ -647,6 +647,21 @@ h1 {
   bottom: 78px;
 }
 
+.app-version-badge {
+  position: fixed;
+  right: 18px;
+  bottom: 136px;
+  z-index: 7;
+  padding: 6px 10px;
+  border-radius: 999px;
+  font-size: 0.76rem;
+  letter-spacing: 0.02em;
+  color: var(--snow);
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  background: rgba(8, 16, 31, 0.65);
+  backdrop-filter: blur(4px);
+}
+
 .surprise-modal {
   border: 0;
   border-radius: 18px;
