@@ -574,6 +574,12 @@
   ],
   "auditLog": [
     {
+      "id": "a1778696434727777",
+      "action": "Synchronisation",
+      "details": "Publication pour tous via GitHub API",
+      "at": "2026-05-13T18:20:34.727Z"
+    },
+    {
       "id": "a1778696430836912",
       "action": "Messages",
       "details": "Mise a jour du message direction, jour actif, logo et theme",
@@ -1766,12 +1772,6 @@
       "action": "Calendrier",
       "details": "Sauvegarde de l'agencement du calendrier",
       "at": "2026-05-12T21:00:35.854Z"
-    },
-    {
-      "id": "a1778619635670597",
-      "action": "Calendrier",
-      "details": "Sauvegarde de l'agencement du calendrier",
-      "at": "2026-05-12T21:00:35.670Z"
     }
   ]
 }
