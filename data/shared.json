@@ -574,6 +574,12 @@
   ],
   "auditLog": [
     {
+      "id": "a1778708215723314",
+      "action": "Synchronisation",
+      "details": "Publication pour tous via GitHub API",
+      "at": "2026-05-13T21:36:55.723Z"
+    },
+    {
       "id": "a1778708184993982",
       "action": "Calendrier",
       "details": "Sauvegarde de l'agencement du calendrier",
@@ -1766,12 +1772,6 @@
       "action": "Classement",
       "details": "Sauvegarde globale du classement",
       "at": "2026-05-13T17:14:43.800Z"
-    },
-    {
-      "id": "a177869246625061",
-      "action": "Classement",
-      "details": "Sauvegarde globale du classement",
-      "at": "2026-05-13T17:14:26.250Z"
     }
   ]
 }
