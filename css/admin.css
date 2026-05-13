@@ -560,8 +560,48 @@ body {
   max-width: 60px;
 }
 
-.ranking-table .avatar-field {
-  min-width: 150px;
+.avatar-cell {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.avatar-thumb {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid rgba(255, 215, 0, 0.4);
+  flex-shrink: 0;
+}
+
+.avatar-thumb.empty {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255, 255, 255, 0.08);
+  font-size: 1.1rem;
+  border: 2px solid rgba(255, 255, 255, 0.15);
+}
+
+.avatar-inputs {
+  display: flex;
+  gap: 4px;
+  align-items: center;
+  min-width: 0;
+}
+
+.avatar-inputs .avatar-field {
+  min-width: 100px;
+  flex: 1;
+}
+
+.btn-avatar-pick {
+  background: rgba(255, 215, 0, 0.15);
+  color: var(--snow);
+  border: 1px solid rgba(255, 215, 0, 0.3);
+  flex-shrink: 0;
+  padding: 6px 8px;
 }
 
 .ranking-table .btn-mini {

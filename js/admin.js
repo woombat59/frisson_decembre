@@ -913,7 +913,15 @@ function renderRankingPanel() {
           <td><input class="points-field" data-field="points" type="number" min="0" value="${entry.points}" /></td>
           <td><input class="sales-field" data-field="sales" type="number" min="0" value="${entry.sales}" /></td>
           <td><input class="icon-field" data-field="icon" type="text" maxlength="2" value="${escapeHtml(entry.icon)}" /></td>
-          <td><input class="avatar-field" data-field="avatarUrl" type="text" value="${escapeHtml(entry.avatarUrl || "")}" placeholder="https://..." /></td>
+          <td>
+            <div class="avatar-cell">
+              ${entry.avatarUrl ? `<img class="avatar-thumb" src="${escapeHtml(entry.avatarUrl)}" alt="" />` : `<div class="avatar-thumb empty">👤</div>`}
+              <div class="avatar-inputs">
+                <input class="avatar-field" data-field="avatarUrl" type="text" value="${escapeHtml(entry.avatarUrl || "")}" placeholder="URL ou 📁" />
+                <button class="btn btn-mini btn-avatar-pick" data-action="avatar-pick" title="Choisir une photo depuis votre ordinateur">📁</button>
+              </div>
+            </div>
+          </td>
           <td>
             <button class="btn btn-mini btn-move" data-action="up">↑</button>
             <button class="btn btn-mini btn-move" data-action="down">↓</button>
@@ -1548,6 +1556,33 @@ function initEvents() {
       if (guardReadOnlyAction()) return;
       const row = moveDownButton.closest("tr[data-id]");
       if (row) moveRankingEntry(row.dataset.id, 1);
+      return;
+    }
+
+    const avatarPickBtn = target.closest("button[data-action='avatar-pick']");
+    if (avatarPickBtn) {
+      if (guardReadOnlyAction()) return;
+      const row = avatarPickBtn.closest("tr[data-id]");
+      if (!row) return;
+      const fileInput = document.createElement("input");
+      fileInput.type = "file";
+      fileInput.accept = "image/*";
+      fileInput.addEventListener("change", () => {
+        const file = fileInput.files?.[0];
+        if (!file) return;
+        const reader = new FileReader();
+        reader.onload = () => {
+          const dataUrl = reader.result;
+          const entryId = row.dataset.id;
+          const entry = appData.rankings.find((r) => r.id === entryId);
+          if (entry) entry.avatarUrl = dataUrl;
+          saveData();
+          renderRankingPanel();
+          addAudit("Classement", `Photo upload pour ${entry?.name || entryId}`);
+        };
+        reader.readAsDataURL(file);
+      });
+      fileInput.click();
       return;
     }
 
