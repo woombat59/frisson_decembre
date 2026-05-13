@@ -4,87 +4,32 @@
     "subtitle": "Eduneo - Decembre 2026",
     "calendarLayout": [
       {
-        "day": 24,
-        "row": 1,
+        "day": 1,
+        "row": 8,
+        "col": 4
+      },
+      {
+        "day": 2,
+        "row": 8,
         "col": 5
       },
       {
-        "day": 23,
-        "row": 2,
-        "col": 4
-      },
-      {
-        "day": 22,
-        "row": 2,
+        "day": 3,
+        "row": 8,
         "col": 6
       },
       {
-        "day": 21,
-        "row": 3,
+        "day": 4,
+        "row": 7,
         "col": 4
       },
       {
-        "day": 20,
-        "row": 3,
-        "col": 5
-      },
-      {
-        "day": 19,
-        "row": 3,
+        "day": 5,
+        "row": 7,
         "col": 6
       },
       {
-        "day": 18,
-        "row": 4,
-        "col": 3
-      },
-      {
-        "day": 17,
-        "row": 4,
-        "col": 4
-      },
-      {
-        "day": 16,
-        "row": 4,
-        "col": 6
-      },
-      {
-        "day": 15,
-        "row": 4,
-        "col": 7
-      },
-      {
-        "day": 14,
-        "row": 5,
-        "col": 3
-      },
-      {
-        "day": 13,
-        "row": 5,
-        "col": 4
-      },
-      {
-        "day": 12,
-        "row": 5,
-        "col": 5
-      },
-      {
-        "day": 11,
-        "row": 5,
-        "col": 6
-      },
-      {
-        "day": 10,
-        "row": 5,
-        "col": 7
-      },
-      {
-        "day": 9,
-        "row": 6,
-        "col": 3
-      },
-      {
-        "day": 8,
+        "day": 6,
         "row": 6,
         "col": 4
       },
@@ -94,50 +39,108 @@
         "col": 6
       },
       {
-        "day": 6,
-        "row": 6,
+        "day": 8,
+        "row": 5,
+        "col": 1
+      },
+      {
+        "day": 9,
+        "row": 5,
+        "col": 2
+      },
+      {
+        "day": 10,
+        "row": 5,
+        "col": 3
+      },
+      {
+        "day": 11,
+        "row": 5,
         "col": 7
       },
       {
-        "day": 5,
-        "row": 7,
+        "day": 12,
+        "row": 5,
+        "col": 8
+      },
+      {
+        "day": 13,
+        "row": 5,
+        "col": 9
+      },
+      {
+        "day": 14,
+        "row": 4,
+        "col": 2
+      },
+      {
+        "day": 15,
+        "row": 4,
+        "col": 3
+      },
+      {
+        "day": 16,
+        "row": 4,
         "col": 4
       },
       {
-        "day": 4,
-        "row": 7,
+        "day": 17,
+        "row": 4,
+        "col": 6
+      },
+      {
+        "day": 18,
+        "row": 4,
+        "col": 7
+      },
+      {
+        "day": 19,
+        "row": 4,
+        "col": 8
+      },
+      {
+        "day": 20,
+        "row": 3,
+        "col": 3
+      },
+      {
+        "day": 21,
+        "row": 3,
+        "col": 7
+      },
+      {
+        "day": 22,
+        "row": 2,
+        "col": 4
+      },
+      {
+        "day": 23,
+        "row": 2,
+        "col": 6
+      },
+      {
+        "day": 24,
+        "row": 1,
         "col": 5
-      },
-      {
-        "day": 3,
-        "row": 7,
-        "col": 6
-      },
-      {
-        "day": 2,
-        "row": 8,
-        "col": 4
-      },
-      {
-        "day": 1,
-        "row": 8,
-        "col": 6
       }
     ],
-    "rankingMode": "anonymous",
-    "countdownTarget": "2026-12-24T00:00:00",
+    "rankingMode": "named",
+    "directionMessage": "Votre engagement quotidien est remarquable. Restons unis, ambitieux et bienveillants jusqu'au 24 decembre.",
+    "flashAnnouncement": "🔥 Sprint final de la semaine ! On vise 120% aujourd'hui.",
+    "rankingSortMode": "auto",
+    "activeDay": 12,
+    "logoDataUrl": "data:image/png;base64,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",
+    "countdownTarget": "2026-05-29T22:00:00.000Z",
     "fontTitle": "Mountains of Christmas",
     "fontBody": "Poppins",
     "showRankingAvatars": false,
     "theme": {
-      "gold": "#ffd700",
+      "gold": "#d7e600",
       "green": "#1b4d2e",
       "red": "#b22222",
       "night": "#0d1b2a",
       "snow": "#f8f8ff"
-    },
-    "directionMessage": "Votre engagement quotidien est remarquable. Restons unis, ambitieux et bienveillants jusqu'au 24 decembre.",
-    "flashAnnouncement": "🔥 Sprint final de la semaine ! On vise 120% aujourd'hui."
+    }
   },
   "days": [
     {
@@ -146,29 +149,29 @@
       "objective": 50,
       "sales": 53,
       "surpriseTitle": "Pause cafe offerte",
-      "surpriseDescription": "Un moment cafe et gourmandises offert a toute l'equipe.",
+      "surpriseDescription": "https://www.google.com/?hl=fr",
       "surpriseIcon": "☕",
       "congratsMessage": "Bravo equipe, la case 1 est debloquee grace a votre energie.",
-      "surpriseLinkLabel": "",
-      "surpriseLinkUrl": "",
       "unlockedAt": "2026-12-01",
       "forceClosed": false,
-      "forceOpen": false
+      "forceOpen": false,
+      "surpriseLinkLabel": "entre ici",
+      "surpriseLinkUrl": "https://www.google.com/?hl=fr"
     },
     {
       "day": 2,
       "date": "2026-12-02",
       "objective": 50,
-      "sales": 47,
+      "sales": 250,
       "surpriseTitle": "Playlist boost",
       "surpriseDescription": "La playlist de noel lo-fi de la team est diffusee 2 heures.",
       "surpriseIcon": "🎵",
       "congratsMessage": "Bravo equipe, la case 2 est debloquee grace a votre energie.",
-      "surpriseLinkLabel": "",
-      "surpriseLinkUrl": "",
-      "unlockedAt": null,
+      "unlockedAt": "2026-05-12",
       "forceClosed": false,
-      "forceOpen": false
+      "forceOpen": false,
+      "surpriseLinkLabel": "",
+      "surpriseLinkUrl": ""
     },
     {
       "day": 3,
@@ -179,11 +182,11 @@
       "surpriseDescription": "Viennoiseries et boissons chaudes pour tout le plateau.",
       "surpriseIcon": "🥐",
       "congratsMessage": "Bravo equipe, la case 3 est debloquee grace a votre energie.",
-      "surpriseLinkLabel": "",
-      "surpriseLinkUrl": "",
       "unlockedAt": "2026-12-03",
       "forceClosed": false,
-      "forceOpen": false
+      "forceOpen": false,
+      "surpriseLinkLabel": "",
+      "surpriseLinkUrl": ""
     },
     {
       "day": 4,
@@ -194,11 +197,11 @@
       "surpriseDescription": "Journee pull de noel et photo d'equipe.",
       "surpriseIcon": "🧣",
       "congratsMessage": "Bravo equipe, la case 4 est debloquee grace a votre energie.",
-      "surpriseLinkLabel": "",
-      "surpriseLinkUrl": "",
       "unlockedAt": "2026-12-04",
       "forceClosed": false,
-      "forceOpen": false
+      "forceOpen": false,
+      "surpriseLinkLabel": "",
+      "surpriseLinkUrl": ""
     },
     {
       "day": 5,
@@ -209,11 +212,11 @@
       "surpriseDescription": "Double points sur la performance interne du jour.",
       "surpriseIcon": "✨",
       "congratsMessage": "Bravo equipe, la case 5 est debloquee grace a votre energie.",
-      "surpriseLinkLabel": "",
-      "surpriseLinkUrl": "",
       "unlockedAt": "2026-12-05",
       "forceClosed": false,
-      "forceOpen": false
+      "forceOpen": false,
+      "surpriseLinkLabel": "",
+      "surpriseLinkUrl": ""
     },
     {
       "day": 6,
@@ -224,11 +227,11 @@
       "surpriseDescription": "Dejeuner convivial pris en charge.",
       "surpriseIcon": "🍽️",
       "congratsMessage": "Bravo equipe, la case 6 est debloquee grace a votre energie.",
-      "surpriseLinkLabel": "",
-      "surpriseLinkUrl": "",
       "unlockedAt": null,
       "forceClosed": false,
-      "forceOpen": false
+      "forceOpen": false,
+      "surpriseLinkLabel": "",
+      "surpriseLinkUrl": ""
     },
     {
       "day": 7,
@@ -239,11 +242,11 @@
       "surpriseDescription": "Chaque collaborateur tire une surprise express.",
       "surpriseIcon": "🎡",
       "congratsMessage": "Bravo equipe, la case 7 est debloquee grace a votre energie.",
-      "surpriseLinkLabel": "",
-      "surpriseLinkUrl": "",
       "unlockedAt": "2026-12-07",
       "forceClosed": false,
-      "forceOpen": false
+      "forceOpen": false,
+      "surpriseLinkLabel": "",
+      "surpriseLinkUrl": ""
     },
     {
       "day": 8,
@@ -254,11 +257,11 @@
       "surpriseDescription": "Service special chocolat chaud en salle commune.",
       "surpriseIcon": "🍫",
       "congratsMessage": "Bravo equipe, la case 8 est debloquee grace a votre energie.",
-      "surpriseLinkLabel": "",
-      "surpriseLinkUrl": "",
       "unlockedAt": "2026-12-08",
       "forceClosed": false,
-      "forceOpen": false
+      "forceOpen": false,
+      "surpriseLinkLabel": "",
+      "surpriseLinkUrl": ""
     },
     {
       "day": 9,
@@ -269,11 +272,11 @@
       "surpriseDescription": "Moment convivial de fin de journee.",
       "surpriseIcon": "🥂",
       "congratsMessage": "Bravo equipe, la case 9 est debloquee grace a votre energie.",
-      "surpriseLinkLabel": "",
-      "surpriseLinkUrl": "",
       "unlockedAt": null,
       "forceClosed": false,
-      "forceOpen": false
+      "forceOpen": false,
+      "surpriseLinkLabel": "",
+      "surpriseLinkUrl": ""
     },
     {
       "day": 10,
@@ -284,11 +287,11 @@
       "surpriseDescription": "Mise en avant des plus belles performances de la semaine.",
       "surpriseIcon": "🏆",
       "congratsMessage": "Bravo equipe, la case 10 est debloquee grace a votre energie.",
-      "surpriseLinkLabel": "",
-      "surpriseLinkUrl": "",
       "unlockedAt": "2026-12-10",
       "forceClosed": false,
-      "forceOpen": false
+      "forceOpen": false,
+      "surpriseLinkLabel": "",
+      "surpriseLinkUrl": ""
     },
     {
       "day": 11,
@@ -299,11 +302,11 @@
       "surpriseDescription": "Mini atelier motivation et techniques de closing.",
       "surpriseIcon": "🚀",
       "congratsMessage": "Bravo equipe, la case 11 est debloquee grace a votre energie.",
-      "surpriseLinkLabel": "",
-      "surpriseLinkUrl": "",
       "unlockedAt": "2026-12-11",
       "forceClosed": false,
-      "forceOpen": false
+      "forceOpen": false,
+      "surpriseLinkLabel": "",
+      "surpriseLinkUrl": ""
     },
     {
       "day": 12,
@@ -314,11 +317,11 @@
       "surpriseDescription": "Defi cooperatif avec recompense collective.",
       "surpriseIcon": "🤝",
       "congratsMessage": "Bravo equipe, la case 12 est debloquee grace a votre energie.",
-      "surpriseLinkLabel": "",
-      "surpriseLinkUrl": "",
       "unlockedAt": "2026-12-12",
       "forceClosed": false,
-      "forceOpen": false
+      "forceOpen": false,
+      "surpriseLinkLabel": "",
+      "surpriseLinkUrl": ""
     },
     {
       "day": 13,
@@ -329,11 +332,11 @@
       "surpriseDescription": "Tirage d'une carte cadeau parmi les participants.",
       "surpriseIcon": "🎁",
       "congratsMessage": "Bravo equipe, la case 13 est debloquee grace a votre energie.",
-      "surpriseLinkLabel": "",
-      "surpriseLinkUrl": "",
       "unlockedAt": null,
       "forceClosed": false,
-      "forceOpen": false
+      "forceOpen": false,
+      "surpriseLinkLabel": "",
+      "surpriseLinkUrl": ""
     },
     {
       "day": 14,
@@ -344,11 +347,11 @@
       "surpriseDescription": "Mention speciale de l'equipe en reunion generale.",
       "surpriseIcon": "📣",
       "congratsMessage": "Bravo equipe, la case 14 est debloquee grace a votre energie.",
-      "surpriseLinkLabel": "",
-      "surpriseLinkUrl": "",
       "unlockedAt": null,
       "forceClosed": false,
-      "forceOpen": false
+      "forceOpen": false,
+      "surpriseLinkLabel": "",
+      "surpriseLinkUrl": ""
     },
     {
       "day": 15,
@@ -359,11 +362,11 @@
       "surpriseDescription": "Session respiration et detente de 15 minutes.",
       "surpriseIcon": "🕯️",
       "congratsMessage": "Bravo equipe, la case 15 est debloquee grace a votre energie.",
-      "surpriseLinkLabel": "",
-      "surpriseLinkUrl": "",
       "unlockedAt": null,
       "forceClosed": false,
-      "forceOpen": false
+      "forceOpen": false,
+      "surpriseLinkLabel": "",
+      "surpriseLinkUrl": ""
     },
     {
       "day": 16,
@@ -374,11 +377,11 @@
       "surpriseDescription": "Quiz musical de noel entre equipes.",
       "surpriseIcon": "🎤",
       "congratsMessage": "Bravo equipe, la case 16 est debloquee grace a votre energie.",
-      "surpriseLinkLabel": "",
-      "surpriseLinkUrl": "",
       "unlockedAt": null,
       "forceClosed": false,
-      "forceOpen": false
+      "forceOpen": false,
+      "surpriseLinkLabel": "",
+      "surpriseLinkUrl": ""
     },
     {
       "day": 17,
@@ -389,11 +392,11 @@
       "surpriseDescription": "Dessert du jour offert a tous.",
       "surpriseIcon": "🍰",
       "congratsMessage": "Bravo equipe, la case 17 est debloquee grace a votre energie.",
-      "surpriseLinkLabel": "",
-      "surpriseLinkUrl": "",
       "unlockedAt": null,
       "forceClosed": false,
-      "forceOpen": false
+      "forceOpen": false,
+      "surpriseLinkLabel": "",
+      "surpriseLinkUrl": ""
     },
     {
       "day": 18,
@@ -404,11 +407,11 @@
       "surpriseDescription": "Objectif bonus sur 90 minutes chrono.",
       "surpriseIcon": "⚡",
       "congratsMessage": "Bravo equipe, la case 18 est debloquee grace a votre energie.",
-      "surpriseLinkLabel": "",
-      "surpriseLinkUrl": "",
       "unlockedAt": null,
       "forceClosed": false,
-      "forceOpen": false
+      "forceOpen": false,
+      "surpriseLinkLabel": "",
+      "surpriseLinkUrl": ""
     },
     {
       "day": 19,
@@ -419,11 +422,11 @@
       "surpriseDescription": "Message personnalise de la direction.",
       "surpriseIcon": "💌",
       "congratsMessage": "Bravo equipe, la case 19 est debloquee grace a votre energie.",
-      "surpriseLinkLabel": "",
-      "surpriseLinkUrl": "",
       "unlockedAt": null,
       "forceClosed": false,
-      "forceOpen": false
+      "forceOpen": false,
+      "surpriseLinkLabel": "",
+      "surpriseLinkUrl": ""
     },
     {
       "day": 20,
@@ -434,11 +437,11 @@
       "surpriseDescription": "Remise symbolique des medailles de progression.",
       "surpriseIcon": "🥇",
       "congratsMessage": "Bravo equipe, la case 20 est debloquee grace a votre energie.",
-      "surpriseLinkLabel": "",
-      "surpriseLinkUrl": "",
       "unlockedAt": null,
       "forceClosed": false,
-      "forceOpen": false
+      "forceOpen": false,
+      "surpriseLinkLabel": "",
+      "surpriseLinkUrl": ""
     },
     {
       "day": 21,
@@ -449,11 +452,11 @@
       "surpriseDescription": "Intervention festive en open space.",
       "surpriseIcon": "🎭",
       "congratsMessage": "Bravo equipe, la case 21 est debloquee grace a votre energie.",
-      "surpriseLinkLabel": "",
-      "surpriseLinkUrl": "",
       "unlockedAt": null,
       "forceClosed": false,
-      "forceOpen": false
+      "forceOpen": false,
+      "surpriseLinkLabel": "",
+      "surpriseLinkUrl": ""
     },
     {
       "day": 22,
@@ -464,11 +467,11 @@
       "surpriseDescription": "Photo officielle edition Avent 2026.",
       "surpriseIcon": "📸",
       "congratsMessage": "Bravo equipe, la case 22 est debloquee grace a votre energie.",
-      "surpriseLinkLabel": "",
-      "surpriseLinkUrl": "",
       "unlockedAt": null,
       "forceClosed": false,
-      "forceOpen": false
+      "forceOpen": false,
+      "surpriseLinkLabel": "",
+      "surpriseLinkUrl": ""
     },
     {
       "day": 23,
@@ -479,11 +482,11 @@
       "surpriseDescription": "Grand tirage final des recompenses.",
       "surpriseIcon": "🎟️",
       "congratsMessage": "Bravo equipe, la case 23 est debloquee grace a votre energie.",
-      "surpriseLinkLabel": "",
-      "surpriseLinkUrl": "",
       "unlockedAt": null,
       "forceClosed": false,
-      "forceOpen": false
+      "forceOpen": false,
+      "surpriseLinkLabel": "",
+      "surpriseLinkUrl": ""
     },
     {
       "day": 24,
@@ -494,11 +497,11 @@
       "surpriseDescription": "Moment de celebration collectif de cloture.",
       "surpriseIcon": "🎄",
       "congratsMessage": "Bravo equipe, la case 24 est debloquee grace a votre energie.",
-      "surpriseLinkLabel": "",
-      "surpriseLinkUrl": "",
       "unlockedAt": null,
       "forceClosed": false,
-      "forceOpen": false
+      "forceOpen": false,
+      "surpriseLinkLabel": "",
+      "surpriseLinkUrl": ""
     }
   ],
   "rankings": [
@@ -509,7 +512,7 @@
       "points": 128,
       "sales": 56,
       "icon": "🌟",
-      "avatarUrl": ""
+      "avatarUrl": "https://image.noelshack.com/fichiers/2026/20/3/1778688979-t-l-chargement.jpg"
     },
     {
       "id": "r2",
@@ -555,6 +558,596 @@
       "sales": 39,
       "icon": "🎄",
       "avatarUrl": ""
+    },
+    {
+      "id": "r1778620251428",
+      "name": "Collaborateur 7",
+      "anonymousLabel": "Collaborateur 7",
+      "points": 0,
+      "sales": 0,
+      "icon": "🎄",
+      "avatarUrl": ""
+    },
+    {
+      "id": "r1778620255044",
+      "name": "Collaborateur 8",
+      "anonymousLabel": "Collaborateur 8",
+      "points": 0,
+      "sales": 0,
+      "icon": "🎄",
+      "avatarUrl": ""
+    },
+    {
+      "id": "r1778620255164",
+      "name": "Collaborateur 9",
+      "anonymousLabel": "Collaborateur 9",
+      "points": 0,
+      "sales": 0,
+      "icon": "🎄",
+      "avatarUrl": ""
+    },
+    {
+      "id": "r1778620255220",
+      "name": "Collaborateur 10",
+      "anonymousLabel": "Collaborateur 10",
+      "points": 0,
+      "sales": 0,
+      "icon": "🎄",
+      "avatarUrl": ""
+    },
+    {
+      "id": "r1778620255332",
+      "name": "Collaborateur 11",
+      "anonymousLabel": "Collaborateur 11",
+      "points": 0,
+      "sales": 0,
+      "icon": "🎄",
+      "avatarUrl": ""
+    },
+    {
+      "id": "r1778620255396",
+      "name": "Collaborateur 12",
+      "anonymousLabel": "Collaborateur 12",
+      "points": 0,
+      "sales": 0,
+      "icon": "🎄",
+      "avatarUrl": ""
+    },
+    {
+      "id": "r1778620255556",
+      "name": "Collaborateur 13",
+      "anonymousLabel": "Collaborateur 13",
+      "points": 0,
+      "sales": 0,
+      "icon": "🎄",
+      "avatarUrl": ""
+    },
+    {
+      "id": "r1778620255668",
+      "name": "Collaborateur 14",
+      "anonymousLabel": "Collaborateur 14",
+      "points": 0,
+      "sales": 0,
+      "icon": "🎄",
+      "avatarUrl": ""
+    },
+    {
+      "id": "r1778620255740",
+      "name": "Collaborateur 15",
+      "anonymousLabel": "Collaborateur 15",
+      "points": 0,
+      "sales": 0,
+      "icon": "🎄",
+      "avatarUrl": ""
+    },
+    {
+      "id": "r1778620255908",
+      "name": "Collaborateur 16",
+      "anonymousLabel": "Collaborateur 16",
+      "points": 0,
+      "sales": 0,
+      "icon": "🎄",
+      "avatarUrl": ""
+    },
+    {
+      "id": "r1778620256092",
+      "name": "Collaborateur 17",
+      "anonymousLabel": "Collaborateur 17",
+      "points": 0,
+      "sales": 0,
+      "icon": "🎄",
+      "avatarUrl": ""
+    },
+    {
+      "id": "r1778620256164",
+      "name": "Collaborateur 18",
+      "anonymousLabel": "Collaborateur 18",
+      "points": 0,
+      "sales": 0,
+      "icon": "🎄",
+      "avatarUrl": ""
+    },
+    {
+      "id": "r1778620256220",
+      "name": "Collaborateur 19",
+      "anonymousLabel": "Collaborateur 19",
+      "points": 0,
+      "sales": 0,
+      "icon": "🎄",
+      "avatarUrl": ""
+    },
+    {
+      "id": "r1778620256364",
+      "name": "Collaborateur 20",
+      "anonymousLabel": "Collaborateur 20",
+      "points": 0,
+      "sales": 0,
+      "icon": "🎄",
+      "avatarUrl": ""
+    },
+    {
+      "id": "r1778620265204",
+      "name": "Collaborateur 21",
+      "anonymousLabel": "Collaborateur 21",
+      "points": 0,
+      "sales": 0,
+      "icon": "🎄",
+      "avatarUrl": ""
+    },
+    {
+      "id": "r1778620265652",
+      "name": "Collaborateur 22",
+      "anonymousLabel": "Collaborateur 22",
+      "points": 0,
+      "sales": 0,
+      "icon": "🎄",
+      "avatarUrl": ""
+    },
+    {
+      "id": "r1778620265812",
+      "name": "Collaborateur 23",
+      "anonymousLabel": "Collaborateur 23",
+      "points": 0,
+      "sales": 0,
+      "icon": "🎄",
+      "avatarUrl": ""
+    },
+    {
+      "id": "r1778620265988",
+      "name": "Collaborateur 24",
+      "anonymousLabel": "Collaborateur 24",
+      "points": 0,
+      "sales": 0,
+      "icon": "🎄",
+      "avatarUrl": ""
+    }
+  ],
+  "auditLog": [
+    {
+      "id": "a1778689567585316",
+      "action": "Messages",
+      "details": "Mise a jour du message direction, jour actif, logo et theme",
+      "at": "2026-05-13T16:26:07.585Z"
+    },
+    {
+      "id": "a1778689234641376",
+      "action": "Classement",
+      "details": "Sauvegarde globale du classement",
+      "at": "2026-05-13T16:20:34.641Z"
+    },
+    {
+      "id": "a1778689231581216",
+      "action": "Classement",
+      "details": "Mode de tri automatique",
+      "at": "2026-05-13T16:20:31.581Z"
+    },
+    {
+      "id": "a1778689230236751",
+      "action": "Classement",
+      "details": "Mode de tri manuel",
+      "at": "2026-05-13T16:20:30.236Z"
+    },
+    {
+      "id": "a1778689228716610",
+      "action": "Classement",
+      "details": "Mode d'affichage nominatif",
+      "at": "2026-05-13T16:20:28.716Z"
+    },
+    {
+      "id": "a177868911995812",
+      "action": "Messages",
+      "details": "Mise a jour du message direction, jour actif, logo et theme",
+      "at": "2026-05-13T16:18:39.958Z"
+    },
+    {
+      "id": "a1778689107294143",
+      "action": "Messages",
+      "details": "Mise a jour du message direction, jour actif, logo et theme",
+      "at": "2026-05-13T16:18:27.294Z"
+    },
+    {
+      "id": "a1778689056647197",
+      "action": "Case",
+      "details": "Edition de la case 1",
+      "at": "2026-05-13T16:17:36.647Z"
+    },
+    {
+      "id": "a1778689050135415",
+      "action": "Case",
+      "details": "Edition de la case 2",
+      "at": "2026-05-13T16:17:30.135Z"
+    },
+    {
+      "id": "a1778689040004129",
+      "action": "Classement",
+      "details": "Sauvegarde globale du classement",
+      "at": "2026-05-13T16:17:20.004Z"
+    },
+    {
+      "id": "a1778689037797738",
+      "action": "Classement",
+      "details": "Sauvegarde globale du classement",
+      "at": "2026-05-13T16:17:17.797Z"
+    },
+    {
+      "id": "a177868900607094",
+      "action": "Case",
+      "details": "Edition de la case 1",
+      "at": "2026-05-13T16:16:46.070Z"
+    },
+    {
+      "id": "a1778688985630538",
+      "action": "Classement",
+      "details": "Edition du champ avatarUrl",
+      "at": "2026-05-13T16:16:25.630Z"
+    },
+    {
+      "id": "a17786873896233",
+      "action": "Case",
+      "details": "Edition de la case 1",
+      "at": "2026-05-13T15:49:49.623Z"
+    },
+    {
+      "id": "a1778621875419462",
+      "action": "Messages",
+      "details": "Mise a jour du message direction, jour actif et logo",
+      "at": "2026-05-12T21:37:55.419Z"
+    },
+    {
+      "id": "a1778621852994335",
+      "action": "Messages",
+      "details": "Mise a jour du message direction, jour actif et logo",
+      "at": "2026-05-12T21:37:32.994Z"
+    },
+    {
+      "id": "a1778621571179938",
+      "action": "Messages",
+      "details": "Mise a jour du message direction et de l'annonce flash",
+      "at": "2026-05-12T21:32:51.179Z"
+    },
+    {
+      "id": "a177862156281155",
+      "action": "Ventes",
+      "details": "Mise a jour du jour 12 a 74 ventes",
+      "at": "2026-05-12T21:32:42.811Z"
+    },
+    {
+      "id": "a1778621562723465",
+      "action": "Ventes",
+      "details": "Mise a jour du jour 12 a 74 ventes",
+      "at": "2026-05-12T21:32:42.723Z"
+    },
+    {
+      "id": "a1778621559003947",
+      "action": "Messages",
+      "details": "Mise a jour du message direction et de l'annonce flash",
+      "at": "2026-05-12T21:32:39.003Z"
+    },
+    {
+      "id": "a1778621515066639",
+      "action": "Messages",
+      "details": "Mise a jour du message direction et de l'annonce flash",
+      "at": "2026-05-12T21:31:55.066Z"
+    },
+    {
+      "id": "a1778621492677386",
+      "action": "Mode",
+      "details": "Retour en mode admin",
+      "at": "2026-05-12T21:31:32.677Z"
+    },
+    {
+      "id": "a1778621399639103",
+      "action": "Ventes",
+      "details": "Mise a jour du jour 12 a 74 ventes",
+      "at": "2026-05-12T21:29:59.639Z"
+    },
+    {
+      "id": "a177862139956770",
+      "action": "Ventes",
+      "details": "Mise a jour du jour 12 a 74 ventes",
+      "at": "2026-05-12T21:29:59.567Z"
+    },
+    {
+      "id": "a1778620992666331",
+      "action": "Case",
+      "details": "Edition de la case 2",
+      "at": "2026-05-12T21:23:12.666Z"
+    },
+    {
+      "id": "a1778620265990831",
+      "action": "Classement",
+      "details": "Ajout d'un collaborateur",
+      "at": "2026-05-12T21:11:05.990Z"
+    },
+    {
+      "id": "a177862026581443",
+      "action": "Classement",
+      "details": "Ajout d'un collaborateur",
+      "at": "2026-05-12T21:11:05.814Z"
+    },
+    {
+      "id": "a177862026565534",
+      "action": "Classement",
+      "details": "Ajout d'un collaborateur",
+      "at": "2026-05-12T21:11:05.655Z"
+    },
+    {
+      "id": "a1778620265207376",
+      "action": "Classement",
+      "details": "Ajout d'un collaborateur",
+      "at": "2026-05-12T21:11:05.207Z"
+    },
+    {
+      "id": "a1778620256366324",
+      "action": "Classement",
+      "details": "Ajout d'un collaborateur",
+      "at": "2026-05-12T21:10:56.366Z"
+    },
+    {
+      "id": "a1778620256222847",
+      "action": "Classement",
+      "details": "Ajout d'un collaborateur",
+      "at": "2026-05-12T21:10:56.222Z"
+    },
+    {
+      "id": "a177862025616643",
+      "action": "Classement",
+      "details": "Ajout d'un collaborateur",
+      "at": "2026-05-12T21:10:56.166Z"
+    },
+    {
+      "id": "a1778620256094980",
+      "action": "Classement",
+      "details": "Ajout d'un collaborateur",
+      "at": "2026-05-12T21:10:56.094Z"
+    },
+    {
+      "id": "a1778620255910618",
+      "action": "Classement",
+      "details": "Ajout d'un collaborateur",
+      "at": "2026-05-12T21:10:55.910Z"
+    },
+    {
+      "id": "a1778620255742521",
+      "action": "Classement",
+      "details": "Ajout d'un collaborateur",
+      "at": "2026-05-12T21:10:55.742Z"
+    },
+    {
+      "id": "a1778620255670596",
+      "action": "Classement",
+      "details": "Ajout d'un collaborateur",
+      "at": "2026-05-12T21:10:55.670Z"
+    },
+    {
+      "id": "a1778620255558319",
+      "action": "Classement",
+      "details": "Ajout d'un collaborateur",
+      "at": "2026-05-12T21:10:55.558Z"
+    },
+    {
+      "id": "a1778620255398628",
+      "action": "Classement",
+      "details": "Ajout d'un collaborateur",
+      "at": "2026-05-12T21:10:55.398Z"
+    },
+    {
+      "id": "a1778620255334783",
+      "action": "Classement",
+      "details": "Ajout d'un collaborateur",
+      "at": "2026-05-12T21:10:55.334Z"
+    },
+    {
+      "id": "a177862025522231",
+      "action": "Classement",
+      "details": "Ajout d'un collaborateur",
+      "at": "2026-05-12T21:10:55.222Z"
+    },
+    {
+      "id": "a1778620255166415",
+      "action": "Classement",
+      "details": "Ajout d'un collaborateur",
+      "at": "2026-05-12T21:10:55.166Z"
+    },
+    {
+      "id": "a1778620255046697",
+      "action": "Classement",
+      "details": "Ajout d'un collaborateur",
+      "at": "2026-05-12T21:10:55.046Z"
+    },
+    {
+      "id": "a177862025143188",
+      "action": "Classement",
+      "details": "Ajout d'un collaborateur",
+      "at": "2026-05-12T21:10:51.431Z"
+    },
+    {
+      "id": "a177861963824689",
+      "action": "Calendrier",
+      "details": "Sauvegarde de l'agencement du calendrier",
+      "at": "2026-05-12T21:00:38.246Z"
+    },
+    {
+      "id": "a1778619638054216",
+      "action": "Calendrier",
+      "details": "Sauvegarde de l'agencement du calendrier",
+      "at": "2026-05-12T21:00:38.054Z"
+    },
+    {
+      "id": "a1778619637846769",
+      "action": "Calendrier",
+      "details": "Sauvegarde de l'agencement du calendrier",
+      "at": "2026-05-12T21:00:37.846Z"
+    },
+    {
+      "id": "a1778619637670353",
+      "action": "Calendrier",
+      "details": "Sauvegarde de l'agencement du calendrier",
+      "at": "2026-05-12T21:00:37.670Z"
+    },
+    {
+      "id": "a1778619637486250",
+      "action": "Calendrier",
+      "details": "Sauvegarde de l'agencement du calendrier",
+      "at": "2026-05-12T21:00:37.486Z"
+    },
+    {
+      "id": "a1778619637278307",
+      "action": "Calendrier",
+      "details": "Sauvegarde de l'agencement du calendrier",
+      "at": "2026-05-12T21:00:37.278Z"
+    },
+    {
+      "id": "a1778619637094928",
+      "action": "Calendrier",
+      "details": "Sauvegarde de l'agencement du calendrier",
+      "at": "2026-05-12T21:00:37.094Z"
+    },
+    {
+      "id": "a177861963691756",
+      "action": "Calendrier",
+      "details": "Sauvegarde de l'agencement du calendrier",
+      "at": "2026-05-12T21:00:36.917Z"
+    },
+    {
+      "id": "a1778619636734130",
+      "action": "Calendrier",
+      "details": "Sauvegarde de l'agencement du calendrier",
+      "at": "2026-05-12T21:00:36.734Z"
+    },
+    {
+      "id": "a1778619636549586",
+      "action": "Calendrier",
+      "details": "Sauvegarde de l'agencement du calendrier",
+      "at": "2026-05-12T21:00:36.549Z"
+    },
+    {
+      "id": "a1778619636373650",
+      "action": "Calendrier",
+      "details": "Sauvegarde de l'agencement du calendrier",
+      "at": "2026-05-12T21:00:36.373Z"
+    },
+    {
+      "id": "a1778619636205228",
+      "action": "Calendrier",
+      "details": "Sauvegarde de l'agencement du calendrier",
+      "at": "2026-05-12T21:00:36.205Z"
+    },
+    {
+      "id": "a1778619636061106",
+      "action": "Calendrier",
+      "details": "Sauvegarde de l'agencement du calendrier",
+      "at": "2026-05-12T21:00:36.061Z"
+    },
+    {
+      "id": "a1778619636006745",
+      "action": "Calendrier",
+      "details": "Sauvegarde de l'agencement du calendrier",
+      "at": "2026-05-12T21:00:36.006Z"
+    },
+    {
+      "id": "a1778619635854494",
+      "action": "Calendrier",
+      "details": "Sauvegarde de l'agencement du calendrier",
+      "at": "2026-05-12T21:00:35.854Z"
+    },
+    {
+      "id": "a1778619635670597",
+      "action": "Calendrier",
+      "details": "Sauvegarde de l'agencement du calendrier",
+      "at": "2026-05-12T21:00:35.670Z"
+    },
+    {
+      "id": "a1778619635493211",
+      "action": "Calendrier",
+      "details": "Sauvegarde de l'agencement du calendrier",
+      "at": "2026-05-12T21:00:35.493Z"
+    },
+    {
+      "id": "a1778619635397591",
+      "action": "Calendrier",
+      "details": "Sauvegarde de l'agencement du calendrier",
+      "at": "2026-05-12T21:00:35.397Z"
+    },
+    {
+      "id": "a1778619635246813",
+      "action": "Calendrier",
+      "details": "Sauvegarde de l'agencement du calendrier",
+      "at": "2026-05-12T21:00:35.246Z"
+    },
+    {
+      "id": "a1778619633982230",
+      "action": "Calendrier",
+      "details": "Sauvegarde de l'agencement du calendrier",
+      "at": "2026-05-12T21:00:33.982Z"
+    },
+    {
+      "id": "a1778619442578505",
+      "action": "Classement",
+      "details": "Mode d'affichage anonyme",
+      "at": "2026-05-12T20:57:22.578Z"
+    },
+    {
+      "id": "a1778619442002271",
+      "action": "Classement",
+      "details": "Mode d'affichage nominatif",
+      "at": "2026-05-12T20:57:22.002Z"
+    },
+    {
+      "id": "a1778619441362813",
+      "action": "Classement",
+      "details": "Mode d'affichage anonyme",
+      "at": "2026-05-12T20:57:21.362Z"
+    },
+    {
+      "id": "a1778619440850352",
+      "action": "Classement",
+      "details": "Mode d'affichage nominatif",
+      "at": "2026-05-12T20:57:20.850Z"
+    },
+    {
+      "id": "a1778619439554489",
+      "action": "Classement",
+      "details": "Mode de tri automatique",
+      "at": "2026-05-12T20:57:19.554Z"
+    },
+    {
+      "id": "a177861943827437",
+      "action": "Classement",
+      "details": "Mode de tri manuel",
+      "at": "2026-05-12T20:57:18.274Z"
+    },
+    {
+      "id": "a1778619436546412",
+      "action": "Classement",
+      "details": "Mode d'affichage anonyme",
+      "at": "2026-05-12T20:57:16.546Z"
+    },
+    {
+      "id": "a1778619435842675",
+      "action": "Classement",
+      "details": "Mode d'affichage nominatif",
+      "at": "2026-05-12T20:57:15.842Z"
     }
   ]
 }
