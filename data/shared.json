@@ -140,7 +140,10 @@
       "red": "#b22222",
       "night": "#0d1b2a",
       "snow": "#f8f8ff"
-    }
+    },
+    "showPodium": true,
+    "showRankingSection": true,
+    "musicUrl": ""
   },
   "days": [
     {
@@ -516,6 +519,18 @@
     }
   ],
   "auditLog": [
+    {
+      "id": "a1778694006146911",
+      "action": "Classement",
+      "details": "Sauvegarde globale du classement",
+      "at": "2026-05-13T17:40:06.146Z"
+    },
+    {
+      "id": "a1778693698050192",
+      "action": "Synchronisation",
+      "details": "Publication pour tous via GitHub API",
+      "at": "2026-05-13T17:34:58.050Z"
+    },
     {
       "id": "a1778693691795340",
       "action": "Classement",
