@@ -2,7 +2,7 @@ const STORAGE_KEY = "avent-performance-data-v1";
 const READONLY_PASSWORD = "eduneo2026";
 const EDIT_PASSWORD = "mdp";
 const ADMIN_ROLE_KEY = "admin-role-mode";
-const APP_VERSION = "v2026.05.13-10";
+const APP_VERSION = "v2026.05.13-10.1";
 const GITHUB_REPO = "woombat59/website_edudu";
 const SHARED_JSON_PATH = "data/shared.json";
 const CALENDAR_GRID_ROWS = 20;
@@ -1457,7 +1457,7 @@ function initEvents() {
     appData.config.flashAnnouncement = elements.flashAnnouncement.value || "";
 
     const dayVal = parseInt(elements.activeDayInput.value, 10);
-    appData.config.activeDay = (dayVal >= 1 && dayVal <= 24) ? dayVal : null;
+    appData.config.activeDay = (dayVal >= 1 && dayVal <= appData.days.length) ? dayVal : null;
 
     const logoVal = (elements.logoUrlInput.value || "").trim();
     appData.config.logoDataUrl = logoVal || null;
@@ -1821,12 +1821,34 @@ function showMessage(msg, isError = false) {
   }, 3200);
 }
 
-function init() {
+async function syncFromGitHub() {
+  try {
+    const url = `https://api.github.com/repos/${GITHUB_REPO}/contents/${SHARED_JSON_PATH}`;
+    const resp = await fetch(url, {
+      headers: {
+        "Accept": "application/vnd.github+json",
+        "X-GitHub-Api-Version": "2022-11-28"
+      },
+      cache: "no-store"
+    });
+    if (!resp.ok) return;
+    const meta = await resp.json();
+    const decoded = decodeURIComponent(escape(atob(meta.content.replace(/\n/g, ""))));
+    const remote = JSON.parse(decoded);
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(remote));
+  } catch {
+    // Ignore — on utilisera le localStorage existant en cas d'erreur
+  }
+}
+
+async function init() {
   if (!checkAuth()) return;
 
   if (elements.adminAppVersion) {
     elements.adminAppVersion.textContent = `Version ${APP_VERSION}`;
   }
+
+  await syncFromGitHub();
 
   if (!loadData()) return;
 
