@@ -6,32 +6,32 @@
       {
         "day": 1,
         "row": 8,
-        "col": 6
+        "col": 4
       },
       {
         "day": 2,
         "row": 8,
-        "col": 4
+        "col": 5
       },
       {
         "day": 3,
-        "row": 7,
+        "row": 8,
         "col": 6
       },
       {
         "day": 4,
         "row": 7,
-        "col": 5
+        "col": 4
       },
       {
         "day": 5,
         "row": 7,
-        "col": 4
+        "col": 6
       },
       {
         "day": 6,
         "row": 6,
-        "col": 7
+        "col": 4
       },
       {
         "day": 7,
@@ -40,98 +40,88 @@
       },
       {
         "day": 8,
-        "row": 6,
-        "col": 4
+        "row": 5,
+        "col": 1
       },
       {
         "day": 9,
-        "row": 6,
-        "col": 3
+        "row": 5,
+        "col": 2
       },
       {
         "day": 10,
         "row": 5,
-        "col": 7
+        "col": 3
       },
       {
         "day": 11,
         "row": 5,
-        "col": 6
+        "col": 7
       },
       {
         "day": 12,
         "row": 5,
-        "col": 5
+        "col": 8
       },
       {
         "day": 13,
         "row": 5,
-        "col": 4
+        "col": 9
       },
       {
         "day": 14,
-        "row": 5,
-        "col": 3
+        "row": 4,
+        "col": 2
       },
       {
         "day": 15,
         "row": 4,
-        "col": 7
+        "col": 3
       },
       {
         "day": 16,
         "row": 4,
-        "col": 6
+        "col": 4
       },
       {
         "day": 17,
         "row": 4,
-        "col": 4
+        "col": 6
       },
       {
         "day": 18,
         "row": 4,
-        "col": 3
+        "col": 7
       },
       {
         "day": 19,
-        "row": 3,
-        "col": 6
+        "row": 4,
+        "col": 8
       },
       {
         "day": 20,
         "row": 3,
-        "col": 5
+        "col": 3
       },
       {
         "day": 21,
         "row": 3,
-        "col": 4
+        "col": 7
       },
       {
         "day": 22,
-        "row": 1,
-        "col": 7
+        "row": 2,
+        "col": 4
       },
       {
         "day": 23,
         "row": 2,
-        "col": 2
+        "col": 6
       },
       {
         "day": 24,
-        "row": 2,
-        "col": 8
-      },
-      {
-        "day": 25,
-        "row": 4,
-        "col": 9
-      },
-      {
-        "day": 26,
-        "row": 8,
-        "col": 9
+        "row": 1,
+        "col": 5
       }
     ],
     "rankingMode": "named",
@@ -505,41 +495,11 @@
       "day": 24,
       "date": "2026-12-24",
       "surpriseTitle": "Surprise 24",
-      "objective": 0,
+      "objective": 100,
       "sales": 0,
       "surpriseDescription": "",
       "surpriseIcon": "🎁",
       "congratsMessage": "Bravo equipe, la case 24 est debloquee grace a votre energie.",
-      "surpriseLinkLabel": "",
-      "surpriseLinkUrl": "",
-      "unlockedAt": null,
-      "forceClosed": false,
-      "forceOpen": false
-    },
-    {
-      "day": 25,
-      "date": "2026-12-25",
-      "surpriseTitle": "Surprise 25",
-      "objective": 0,
-      "sales": 0,
-      "surpriseDescription": "",
-      "surpriseIcon": "🎁",
-      "congratsMessage": "Bravo equipe, la case 25 est debloquee grace a votre energie.",
-      "surpriseLinkLabel": "",
-      "surpriseLinkUrl": "",
-      "unlockedAt": null,
-      "forceClosed": false,
-      "forceOpen": false
-    },
-    {
-      "day": 26,
-      "date": "2026-12-26",
-      "surpriseTitle": "Surprise 26",
-      "objective": 0,
-      "sales": 0,
-      "surpriseDescription": "",
-      "surpriseIcon": "🎁",
-      "congratsMessage": "Bravo equipe, la case 26 est debloquee grace a votre energie.",
       "surpriseLinkLabel": "",
       "surpriseLinkUrl": "",
       "unlockedAt": null,
@@ -613,6 +573,36 @@
     }
   ],
   "auditLog": [
+    {
+      "id": "a1778705317011643",
+      "action": "Calendrier",
+      "details": "Sauvegarde de l'agencement du calendrier",
+      "at": "2026-05-13T20:48:37.011Z"
+    },
+    {
+      "id": "a1778705159632789",
+      "action": "Case",
+      "details": "Edition de la case 24",
+      "at": "2026-05-13T20:45:59.632Z"
+    },
+    {
+      "id": "a1778705134009177",
+      "action": "Cases",
+      "details": "Case 25 supprimée (total : 24)",
+      "at": "2026-05-13T20:45:34.009Z"
+    },
+    {
+      "id": "a1778705131640367",
+      "action": "Cases",
+      "details": "Case 26 supprimée (total : 25)",
+      "at": "2026-05-13T20:45:31.640Z"
+    },
+    {
+      "id": "a1778705109346934",
+      "action": "Synchronisation",
+      "details": "Publication pour tous via GitHub API",
+      "at": "2026-05-13T20:45:09.346Z"
+    },
     {
       "id": "a1778705105300463",
       "action": "Calendrier",
@@ -1782,36 +1772,6 @@
       "action": "Classement",
       "details": "Ajout d'un collaborateur",
       "at": "2026-05-12T21:11:05.990Z"
-    },
-    {
-      "id": "a177862026581443",
-      "action": "Classement",
-      "details": "Ajout d'un collaborateur",
-      "at": "2026-05-12T21:11:05.814Z"
-    },
-    {
-      "id": "a177862026565534",
-      "action": "Classement",
-      "details": "Ajout d'un collaborateur",
-      "at": "2026-05-12T21:11:05.655Z"
-    },
-    {
-      "id": "a1778620265207376",
-      "action": "Classement",
-      "details": "Ajout d'un collaborateur",
-      "at": "2026-05-12T21:11:05.207Z"
-    },
-    {
-      "id": "a1778620256366324",
-      "action": "Classement",
-      "details": "Ajout d'un collaborateur",
-      "at": "2026-05-12T21:10:56.366Z"
-    },
-    {
-      "id": "a1778620256222847",
-      "action": "Classement",
-      "details": "Ajout d'un collaborateur",
-      "at": "2026-05-12T21:10:56.222Z"
     }
   ]
 }
