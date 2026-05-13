@@ -507,6 +507,24 @@
   "rankings": [],
   "auditLog": [
     {
+      "id": "a1778693617825960",
+      "action": "Ventes",
+      "details": "Mise a jour du jour 13 a 44 ventes",
+      "at": "2026-05-13T17:33:37.825Z"
+    },
+    {
+      "id": "a1778693615337580",
+      "action": "Messages",
+      "details": "Mise a jour du message direction, jour actif, logo et theme",
+      "at": "2026-05-13T17:33:35.337Z"
+    },
+    {
+      "id": "a177869360502234",
+      "action": "Synchronisation",
+      "details": "Publication pour tous via GitHub API",
+      "at": "2026-05-13T17:33:25.022Z"
+    },
+    {
       "id": "a1778693596417845",
       "action": "Messages",
       "details": "Mise a jour du message direction, jour actif, logo et theme",
