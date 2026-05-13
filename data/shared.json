@@ -574,6 +574,12 @@
   ],
   "auditLog": [
     {
+      "id": "a1778709010293169",
+      "action": "Synchronisation",
+      "details": "Publication pour tous via GitHub API",
+      "at": "2026-05-13T21:50:10.293Z"
+    },
+    {
       "id": "a1778708241679332",
       "action": "Synchronisation",
       "details": "Publication pour tous via GitHub API",
@@ -1766,12 +1772,6 @@
       "action": "Messages",
       "details": "Mise a jour du message direction, jour actif, logo et theme",
       "at": "2026-05-13T17:14:54.072Z"
-    },
-    {
-      "id": "a1778692486328815",
-      "action": "Ventes",
-      "details": "Mise a jour du jour 13 a 44 ventes",
-      "at": "2026-05-13T17:14:46.328Z"
     }
   ]
 }
