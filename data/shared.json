@@ -574,6 +574,24 @@
   ],
   "auditLog": [
     {
+      "id": "a1778706076597873",
+      "action": "Calendrier",
+      "details": "Sauvegarde de l'agencement du calendrier",
+      "at": "2026-05-13T21:01:16.597Z"
+    },
+    {
+      "id": "a1778706074405612",
+      "action": "Calendrier",
+      "details": "Sauvegarde de l'agencement du calendrier",
+      "at": "2026-05-13T21:01:14.405Z"
+    },
+    {
+      "id": "a1778706040020288",
+      "action": "Synchronisation",
+      "details": "Publication pour tous via GitHub API",
+      "at": "2026-05-13T21:00:40.020Z"
+    },
+    {
       "id": "a1778706006868196",
       "action": "Case",
       "details": "Edition de la case 13",
@@ -1754,24 +1772,6 @@
       "action": "Classement",
       "details": "Sauvegarde globale du classement",
       "at": "2026-05-13T17:01:08.899Z"
-    },
-    {
-      "id": "a177869165345054",
-      "action": "Ventes",
-      "details": "Mise a jour du jour 13 a 44 ventes",
-      "at": "2026-05-13T17:00:53.450Z"
-    },
-    {
-      "id": "a1778691651314775",
-      "action": "Messages",
-      "details": "Mise a jour du message direction, jour actif, logo et theme",
-      "at": "2026-05-13T17:00:51.314Z"
-    },
-    {
-      "id": "a1778691631242181",
-      "action": "Classement",
-      "details": "Sauvegarde globale du classement",
-      "at": "2026-05-13T17:00:31.242Z"
     }
   ]
 }
