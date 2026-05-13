@@ -2,6 +2,7 @@ const STORAGE_KEY = "avent-performance-data-v1";
 const CELEBRATED_KEY = "avent-performance-celebrated";
 const ADMIN_PATH = "admin.html";
 const APP_VERSION = "v2026.05.13-1";
+const DATA_SOURCE_URL = "data/shared.json";
 const CALENDAR_GRID_ROWS = 10;
 const CALENDAR_GRID_COLS = 9;
 
@@ -250,26 +251,23 @@ function normalizeData(data) {
   return normalized;
 }
 
-function loadData() {
-  const fromStorage = localStorage.getItem(STORAGE_KEY);
-  if (!fromStorage) {
-    const seed = normalizeData(seededData());
-    localStorage.setItem(STORAGE_KEY, JSON.stringify(seed));
-    return seed;
-  }
-
+async function loadData() {
   try {
-    const parsed = JSON.parse(fromStorage);
-    if (!parsed.days || parsed.days.length !== 24) {
-      throw new Error("invalid data");
+    const response = await fetch(`${DATA_SOURCE_URL}?v=${encodeURIComponent(APP_VERSION)}`, { cache: "no-store" });
+    if (!response.ok) {
+      throw new Error(`HTTP ${response.status}`);
     }
-    const normalized = normalizeData(parsed);
-    localStorage.setItem(STORAGE_KEY, JSON.stringify(normalized));
+
+    const parsed = await response.json();
+    const normalized = normalizeData(parsed?.data || parsed);
+    if (!normalized.days || normalized.days.length !== 24) {
+      throw new Error("invalid shared data");
+    }
+
     return normalized;
   } catch {
-    const seed = normalizeData(seededData());
-    localStorage.setItem(STORAGE_KEY, JSON.stringify(seed));
-    return seed;
+    // Fallback de secours si le fichier partagé est indisponible.
+    return normalizeData(seededData());
   }
 }
 
@@ -349,7 +347,7 @@ function isValidHttpUrl(value) {
 
 function updateCountdown() {
   const now = new Date();
-  const target = getCountdownTarget(appState?.data?.config || loadData().config);
+  const target = getCountdownTarget(appState?.data?.config || seededData().config);
   const delta = target.getTime() - now.getTime();
   const days = Math.max(0, Math.ceil(delta / (1000 * 60 * 60 * 24)));
 
@@ -971,14 +969,11 @@ function stopAmbiance() {
   elements.musicToggle.textContent = "🔇";
 }
 
-function render() {
-  const data = loadData();
+function render(data) {
   applyThemeConfig(data.config);
   const cfgDay = data.config && data.config.activeDay;
   const activeDay = (cfgDay >= 1 && cfgDay <= 24) ? cfgDay : getTodayInEvent();
   const activeDayData = data.days.find((d) => d.day === activeDay) || data.days[0];
-
-  ensureUnlockedDate(data, activeDay);
 
   // Logo
   const siteLogoEl = document.getElementById("site-logo");
@@ -991,22 +986,22 @@ function render() {
     }
   }
 
+  appState = { data, activeDay };
   elements.todayLabel.textContent = `Jour ${activeDay}`;
   renderDailyProgress(activeDayData);
   renderCalendar(data, activeDay);
   renderDashboard(data, activeDay);
   renderPodium(data);
   updateCountdown();
-
-  appState = { data, activeDay };
 }
 
-function maybeRefresh() {
+async function maybeRefresh() {
   try {
-    const latest = localStorage.getItem(STORAGE_KEY) || "";
-    if (latest !== hashSnapshot) {
-      hashSnapshot = latest;
-      render();
+    const latestData = await loadData();
+    const latestHash = JSON.stringify(latestData);
+    if (latestHash !== hashSnapshot) {
+      hashSnapshot = latestHash;
+      render(latestData);
       return;
     }
 
@@ -1054,18 +1049,18 @@ function initEvents() {
   }
 }
 
-function init() {
+async function init() {
   if (elements.appVersion) {
     elements.appVersion.textContent = `Version ${APP_VERSION}`;
   }
 
-  const seeded = loadData();
-  hashSnapshot = JSON.stringify(seeded);
+  const shared = await loadData();
+  hashSnapshot = JSON.stringify(shared);
   initEvents();
   startBackgroundFX();
 
   try {
-    render();
+    render(shared);
   } catch (error) {
     console.error("Erreur render initial:", error);
   }

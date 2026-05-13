@@ -1,0 +1,560 @@
+{
+  "config": {
+    "eventName": "L'Avent de la Performance",
+    "subtitle": "Eduneo - Decembre 2026",
+    "calendarLayout": [
+      {
+        "day": 24,
+        "row": 1,
+        "col": 5
+      },
+      {
+        "day": 23,
+        "row": 2,
+        "col": 4
+      },
+      {
+        "day": 22,
+        "row": 2,
+        "col": 6
+      },
+      {
+        "day": 21,
+        "row": 3,
+        "col": 4
+      },
+      {
+        "day": 20,
+        "row": 3,
+        "col": 5
+      },
+      {
+        "day": 19,
+        "row": 3,
+        "col": 6
+      },
+      {
+        "day": 18,
+        "row": 4,
+        "col": 3
+      },
+      {
+        "day": 17,
+        "row": 4,
+        "col": 4
+      },
+      {
+        "day": 16,
+        "row": 4,
+        "col": 6
+      },
+      {
+        "day": 15,
+        "row": 4,
+        "col": 7
+      },
+      {
+        "day": 14,
+        "row": 5,
+        "col": 3
+      },
+      {
+        "day": 13,
+        "row": 5,
+        "col": 4
+      },
+      {
+        "day": 12,
+        "row": 5,
+        "col": 5
+      },
+      {
+        "day": 11,
+        "row": 5,
+        "col": 6
+      },
+      {
+        "day": 10,
+        "row": 5,
+        "col": 7
+      },
+      {
+        "day": 9,
+        "row": 6,
+        "col": 3
+      },
+      {
+        "day": 8,
+        "row": 6,
+        "col": 4
+      },
+      {
+        "day": 7,
+        "row": 6,
+        "col": 6
+      },
+      {
+        "day": 6,
+        "row": 6,
+        "col": 7
+      },
+      {
+        "day": 5,
+        "row": 7,
+        "col": 4
+      },
+      {
+        "day": 4,
+        "row": 7,
+        "col": 5
+      },
+      {
+        "day": 3,
+        "row": 7,
+        "col": 6
+      },
+      {
+        "day": 2,
+        "row": 8,
+        "col": 4
+      },
+      {
+        "day": 1,
+        "row": 8,
+        "col": 6
+      }
+    ],
+    "rankingMode": "anonymous",
+    "countdownTarget": "2026-12-24T00:00:00",
+    "fontTitle": "Mountains of Christmas",
+    "fontBody": "Poppins",
+    "showRankingAvatars": false,
+    "theme": {
+      "gold": "#ffd700",
+      "green": "#1b4d2e",
+      "red": "#b22222",
+      "night": "#0d1b2a",
+      "snow": "#f8f8ff"
+    },
+    "directionMessage": "Votre engagement quotidien est remarquable. Restons unis, ambitieux et bienveillants jusqu'au 24 decembre.",
+    "flashAnnouncement": "🔥 Sprint final de la semaine ! On vise 120% aujourd'hui."
+  },
+  "days": [
+    {
+      "day": 1,
+      "date": "2026-12-01",
+      "objective": 50,
+      "sales": 53,
+      "surpriseTitle": "Pause cafe offerte",
+      "surpriseDescription": "Un moment cafe et gourmandises offert a toute l'equipe.",
+      "surpriseIcon": "☕",
+      "congratsMessage": "Bravo equipe, la case 1 est debloquee grace a votre energie.",
+      "surpriseLinkLabel": "",
+      "surpriseLinkUrl": "",
+      "unlockedAt": "2026-12-01",
+      "forceClosed": false,
+      "forceOpen": false
+    },
+    {
+      "day": 2,
+      "date": "2026-12-02",
+      "objective": 50,
+      "sales": 47,
+      "surpriseTitle": "Playlist boost",
+      "surpriseDescription": "La playlist de noel lo-fi de la team est diffusee 2 heures.",
+      "surpriseIcon": "🎵",
+      "congratsMessage": "Bravo equipe, la case 2 est debloquee grace a votre energie.",
+      "surpriseLinkLabel": "",
+      "surpriseLinkUrl": "",
+      "unlockedAt": null,
+      "forceClosed": false,
+      "forceOpen": false
+    },
+    {
+      "day": 3,
+      "date": "2026-12-03",
+      "objective": 55,
+      "sales": 59,
+      "surpriseTitle": "Petit-dejeuner maison",
+      "surpriseDescription": "Viennoiseries et boissons chaudes pour tout le plateau.",
+      "surpriseIcon": "🥐",
+      "congratsMessage": "Bravo equipe, la case 3 est debloquee grace a votre energie.",
+      "surpriseLinkLabel": "",
+      "surpriseLinkUrl": "",
+      "unlockedAt": "2026-12-03",
+      "forceClosed": false,
+      "forceOpen": false
+    },
+    {
+      "day": 4,
+      "date": "2026-12-04",
+      "objective": 56,
+      "sales": 62,
+      "surpriseTitle": "Dress code festif",
+      "surpriseDescription": "Journee pull de noel et photo d'equipe.",
+      "surpriseIcon": "🧣",
+      "congratsMessage": "Bravo equipe, la case 4 est debloquee grace a votre energie.",
+      "surpriseLinkLabel": "",
+      "surpriseLinkUrl": "",
+      "unlockedAt": "2026-12-04",
+      "forceClosed": false,
+      "forceOpen": false
+    },
+    {
+      "day": 5,
+      "date": "2026-12-05",
+      "objective": 58,
+      "sales": 63,
+      "surpriseTitle": "Bonus points",
+      "surpriseDescription": "Double points sur la performance interne du jour.",
+      "surpriseIcon": "✨",
+      "congratsMessage": "Bravo equipe, la case 5 est debloquee grace a votre energie.",
+      "surpriseLinkLabel": "",
+      "surpriseLinkUrl": "",
+      "unlockedAt": "2026-12-05",
+      "forceClosed": false,
+      "forceOpen": false
+    },
+    {
+      "day": 6,
+      "date": "2026-12-06",
+      "objective": 60,
+      "sales": 58,
+      "surpriseTitle": "Lunch equipe",
+      "surpriseDescription": "Dejeuner convivial pris en charge.",
+      "surpriseIcon": "🍽️",
+      "congratsMessage": "Bravo equipe, la case 6 est debloquee grace a votre energie.",
+      "surpriseLinkLabel": "",
+      "surpriseLinkUrl": "",
+      "unlockedAt": null,
+      "forceClosed": false,
+      "forceOpen": false
+    },
+    {
+      "day": 7,
+      "date": "2026-12-07",
+      "objective": 60,
+      "sales": 64,
+      "surpriseTitle": "Roue de la chance",
+      "surpriseDescription": "Chaque collaborateur tire une surprise express.",
+      "surpriseIcon": "🎡",
+      "congratsMessage": "Bravo equipe, la case 7 est debloquee grace a votre energie.",
+      "surpriseLinkLabel": "",
+      "surpriseLinkUrl": "",
+      "unlockedAt": "2026-12-07",
+      "forceClosed": false,
+      "forceOpen": false
+    },
+    {
+      "day": 8,
+      "date": "2026-12-08",
+      "objective": 62,
+      "sales": 88,
+      "surpriseTitle": "Pause chocolat chaud",
+      "surpriseDescription": "Service special chocolat chaud en salle commune.",
+      "surpriseIcon": "🍫",
+      "congratsMessage": "Bravo equipe, la case 8 est debloquee grace a votre energie.",
+      "surpriseLinkLabel": "",
+      "surpriseLinkUrl": "",
+      "unlockedAt": "2026-12-08",
+      "forceClosed": false,
+      "forceOpen": false
+    },
+    {
+      "day": 9,
+      "date": "2026-12-09",
+      "objective": 63,
+      "sales": 61,
+      "surpriseTitle": "Happy hour sans alcool",
+      "surpriseDescription": "Moment convivial de fin de journee.",
+      "surpriseIcon": "🥂",
+      "congratsMessage": "Bravo equipe, la case 9 est debloquee grace a votre energie.",
+      "surpriseLinkLabel": "",
+      "surpriseLinkUrl": "",
+      "unlockedAt": null,
+      "forceClosed": false,
+      "forceOpen": false
+    },
+    {
+      "day": 10,
+      "date": "2026-12-10",
+      "objective": 64,
+      "sales": 66,
+      "surpriseTitle": "Mur des victoires",
+      "surpriseDescription": "Mise en avant des plus belles performances de la semaine.",
+      "surpriseIcon": "🏆",
+      "congratsMessage": "Bravo equipe, la case 10 est debloquee grace a votre energie.",
+      "surpriseLinkLabel": "",
+      "surpriseLinkUrl": "",
+      "unlockedAt": "2026-12-10",
+      "forceClosed": false,
+      "forceOpen": false
+    },
+    {
+      "day": 11,
+      "date": "2026-12-11",
+      "objective": 66,
+      "sales": 71,
+      "surpriseTitle": "Atelier express",
+      "surpriseDescription": "Mini atelier motivation et techniques de closing.",
+      "surpriseIcon": "🚀",
+      "congratsMessage": "Bravo equipe, la case 11 est debloquee grace a votre energie.",
+      "surpriseLinkLabel": "",
+      "surpriseLinkUrl": "",
+      "unlockedAt": "2026-12-11",
+      "forceClosed": false,
+      "forceOpen": false
+    },
+    {
+      "day": 12,
+      "date": "2026-12-12",
+      "objective": 66,
+      "sales": 74,
+      "surpriseTitle": "Team challenge",
+      "surpriseDescription": "Defi cooperatif avec recompense collective.",
+      "surpriseIcon": "🤝",
+      "congratsMessage": "Bravo equipe, la case 12 est debloquee grace a votre energie.",
+      "surpriseLinkLabel": "",
+      "surpriseLinkUrl": "",
+      "unlockedAt": "2026-12-12",
+      "forceClosed": false,
+      "forceOpen": false
+    },
+    {
+      "day": 13,
+      "date": "2026-12-13",
+      "objective": 68,
+      "sales": 44,
+      "surpriseTitle": "Carte cadeau",
+      "surpriseDescription": "Tirage d'une carte cadeau parmi les participants.",
+      "surpriseIcon": "🎁",
+      "congratsMessage": "Bravo equipe, la case 13 est debloquee grace a votre energie.",
+      "surpriseLinkLabel": "",
+      "surpriseLinkUrl": "",
+      "unlockedAt": null,
+      "forceClosed": false,
+      "forceOpen": false
+    },
+    {
+      "day": 14,
+      "date": "2026-12-14",
+      "objective": 70,
+      "sales": 0,
+      "surpriseTitle": "Live shoutout",
+      "surpriseDescription": "Mention speciale de l'equipe en reunion generale.",
+      "surpriseIcon": "📣",
+      "congratsMessage": "Bravo equipe, la case 14 est debloquee grace a votre energie.",
+      "surpriseLinkLabel": "",
+      "surpriseLinkUrl": "",
+      "unlockedAt": null,
+      "forceClosed": false,
+      "forceOpen": false
+    },
+    {
+      "day": 15,
+      "date": "2026-12-15",
+      "objective": 72,
+      "sales": 0,
+      "surpriseTitle": "Pause bien-etre",
+      "surpriseDescription": "Session respiration et detente de 15 minutes.",
+      "surpriseIcon": "🕯️",
+      "congratsMessage": "Bravo equipe, la case 15 est debloquee grace a votre energie.",
+      "surpriseLinkLabel": "",
+      "surpriseLinkUrl": "",
+      "unlockedAt": null,
+      "forceClosed": false,
+      "forceOpen": false
+    },
+    {
+      "day": 16,
+      "date": "2026-12-16",
+      "objective": 74,
+      "sales": 0,
+      "surpriseTitle": "Session blind test",
+      "surpriseDescription": "Quiz musical de noel entre equipes.",
+      "surpriseIcon": "🎤",
+      "congratsMessage": "Bravo equipe, la case 16 est debloquee grace a votre energie.",
+      "surpriseLinkLabel": "",
+      "surpriseLinkUrl": "",
+      "unlockedAt": null,
+      "forceClosed": false,
+      "forceOpen": false
+    },
+    {
+      "day": 17,
+      "date": "2026-12-17",
+      "objective": 74,
+      "sales": 0,
+      "surpriseTitle": "Dessert surprise",
+      "surpriseDescription": "Dessert du jour offert a tous.",
+      "surpriseIcon": "🍰",
+      "congratsMessage": "Bravo equipe, la case 17 est debloquee grace a votre energie.",
+      "surpriseLinkLabel": "",
+      "surpriseLinkUrl": "",
+      "unlockedAt": null,
+      "forceClosed": false,
+      "forceOpen": false
+    },
+    {
+      "day": 18,
+      "date": "2026-12-18",
+      "objective": 76,
+      "sales": 0,
+      "surpriseTitle": "Sprint flash",
+      "surpriseDescription": "Objectif bonus sur 90 minutes chrono.",
+      "surpriseIcon": "⚡",
+      "congratsMessage": "Bravo equipe, la case 18 est debloquee grace a votre energie.",
+      "surpriseLinkLabel": "",
+      "surpriseLinkUrl": "",
+      "unlockedAt": null,
+      "forceClosed": false,
+      "forceOpen": false
+    },
+    {
+      "day": 19,
+      "date": "2026-12-19",
+      "objective": 78,
+      "sales": 0,
+      "surpriseTitle": "Carte merci",
+      "surpriseDescription": "Message personnalise de la direction.",
+      "surpriseIcon": "💌",
+      "congratsMessage": "Bravo equipe, la case 19 est debloquee grace a votre energie.",
+      "surpriseLinkLabel": "",
+      "surpriseLinkUrl": "",
+      "unlockedAt": null,
+      "forceClosed": false,
+      "forceOpen": false
+    },
+    {
+      "day": 20,
+      "date": "2026-12-20",
+      "objective": 80,
+      "sales": 0,
+      "surpriseTitle": "Medailles internes",
+      "surpriseDescription": "Remise symbolique des medailles de progression.",
+      "surpriseIcon": "🥇",
+      "congratsMessage": "Bravo equipe, la case 20 est debloquee grace a votre energie.",
+      "surpriseLinkLabel": "",
+      "surpriseLinkUrl": "",
+      "unlockedAt": null,
+      "forceClosed": false,
+      "forceOpen": false
+    },
+    {
+      "day": 21,
+      "date": "2026-12-21",
+      "objective": 82,
+      "sales": 0,
+      "surpriseTitle": "Animation surprise",
+      "surpriseDescription": "Intervention festive en open space.",
+      "surpriseIcon": "🎭",
+      "congratsMessage": "Bravo equipe, la case 21 est debloquee grace a votre energie.",
+      "surpriseLinkLabel": "",
+      "surpriseLinkUrl": "",
+      "unlockedAt": null,
+      "forceClosed": false,
+      "forceOpen": false
+    },
+    {
+      "day": 22,
+      "date": "2026-12-22",
+      "objective": 84,
+      "sales": 0,
+      "surpriseTitle": "Photo souvenir",
+      "surpriseDescription": "Photo officielle edition Avent 2026.",
+      "surpriseIcon": "📸",
+      "congratsMessage": "Bravo equipe, la case 22 est debloquee grace a votre energie.",
+      "surpriseLinkLabel": "",
+      "surpriseLinkUrl": "",
+      "unlockedAt": null,
+      "forceClosed": false,
+      "forceOpen": false
+    },
+    {
+      "day": 23,
+      "date": "2026-12-23",
+      "objective": 86,
+      "sales": 0,
+      "surpriseTitle": "Mega tirage",
+      "surpriseDescription": "Grand tirage final des recompenses.",
+      "surpriseIcon": "🎟️",
+      "congratsMessage": "Bravo equipe, la case 23 est debloquee grace a votre energie.",
+      "surpriseLinkLabel": "",
+      "surpriseLinkUrl": "",
+      "unlockedAt": null,
+      "forceClosed": false,
+      "forceOpen": false
+    },
+    {
+      "day": 24,
+      "date": "2026-12-24",
+      "objective": 90,
+      "sales": 0,
+      "surpriseTitle": "Celebration finale",
+      "surpriseDescription": "Moment de celebration collectif de cloture.",
+      "surpriseIcon": "🎄",
+      "congratsMessage": "Bravo equipe, la case 24 est debloquee grace a votre energie.",
+      "surpriseLinkLabel": "",
+      "surpriseLinkUrl": "",
+      "unlockedAt": null,
+      "forceClosed": false,
+      "forceOpen": false
+    }
+  ],
+  "rankings": [
+    {
+      "id": "r1",
+      "name": "Camille Martin",
+      "anonymousLabel": "Collaborateur 1",
+      "points": 128,
+      "sales": 56,
+      "icon": "🌟",
+      "avatarUrl": ""
+    },
+    {
+      "id": "r2",
+      "name": "Nicolas Leroy",
+      "anonymousLabel": "Collaborateur 2",
+      "points": 121,
+      "sales": 52,
+      "icon": "🏅",
+      "avatarUrl": ""
+    },
+    {
+      "id": "r3",
+      "name": "Sarah Dubois",
+      "anonymousLabel": "Collaborateur 3",
+      "points": 117,
+      "sales": 49,
+      "icon": "🎁",
+      "avatarUrl": ""
+    },
+    {
+      "id": "r4",
+      "name": "Antoine Petit",
+      "anonymousLabel": "Collaborateur 4",
+      "points": 111,
+      "sales": 45,
+      "icon": "🚀",
+      "avatarUrl": ""
+    },
+    {
+      "id": "r5",
+      "name": "Lea Bernard",
+      "anonymousLabel": "Collaborateur 5",
+      "points": 107,
+      "sales": 44,
+      "icon": "✨",
+      "avatarUrl": ""
+    },
+    {
+      "id": "r6",
+      "name": "Julien Moreau",
+      "anonymousLabel": "Collaborateur 6",
+      "points": 98,
+      "sales": 39,
+      "icon": "🎄",
+      "avatarUrl": ""
+    }
+  ]
+}
