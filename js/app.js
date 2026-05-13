@@ -1,8 +1,8 @@
 const STORAGE_KEY = "avent-performance-data-v1";
 const CELEBRATED_KEY = "avent-performance-celebrated";
 const ADMIN_PATH = "admin.html";
-const APP_VERSION = "v2026.05.13-7";
-const DATA_SOURCE_URL = "https://raw.githubusercontent.com/woombat59/website_edudu/main/data/shared.json";
+const APP_VERSION = "v2026.05.13-8";
+const DATA_SOURCE_URL = "https://cdn.jsdelivr.net/gh/woombat59/website_edudu@main/data/shared.json";
 const CALENDAR_GRID_ROWS = 10;
 const CALENDAR_GRID_COLS = 9;
 

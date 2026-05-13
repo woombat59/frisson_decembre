@@ -2,7 +2,7 @@ const STORAGE_KEY = "avent-performance-data-v1";
 const READONLY_PASSWORD = "eduneo2026";
 const EDIT_PASSWORD = "mdp";
 const ADMIN_ROLE_KEY = "admin-role-mode";
-const APP_VERSION = "v2026.05.13-7";
+const APP_VERSION = "v2026.05.13-8";
 const GITHUB_REPO = "woombat59/website_edudu";
 const SHARED_JSON_PATH = "data/shared.json";
 const CALENDAR_GRID_ROWS = 10;
@@ -489,7 +489,9 @@ async function publishToGitHub() {
   }
 
   addAudit("Synchronisation", "Publication pour tous via GitHub API");
-  setPublishStatus("✅ Publié ! Tous les visiteurs verront la mise à jour dans quelques secondes.", false, false);
+  // Purge le cache jsDelivr pour que les visiteurs voient les données immédiatement
+  fetch("https://purge.jsdelivr.net/gh/woombat59/website_edudu@main/data/shared.json").catch(() => {});
+  setPublishStatus("✅ Publié ! Tous les visiteurs verront la mise à jour en quelques secondes.", false, false);
 }
 
 function isReadOnlyMode() {
