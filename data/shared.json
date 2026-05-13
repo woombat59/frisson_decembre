@@ -565,6 +565,18 @@
   ],
   "auditLog": [
     {
+      "id": "a1778694740844124",
+      "action": "Classement",
+      "details": "Sauvegarde globale du classement",
+      "at": "2026-05-13T17:52:20.844Z"
+    },
+    {
+      "id": "a1778694709493427",
+      "action": "Synchronisation",
+      "details": "Publication pour tous via GitHub API",
+      "at": "2026-05-13T17:51:49.493Z"
+    },
+    {
       "id": "a1778694691409112",
       "action": "Synchronisation",
       "details": "Publication pour tous via GitHub API",
