@@ -647,10 +647,24 @@ h1 {
   bottom: 78px;
 }
 
+.floating-btn.info {
+  bottom: 136px;
+  font-size: 1.5rem;
+  font-style: italic;
+  font-weight: 700;
+  background: linear-gradient(140deg, rgba(180, 130, 0, 0.95), rgba(220, 170, 0, 0.85));
+  border-color: rgba(255, 215, 0, 0.6);
+  box-shadow: 0 4px 16px rgba(180, 130, 0, 0.45);
+}
+
+.floating-btn.info:hover {
+  box-shadow: 0 6px 20px rgba(255, 200, 0, 0.55);
+}
+
 .app-version-badge {
   position: fixed;
   right: 18px;
-  bottom: 136px;
+  bottom: 196px;
   z-index: 7;
   padding: 6px 10px;
   border-radius: 999px;
@@ -693,6 +707,72 @@ h1 {
 
 .surprise-modal[open] .modal-content {
   animation: modalPop 0.34s ease-out;
+}
+
+/* ── Modal Règles du jeu ── */
+.info-modal {
+  border: 0;
+  border-radius: 18px;
+  width: min(92vw, 560px);
+  max-height: 80vh;
+  background: linear-gradient(150deg, color-mix(in srgb, var(--night) 88%, #1a2e0a), color-mix(in srgb, var(--green) 25%, #182f4a));
+  color: var(--snow);
+  box-shadow: 0 24px 44px rgba(0, 0, 0, 0.45);
+}
+
+.info-modal::backdrop {
+  background: rgba(0, 0, 0, 0.55);
+}
+
+.info-modal-content {
+  text-align: left;
+  overflow-y: auto;
+  max-height: calc(80vh - 48px);
+}
+
+.info-modal-title {
+  margin: 0 0 14px;
+  font-size: 1.2rem;
+  text-align: center;
+  color: var(--gold);
+}
+
+.info-modal-text {
+  font-size: 0.95rem;
+  line-height: 1.65;
+  white-space: pre-wrap;
+}
+
+.info-modal[open] .modal-content {
+  animation: modalPop 0.34s ease-out;
+}
+
+/* ── Popup de bienvenue ── */
+.welcome-popup {
+  border: 0;
+  border-radius: 20px;
+  width: min(92vw, 540px);
+  background: linear-gradient(150deg, color-mix(in srgb, var(--night) 85%, #2a1a00), color-mix(in srgb, var(--red) 15%, #1a0a2a));
+  color: var(--snow);
+  box-shadow: 0 32px 64px rgba(0, 0, 0, 0.6), 0 0 0 2px rgba(255, 215, 0, 0.3);
+}
+
+.welcome-popup::backdrop {
+  background: rgba(0, 0, 0, 0.65);
+}
+
+.welcome-popup-content {
+  text-align: center;
+}
+
+.welcome-popup-text {
+  font-size: 1rem;
+  line-height: 1.7;
+  white-space: pre-wrap;
+}
+
+.welcome-popup[open] .modal-content {
+  animation: modalPop 0.4s ease-out;
 }
 
 .modal-day {
@@ -847,5 +927,9 @@ h1 {
 
   .floating-btn.admin {
     bottom: 84px;
+  }
+
+  .floating-btn.info {
+    bottom: 142px;
   }
 }

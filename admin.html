@@ -10,7 +10,7 @@
       href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="css/admin.css?v=20260513-11.1" />
+    <link rel="stylesheet" href="css/admin.css?v=20260513-12" />
   </head>
   <body>
     <div class="admin-shell">
@@ -189,6 +189,30 @@
               type="text"
               placeholder="ex: Sprint final ! Plus que 2 jours"
             />
+          </div>
+
+          <div class="form-group">
+            <label>🎉 Popup de bienvenue</label>
+            <label class="switch-row" style="margin-bottom:8px">
+              <input type="checkbox" id="welcome-enabled-toggle" />
+              <span>Afficher le popup à l'ouverture du site</span>
+            </label>
+            <textarea
+              id="welcome-message-input"
+              placeholder="Message affiché dans le popup de bienvenue..."
+              rows="4"
+            ></textarea>
+            <p class="field-hint">Ce message s'affiche à chaque ouverture de la page publique si le popup est activé.</p>
+          </div>
+
+          <div class="form-group">
+            <label for="rules-text-input">📋 Règles du jeu (bouton ℹ)</label>
+            <textarea
+              id="rules-text-input"
+              placeholder="Décrivez ici les règles du jeu... (laissez vide pour masquer le bouton ℹ)"
+              rows="5"
+            ></textarea>
+            <p class="field-hint">Si ce champ est rempli, un bouton ℹ apparaît sur la page publique et affiche les règles au clic.</p>
           </div>
 
           <button id="save-messages-btn" class="btn btn-primary">
@@ -462,6 +486,6 @@
       </div>
     </dialog>
 
-    <script src="js/admin.js?v=20260513-11.1"></script>
+    <script src="js/admin.js?v=20260513-12"></script>
   </body>
 </html>

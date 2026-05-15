@@ -10,7 +10,7 @@
       href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:wght@300;400;500;600;700&family=Mountains+of+Christmas:wght@700&family=Nunito:wght@300;400;600;700;800&family=Playfair+Display:wght@500;700;800&family=Poppins:wght@300;400;500;600;700&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="css/main.css?v=20260513-11.1" />
+    <link rel="stylesheet" href="css/main.css?v=20260513-12" />
   </head>
   <body>
     <canvas id="snow-canvas" aria-hidden="true"></canvas>
@@ -120,6 +120,10 @@
       </section>
     </main>
 
+    <button id="info-btn" class="floating-btn info" title="Règles du jeu" hidden>
+      ℹ
+    </button>
+
     <button id="music-toggle" class="floating-btn music" aria-pressed="false" title="Activer ou couper l'ambiance sonore">
       🔊
     </button>
@@ -129,6 +133,21 @@
     </button>
 
     <div id="app-version" class="app-version-badge" aria-label="Version de l'application">Version --</div>
+
+    <dialog id="info-modal" class="info-modal">
+      <button id="close-info-modal" class="close-modal" aria-label="Fermer">×</button>
+      <div class="modal-content info-modal-content">
+        <h3 class="info-modal-title">📋 Règles du jeu</h3>
+        <div id="info-modal-text" class="info-modal-text"></div>
+      </div>
+    </dialog>
+
+    <dialog id="welcome-popup" class="welcome-popup">
+      <button id="close-welcome-popup" class="close-modal" aria-label="Fermer">×</button>
+      <div class="modal-content welcome-popup-content">
+        <div id="welcome-popup-text" class="welcome-popup-text"></div>
+      </div>
+    </dialog>
 
     <dialog id="surprise-modal" class="surprise-modal">
       <button id="close-modal" class="close-modal" aria-label="Fermer">×</button>
@@ -145,6 +164,6 @@
 
     <div id="status-toast" class="status-toast" role="status" aria-live="polite"></div>
 
-    <script src="js/app.js?v=20260513-11.1"></script>
+    <script src="js/app.js?v=20260513-12"></script>
   </body>
 </html>

@@ -2,7 +2,7 @@ const STORAGE_KEY = "avent-performance-data-v1";
 const READONLY_PASSWORD = "eduneo2026";
 const EDIT_PASSWORD = "mdp";
 const ADMIN_ROLE_KEY = "admin-role-mode";
-const APP_VERSION = "v2026.05.13-11.1";
+const APP_VERSION = "v2026.05.13-12";
 const GITHUB_REPO = "woombat59/frisson_decembre";
 const SHARED_JSON_PATH = "data/shared.json";
 const CALENDAR_GRID_ROWS = 20;
@@ -56,6 +56,9 @@ const elements = {
   importAllFile: document.querySelector("#import-all-file"),
   importFromGithubBtn: document.querySelector("#import-from-github-btn"),
   saveMessagesBtn: document.querySelector("#save-messages-btn"),
+  welcomeEnabledToggle: document.querySelector("#welcome-enabled-toggle"),
+  welcomeMessageInput: document.querySelector("#welcome-message-input"),
+  rulesTextInput: document.querySelector("#rules-text-input"),
   rankingModeToggle: document.querySelector("#ranking-mode-toggle"),
   rankingSortMode: document.querySelector("#ranking-sort-mode"),
   rankingPreview: document.querySelector("#ranking-preview"),
@@ -272,6 +275,9 @@ function normalizeData(data) {
   normalized.config.showPodium = normalized.config.showPodium !== false;
   normalized.config.showRankingSection = normalized.config.showRankingSection !== false;
   normalized.config.musicUrl = normalized.config.musicUrl || "";
+  normalized.config.welcomeEnabled = normalized.config.welcomeEnabled === true;
+  normalized.config.welcomeMessage = normalized.config.welcomeMessage || "";
+  normalized.config.rulesText = normalized.config.rulesText || "";
   normalized.config.theme = { ...getDefaultThemeConfig(), ...(normalized.config.theme || {}) };
   normalized.days = Array.isArray(normalized.days) && normalized.days.length >= 1 ? normalized.days.map(normalizeDay) : [];
   normalized.config.calendarLayout = normalized.days.length > 0 ? normalizeCalendarLayout(normalized.config.calendarLayout, normalized.days.length) : [];
@@ -376,6 +382,15 @@ function fillConfigFieldsFromData() {
   if (elements.musicUrlInput) {
     elements.musicUrlInput.value = appData.config.musicUrl || "";
     updateMusicPreview(appData.config.musicUrl || "");
+  }
+  if (elements.welcomeEnabledToggle) {
+    elements.welcomeEnabledToggle.checked = Boolean(appData.config.welcomeEnabled);
+  }
+  if (elements.welcomeMessageInput) {
+    elements.welcomeMessageInput.value = appData.config.welcomeMessage || "";
+  }
+  if (elements.rulesTextInput) {
+    elements.rulesTextInput.value = appData.config.rulesText || "";
   }
   if (elements.themeGoldInput) elements.themeGoldInput.value = appData.config.theme?.gold || "#ffd700";
   if (elements.themeGreenInput) elements.themeGreenInput.value = appData.config.theme?.green || "#1b4d2e";
@@ -1471,6 +1486,9 @@ function initEvents() {
     appData.config.musicUrl = (elements.musicUrlInput?.value || "").trim();
     appData.config.showPodium = elements.showPodiumToggle ? Boolean(elements.showPodiumToggle.checked) : true;
     appData.config.showRankingSection = elements.showRankingSectionToggle ? Boolean(elements.showRankingSectionToggle.checked) : true;
+    appData.config.welcomeEnabled = Boolean(elements.welcomeEnabledToggle?.checked);
+    appData.config.welcomeMessage = (elements.welcomeMessageInput?.value || "").trim();
+    appData.config.rulesText = (elements.rulesTextInput?.value || "").trim();
     appData.config.theme = {
       gold: elements.themeGoldInput.value,
       green: elements.themeGreenInput.value,

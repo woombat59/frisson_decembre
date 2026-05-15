@@ -1,7 +1,7 @@
 const STORAGE_KEY = "avent-performance-data-v1";
 const CELEBRATED_KEY = "avent-performance-celebrated";
 const ADMIN_PATH = "admin.html";
-const APP_VERSION = "v2026.05.13-11.1";
+const APP_VERSION = "v2026.05.13-12";
 const GITHUB_REPO = "woombat59/frisson_decembre";
 const SHARED_JSON_PATH = "data/shared.json";
 const DATA_SOURCE_URL = `https://raw.githubusercontent.com/${GITHUB_REPO}/main/${SHARED_JSON_PATH}`;
@@ -77,6 +77,13 @@ const elements = {
   appVersion: document.querySelector("#app-version"),
   musicToggle: document.querySelector("#music-toggle"),
   adminLink: document.querySelector("#admin-link"),
+  infoBtn: document.querySelector("#info-btn"),
+  infoModal: document.querySelector("#info-modal"),
+  closeInfoModal: document.querySelector("#close-info-modal"),
+  infoModalText: document.querySelector("#info-modal-text"),
+  welcomePopup: document.querySelector("#welcome-popup"),
+  closeWelcomePopup: document.querySelector("#close-welcome-popup"),
+  welcomePopupText: document.querySelector("#welcome-popup-text"),
   snowCanvas: document.querySelector("#snow-canvas")
 };
 
@@ -88,6 +95,7 @@ let currentMusicUrl = "";
 let hashSnapshot = "";
 let dataETag = null;
 let lastKnownData = null;
+let welcomeShown = false;
 let toastTimer = null;
 let activeParticles = [];
 
@@ -265,6 +273,9 @@ function normalizeData(data) {
   normalized.config.fontTitle = normalized.config.fontTitle || "Mountains of Christmas";
   normalized.config.fontBody = normalized.config.fontBody || "Poppins";
   normalized.config.showRankingAvatars = Boolean(normalized.config.showRankingAvatars);
+  normalized.config.welcomeEnabled = normalized.config.welcomeEnabled === true;
+  normalized.config.welcomeMessage = normalized.config.welcomeMessage || "";
+  normalized.config.rulesText = normalized.config.rulesText || "";
   normalized.config.theme = { ...getDefaultThemeConfig(), ...(normalized.config.theme || {}) };
   normalized.days = Array.isArray(normalized.days) && normalized.days.length >= 1 ? normalized.days.map(normalizeDay) : seededData().days;
   normalized.config.calendarLayout = normalizeCalendarLayout(normalized.config.calendarLayout, normalized.days.length);
@@ -1078,6 +1089,25 @@ function render(data) {
   }
 
   updateCountdown();
+
+  // Bouton ℹ règles du jeu
+  if (elements.infoBtn) {
+    elements.infoBtn.hidden = !data.config.rulesText;
+  }
+  if (elements.infoModalText) {
+    elements.infoModalText.innerHTML = (data.config.rulesText || "").replace(/\n/g, "<br>");
+  }
+
+  // Popup de bienvenue (une fois par chargement de page)
+  if (!welcomeShown && data.config.welcomeEnabled && data.config.welcomeMessage) {
+    welcomeShown = true;
+    if (elements.welcomePopupText) {
+      elements.welcomePopupText.innerHTML = (data.config.welcomeMessage || "").replace(/\n/g, "<br>");
+    }
+    if (elements.welcomePopup) {
+      elements.welcomePopup.showModal();
+    }
+  }
 }
 
 async function maybeRefresh() {
@@ -1130,6 +1160,42 @@ function initEvents() {
       if (!popup) {
         window.location.href = ADMIN_PATH;
       }
+    });
+  }
+
+  if (elements.infoBtn && elements.infoModal) {
+    elements.infoBtn.addEventListener("click", () => elements.infoModal.showModal());
+  }
+
+  if (elements.closeInfoModal && elements.infoModal) {
+    elements.closeInfoModal.addEventListener("click", () => elements.infoModal.close());
+  }
+
+  if (elements.infoModal) {
+    elements.infoModal.addEventListener("click", (event) => {
+      const rect = elements.infoModal.getBoundingClientRect();
+      const inDialog =
+        event.clientX >= rect.left &&
+        event.clientX <= rect.right &&
+        event.clientY >= rect.top &&
+        event.clientY <= rect.bottom;
+      if (!inDialog) elements.infoModal.close();
+    });
+  }
+
+  if (elements.closeWelcomePopup && elements.welcomePopup) {
+    elements.closeWelcomePopup.addEventListener("click", () => elements.welcomePopup.close());
+  }
+
+  if (elements.welcomePopup) {
+    elements.welcomePopup.addEventListener("click", (event) => {
+      const rect = elements.welcomePopup.getBoundingClientRect();
+      const inDialog =
+        event.clientX >= rect.left &&
+        event.clientX <= rect.right &&
+        event.clientY >= rect.top &&
+        event.clientY <= rect.bottom;
+      if (!inDialog) elements.welcomePopup.close();
     });
   }
 }
