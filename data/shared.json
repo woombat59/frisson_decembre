@@ -128,7 +128,7 @@
     "directionMessage": "Courage !",
     "flashAnnouncement": "1er jour DÉBLOQUÉ !! Félicitations à tous 🚀",
     "rankingSortMode": "auto",
-    "activeDay": 1,
+    "activeDay": 2,
     "logoDataUrl": "data:image/png;base64,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",
     "countdownTarget": "2026-08-30T16:00:00.000Z",
     "fontTitle": "Playfair Display",
@@ -141,8 +141,8 @@
       "night": "#0d1b2a",
       "snow": "#f8f8ff"
     },
-    "showPodium": false,
-    "showRankingSection": false,
+    "showPodium": true,
+    "showRankingSection": true,
     "musicUrl": "https://www.image2url.com/r2/default/audio/1778696735802-6befb3f9-6fe1-433d-81e2-45bd269e0d36.mp3",
     "welcomeEnabled": true,
     "welcomeMessage": "⚠️  DISCLAIMER : Le site est en cours de fabrication. Des bugs de synchronisation, d’affichage ou des erreurs de texte de couleurs ou autres peuvent survenir.",
@@ -515,17 +515,17 @@
       "id": "r1778693672402",
       "name": "Collaborateur 1",
       "anonymousLabel": "Collaborateur 1",
-      "points": 0,
-      "sales": 0,
+      "points": 100,
+      "sales": 10,
       "icon": "🎄",
-      "avatarUrl": ""
+      "avatarUrl": "data:image/jpeg;base64,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"
     },
     {
       "id": "r1778694230743",
       "name": "Collaborateur 2",
       "anonymousLabel": "Collaborateur 2",
-      "points": 0,
-      "sales": 0,
+      "points": 80,
+      "sales": 8,
       "icon": "🎄",
       "avatarUrl": ""
     },
@@ -533,8 +533,8 @@
       "id": "r1778694573176",
       "name": "Collaborateur 3",
       "anonymousLabel": "Collaborateur 3",
-      "points": 0,
-      "sales": 0,
+      "points": 70,
+      "sales": 7,
       "icon": "🎄",
       "avatarUrl": ""
     },
@@ -542,8 +542,8 @@
       "id": "r1778694573607",
       "name": "Collaborateur 4",
       "anonymousLabel": "Collaborateur 4",
-      "points": 0,
-      "sales": 0,
+      "points": 40,
+      "sales": 4,
       "icon": "🎄",
       "avatarUrl": ""
     },
@@ -576,6 +576,84 @@
     }
   ],
   "auditLog": [
+    {
+      "id": "a1778873369748936",
+      "action": "Messages",
+      "details": "Mise a jour du message direction, jour actif, logo et theme",
+      "at": "2026-05-15T19:29:29.748Z"
+    },
+    {
+      "id": "a1778873329827742",
+      "action": "Classement",
+      "details": "Sauvegarde globale du classement",
+      "at": "2026-05-15T19:28:49.827Z"
+    },
+    {
+      "id": "a1778873320989664",
+      "action": "Classement",
+      "details": "Edition du champ points",
+      "at": "2026-05-15T19:28:40.989Z"
+    },
+    {
+      "id": "a1778873318334451",
+      "action": "Classement",
+      "details": "Edition du champ sales",
+      "at": "2026-05-15T19:28:38.334Z"
+    },
+    {
+      "id": "a1778873315901706",
+      "action": "Classement",
+      "details": "Edition du champ points",
+      "at": "2026-05-15T19:28:35.901Z"
+    },
+    {
+      "id": "a1778873313189987",
+      "action": "Classement",
+      "details": "Edition du champ sales",
+      "at": "2026-05-15T19:28:33.189Z"
+    },
+    {
+      "id": "a1778873309189233",
+      "action": "Classement",
+      "details": "Edition du champ points",
+      "at": "2026-05-15T19:28:29.189Z"
+    },
+    {
+      "id": "a1778873305957348",
+      "action": "Classement",
+      "details": "Edition du champ sales",
+      "at": "2026-05-15T19:28:25.957Z"
+    },
+    {
+      "id": "a1778873281373205",
+      "action": "Classement",
+      "details": "Edition du champ sales",
+      "at": "2026-05-15T19:28:01.373Z"
+    },
+    {
+      "id": "a1778873274429485",
+      "action": "Classement",
+      "details": "Edition du champ sales",
+      "at": "2026-05-15T19:27:54.429Z"
+    },
+    {
+      "id": "a1778873271341660",
+      "action": "Classement",
+      "details": "Edition du champ points",
+      "at": "2026-05-15T19:27:51.341Z"
+    },
+    {
+      "id": "a17788732568081",
+      "action": "Classement",
+      "details": "Photo upload pour Collaborateur 1",
+      "at": "2026-05-15T19:27:36.808Z"
+    },
+    {
+      "id": "a1778872519659546",
+      "action": "Synchronisation",
+      "details": "Publication pour tous via GitHub API",
+      "at": "2026-05-15T19:15:19.659Z"
+    },
     {
       "id": "a1778872507431454",
       "action": "Messages",
@@ -1697,84 +1775,6 @@
       "action": "Classement",
       "details": "Suppression d'un collaborateur",
       "at": "2026-05-13T17:31:28.537Z"
-    },
-    {
-      "id": "a1778693488377755",
-      "action": "Classement",
-      "details": "Suppression d'un collaborateur",
-      "at": "2026-05-13T17:31:28.377Z"
-    },
-    {
-      "id": "a1778693488193113",
-      "action": "Classement",
-      "details": "Suppression d'un collaborateur",
-      "at": "2026-05-13T17:31:28.193Z"
-    },
-    {
-      "id": "a177869348800938",
-      "action": "Classement",
-      "details": "Suppression d'un collaborateur",
-      "at": "2026-05-13T17:31:28.009Z"
-    },
-    {
-      "id": "a1778693487833938",
-      "action": "Classement",
-      "details": "Suppression d'un collaborateur",
-      "at": "2026-05-13T17:31:27.833Z"
-    },
-    {
-      "id": "a1778693487650436",
-      "action": "Classement",
-      "details": "Suppression d'un collaborateur",
-      "at": "2026-05-13T17:31:27.650Z"
-    },
-    {
-      "id": "a1778693486918381",
-      "action": "Classement",
-      "details": "Suppression d'un collaborateur",
-      "at": "2026-05-13T17:31:26.918Z"
-    },
-    {
-      "id": "a1778693399157381",
-      "action": "Synchronisation",
-      "details": "Publication pour tous via GitHub API",
-      "at": "2026-05-13T17:29:59.157Z"
-    },
-    {
-      "id": "a1778693388713137",
-      "action": "Classement",
-      "details": "Sauvegarde globale du classement",
-      "at": "2026-05-13T17:29:48.713Z"
-    },
-    {
-      "id": "a1778693388655919",
-      "action": "Classement",
-      "details": "Sauvegarde globale du classement",
-      "at": "2026-05-13T17:29:48.655Z"
-    },
-    {
-      "id": "a1778693385459297",
-      "action": "Classement",
-      "details": "Edition du champ points",
-      "at": "2026-05-13T17:29:45.459Z"
-    },
-    {
-      "id": "a1778693373116120",
-      "action": "Synchronisation",
-      "details": "Publication pour tous via GitHub API",
-      "at": "2026-05-13T17:29:33.116Z"
-    },
-    {
-      "id": "a1778693358045367",
-      "action": "Classement",
-      "details": "Sauvegarde globale du classement",
-      "at": "2026-05-13T17:29:18.045Z"
-    },
-    {
-      "id": "a1778693357983198",
-      "action": "Classement",
-      "details": "Sauvegarde globale du classement",
-      "at": "2026-05-13T17:29:17.983Z"
     }
   ]
 }
