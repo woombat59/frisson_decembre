@@ -125,7 +125,7 @@
       }
     ],
     "rankingMode": "named",
-    "directionMessage": "on continue !!! lache rien on lache rien onnnnnnnnnnn lache trout ok ",
+    "directionMessage": "Courage !",
     "flashAnnouncement": "1er jour DÉBLOQUÉ !! Félicitations à tous 🚀",
     "rankingSortMode": "auto",
     "activeDay": 1,
@@ -133,7 +133,7 @@
     "countdownTarget": "2026-08-30T16:00:00.000Z",
     "fontTitle": "Playfair Display",
     "fontBody": "Nunito",
-    "showRankingAvatars": false,
+    "showRankingAvatars": true,
     "theme": {
       "gold": "#d7e600",
       "green": "#1b4d2e",
@@ -145,8 +145,8 @@
     "showRankingSection": false,
     "musicUrl": "https://www.image2url.com/r2/default/audio/1778696735802-6befb3f9-6fe1-433d-81e2-45bd269e0d36.mp3",
     "welcomeEnabled": true,
-    "welcomeMessage": "⚠️ DISCLAMER : Le site est encore en cour de fabrication des bug de synchro, d'affichage, de textes peuvent survenir...",
-    "rulesText": "ICI LES REGLE"
+    "welcomeMessage": "⚠️  DISCLAIMER : Le site est en cours de fabrication. Des bugs de synchronisation, d’affichage ou des erreurs de texte de couleurs ou autres peuvent survenir.",
+    "rulesText": "Un objectif de ventes collectif par jour\nChaque jour,  une cible commune (ex : 50 ventes).\n\nLes ventes de toute l’équipe s’additionnent\nPeu importe où vous travaillez (bureau ou télétravail) : tout compte dans le total.\n\nLa jauge avance à chaque mise à jour\n\nSur le site, vous voyez :\nventes réalisées / objectif du jour + le pourcentage.\n\nObjectif atteint = la case du jour s’ouvre 🎁\nQuand la jauge atteint 100%, la case se débloque et révèle la surprise du jour.\n\nTout le monde peut découvrir la surprise\nUne fois ouverte, la case reste accessible à tous sur le calendrier.\n\nRythme ultra léger\n2 minutes pour consulter le site, on joue en continu pendant qu’on travaille.\n\nBON JEU À TOUS !!!"
   },
   "days": [
     {
@@ -576,6 +576,24 @@
     }
   ],
   "auditLog": [
+    {
+      "id": "a1778872507431454",
+      "action": "Messages",
+      "details": "Mise a jour du message direction, jour actif, logo et theme",
+      "at": "2026-05-15T19:15:07.431Z"
+    },
+    {
+      "id": "a1778872472015324",
+      "action": "Messages",
+      "details": "Mise a jour du message direction, jour actif, logo et theme",
+      "at": "2026-05-15T19:14:32.015Z"
+    },
+    {
+      "id": "a1778872014194657",
+      "action": "Synchronisation",
+      "details": "Publication pour tous via GitHub API",
+      "at": "2026-05-15T19:06:54.194Z"
+    },
     {
       "id": "a1778872009771361",
       "action": "Messages",
@@ -1757,24 +1775,6 @@
       "action": "Classement",
       "details": "Sauvegarde globale du classement",
       "at": "2026-05-13T17:29:17.983Z"
-    },
-    {
-      "id": "a1778693355359669",
-      "action": "Classement",
-      "details": "Edition du champ sales",
-      "at": "2026-05-13T17:29:15.359Z"
-    },
-    {
-      "id": "a1778693350802837",
-      "action": "Classement",
-      "details": "Edition du champ points",
-      "at": "2026-05-13T17:29:10.802Z"
-    },
-    {
-      "id": "a1778693166987749",
-      "action": "Classement",
-      "details": "Sauvegarde globale du classement",
-      "at": "2026-05-13T17:26:06.987Z"
     }
   ]
 }
